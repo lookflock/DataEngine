@@ -1,0 +1,26 @@
+{
+    "brandName": "AlKaram",
+    "logo": "AlKaram.jpg",
+    "cover": "AlKaram_cover.jpg",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Unstitched",
+                    "subSubCategories": [
+                        {
+                            "name": "Unsorted",
+                            "url": "https://www.alkaramstudio.com/collections/unstitched"
+                        },
+                        {
+                            "name": "Unsorted",
+                            "url": "https://www.alkaramstudio.com/collections/unstitched-sale-1"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+                

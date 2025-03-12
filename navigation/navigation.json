@@ -1,0 +1,773 @@
+[
+    
+    {
+        "brandID": "GulAhmed",
+        "displayName": "Gul Ahmed",
+        "region": "PK",
+        "status": true,
+        "logo": "gul-ahmed-profile.png",
+        "coverPhoto": "gulahmed-cover.png",
+        "navigationFile": "pk_GulAhmed.json",
+        "pagingVariable": "?p=",
+        "Category": [
+            "Women",
+            "Men"
+        ]
+    },
+    {
+        "brandID": "AnamAkhlaq",
+        "displayName": "Anam Akhlaq",
+        "region": "PK",
+        "status": true,
+        "logo": "AnamAkhlaq.jpg",
+        "coverPhoto": "AnamAkhlaq-cover.jpg",
+        "navigationFile": "pk_AnamAkhlaq.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "AnamAkhlaq",
+        "displayName": "Anam Akhlaq",
+        "region": "PK",
+        "status": true,
+        "logo": "AnamAkhlaq.jpg",
+        "coverPhoto": "AnamAkhlaq-cover.jpg",
+        "navigationFile": "pk_AnamAkhlaq.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Deepakperwani",
+        "displayName": "Deepak Perwani",
+        "region": "PK",
+        "status": true,
+        "logo": "Deepakperwani.jpg",
+        "coverPhoto": "Deepakperwani-cover.jpg",
+        "navigationFile": "pk_Deepakperwani.json",
+        "pagingVariable": "?pageNumber=",
+        "Category": [
+            "Women",
+            "Men"
+        ]
+    },
+    {
+        "brandID": "Dhanak",
+        "displayName": "Dhanak",
+        "region": "PK",
+        "status": true,
+        "logo": "Dhanak.jpg",
+        "coverPhoto": "Dhanak-cover.jpg",
+        "navigationFile": "pk_Dhanak.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "AhmadRaza",
+        "displayName": "Ahmad Raza",
+        "region": "PK",
+        "status": true,
+        "logo": "AhmadRaza.jpg",
+        "coverPhoto": "AhmadRaza-cover.jpg",
+        "navigationFile": "pk_AhmadRaza.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Men"
+        ]
+    },
+    {
+        "brandID": "FaizaRehman",
+        "displayName": "Faiza Rehman",
+        "region": "PK",
+        "status": true,
+        "logo": "FaizaRehman.jpg",
+        "coverPhoto": "FaizaRehman-cover.jpg",
+        "navigationFile": "pk_FaizaRehman.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Charcoal",
+        "displayName": "Charcoal",
+        "region": "PK",
+        "status": true,
+        "logo": "Charcoal.jpg",
+        "coverPhoto": "Charcoal-cover.jpg",
+        "navigationFile": "pk_Charcoal.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Men"
+        ]
+    },
+    {
+        "brandID": "HafsaMalik",
+        "displayName": "Hafsa Malik",
+        "region": "PK",
+        "status": true,
+        "logo": "HafsaMalik.jpg",
+        "coverPhoto": "HafsaMalik-cover.jpg",
+        "navigationFile": "pk_HafsaMalik.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "FatimaKhan",
+        "displayName": "Fatima Khan",
+        "region": "PK",
+        "status": true,
+        "logo": "FatimaKhan.jpg",
+        "coverPhoto": "FatimaKhan-cover.jpg",
+        "navigationFile": "pk_FatimaKhan.json",
+        "pagingVariable": "?pageNumber=",
+        "Category": [
+            "Women",
+            "Men"
+        ]
+    },
+    {
+        "brandID": "Chicophicial",
+        "displayName": "Chic Ophicial",
+        "region": "PK",
+        "status": true,
+        "logo": "Chicophicial.jpg",
+        "coverPhoto": "Chicophicial-cover.jpg",
+        "navigationFile": "pk_Chicophicial.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women",
+            "Men"
+        ]
+    },
+    {
+        "brandID": "KarishmaTalreja",
+        "displayName": "KarishmaTalreja",
+        "region": "PK",
+        "status": true,
+        "logo": "KarishmaTalreja.jpg",
+        "coverPhoto": "KarishmaTalreja-cover.jpg",
+        "navigationFile": "pk_KarishmaTalreja.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "NomiAnsari",
+        "displayName": "Nomi Ansari",
+        "region": "PK",
+        "status": true,
+        "logo": "NomiAnsari.jpg",
+        "coverPhoto": "NomiAnsari-cover.jpg",
+        "navigationFile": "pk_NomiAnsari.json",
+        "pagingVariable": "?pageNumber=",
+        "Category": [
+            "Women",
+            "Men"      
+        ]
+    },
+    {
+        "brandID": "Gulabo",
+        "displayName": "Gulabo",
+        "region": "PK",
+        "status": true,
+        "logo": "Gulabo.jpg",
+        "coverPhoto": "Gulabo-cover.jpg",
+        "navigationFile": "pk_Gulabo.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "KarishmaKewalramani",
+        "displayName": "KarishmaKewalramani",
+        "region": "PK",
+        "status": true,
+        "logo": "KarishmaKewalramani.jpg",
+        "coverPhoto": "KarishmaKewalramani-cover.jpg",
+        "navigationFile": "pk_KarishmaKewalramani.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "Rasofficial",
+        "displayName": "Ras Official",
+        "region": "PK",
+        "status": true,
+        "logo": "Rasofficial.jpg",
+        "coverPhoto": "Rasofficial-cover.jpg",
+        "navigationFile": "pk_Rasofficial.json",
+        "pagingVariable": "page/",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "ShamaeelAnsari",
+        "displayName": "Shamaeel Ansari",
+        "region": "PK",
+        "status": true,
+        "logo": "ShamaeelAnsari.jpg",
+        "coverPhoto": "ShamaeelAnsari-cover.jpg",
+        "navigationFile": "pk_ShamaeelAnsari.json",
+        "pagingVariable": "?pageNumber=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "SammyK",
+        "displayName": "Sammy K.",
+        "region": "PK",
+        "status": true,
+        "logo": "SammyK.jpg",
+        "coverPhoto": "SammyK-cover.jpg",
+        "navigationFile": "pk_SammyK.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "NausheenWamiq",
+        "displayName": "Nausheen Wamiq",
+        "region": "PK",
+        "status": true,
+        "logo": "NausheenWamiq.jpg",
+        "coverPhoto": "NausheenWamiq-cover.jpg",
+        "navigationFile": "pk_NausheenWamiq.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "SNL",
+        "displayName": "SNL by Sofia Naveed Lari",
+        "region": "PK",
+        "status": true,
+        "logo": "SNL.jpg",
+        "coverPhoto": "SNL-cover.jpg",
+        "navigationFile": "pk_SNL.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "SMP",
+        "displayName": "Swaleha Hassam Paracha",
+        "region": "PK",
+        "status": true,
+        "logo": "SMP.jpg",
+        "coverPhoto": "SMP-cover.jpg",
+        "navigationFile": "pk_SMP.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "PinkTreeCompany",
+        "displayName": "Pink Tree Company",
+        "region": "PK",
+        "status": true,
+        "logo": "PinkTreeCompany.jpg",
+        "coverPhoto": "PinkTreeCompany-cover.jpg",
+        "navigationFile": "pk_PinkTreeCompany.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "Umsha",
+        "displayName": "Umsha by Uzma Baber",
+        "region": "PK",
+        "status": true,
+        "logo": "Umsha.jpg",
+        "coverPhoto": "Umsha-cover.jpg",
+        "navigationFile": "pk_Umsha.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "WKJ",
+        "displayName": "Wahaj Khan Designs",
+        "region": "PK",
+        "status": true,
+        "logo": "WKJ.jpg",
+        "coverPhoto": "WKJ-cover.jpg",
+        "navigationFile": "pk_WKJ.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "VardahAlam",
+        "displayName": "Vardah Alam",
+        "region": "PK",
+        "status": true,
+        "logo": "VardahAlam.jpg",
+        "coverPhoto": "VardhaAlam-cover.jpg",
+        "navigationFile": "pk_VardahAlam.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "YasminZaman",
+        "displayName": "Yasmin Zaman",
+        "region": "PK",
+        "status": true,
+        "logo": "YasminZaman.jpg",
+        "coverPhoto": "YasminZaman-cover.jpg",
+        "navigationFile": "pk_YasminZaman.json",
+        "pagingVariable": "&page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "Zebaqi",
+        "displayName": "Zebaqi",
+        "region": "PK",
+        "status": true,
+        "logo": "Zebaqi.jpg",
+        "coverPhoto": "Zebaqi-cover.jpg",
+        "navigationFile": "pk_Zebaqi.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"      
+        ]
+    },
+    {
+        "brandID": "LimeLight",
+        "displayName": "Lime Light",
+        "region": "PK",
+        "status": true,
+        "logo": "lime-light-profile.png",
+        "coverPhoto": "LIME-LIGHT-COVER.png",
+        "navigationFile": "pk_LimeLight.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women",
+            "Men"
+        ]
+    },
+    {
+        "brandID": "ZainabHasan",
+        "displayName": "Zainab Hasan",
+        "region": "PK",
+        "status": true,
+        "logo": "ZainabHasan.jpg",
+        "coverPhoto": "ZainabHasan-cover.jpg",
+        "navigationFile": "pk_ZainabHasan.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "AghaNoor",
+        "displayName": "Agha Noor",
+        "region": "PK",
+        "status": true,
+        "logo": "agha-noor-logo.png",
+        "coverPhoto": "agha-noor-cover.png",
+        "navigationFile": "pk_AghaNoor.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ],
+        "sizes": [ "XS", "S", "M", "L", "XL"]
+    },
+    {
+        "brandID": "Almirah",
+        "displayName": "Almirah",
+        "region": "PK",
+        "status": true,
+        "logo": "almirah-profile.png",
+        "coverPhoto": "Almirah_cover.jpg",
+        "navigationFile": "pk_Almirah.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women",
+            "Men"
+        ]
+    },
+    {
+        "brandID": "BeechTree",
+        "displayName": "BeechTree",
+        "region": "PK",
+        "status": true,
+        "logo": "beechtree-profile.png",
+        "coverPhoto": "BEECHTREE-COVER.png",
+        "navigationFile": "pk_BeechTree.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "BonanzaSatrangi",
+        "displayName": "Bonanza Satrangi",
+        "region": "PK",
+        "status": true,
+        "logo": "bonanza-logo.png",
+        "coverPhoto": "bonanza-cover.png",
+        "navigationFile": "pk_BonanzaSatrangi.json",
+        "pagingVariable": "?p=",
+        "Category": [
+            "Women",
+            "Men"
+        ]
+    },
+    {
+        "brandID": "Chinyere",
+        "displayName": "Chinyere",
+        "region": "PK",
+        "status": true,
+        "logo": "chinyere-profile.png",
+        "coverPhoto": "chinyere-cover.png",
+        "navigationFile": "pk_Chinyere.json",
+        "pagingVariable": "?p=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "CrossStitch",
+        "displayName": "Cross Stitch",
+        "region": "PK",
+        "status": true,
+        "logo": "cross-stitch.png",
+        "coverPhoto": "CROSS-STITCH-COVER.png",
+        "navigationFile": "pk_CrossStitch.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Ego",
+        "displayName": "Ego",
+        "region": "PK",
+        "status": true,
+        "logo": "ego-profile.png",
+        "coverPhoto": "ego-cover.png",
+        "navigationFile": "pk_Ego.json",
+        "pagingVariable": "?p=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Generation",
+        "displayName": "Generation",
+        "region": "PK",
+        "status": true,
+        "logo": "generation-profile.png",
+        "coverPhoto": "generation-cover.png",
+        "navigationFile": "pk_Generation.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "JunaidJamshed",
+        "displayName": "J. Junaid Jamshed",
+        "region": "PK",
+        "status": true,
+        "logo": "JunaidJamshed.jpg",
+        "coverPhoto": "j.-cover.png",
+        "navigationFile": "pk_JunaidJamshed.json",
+        "pagingVariable": "?p=",
+        "Category": [
+            "Women",
+            "Men"
+        ]
+    },
+    {
+        "brandID": "Khaadi",
+        "displayName": "Khaadi",
+        "region": "PK",
+        "status": true,
+        "logo": "khaadi-profile.png",
+        "coverPhoto": "KHAADI-COVER.png",
+        "navigationFile": "pk_Khaadi.json",
+        "pagingVariable": "?p=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "MariaB",
+        "displayName": "Maria B",
+        "region": "PK",
+        "status": true,
+        "logo": "maria-b-profile.png",
+        "coverPhoto": "MARIA-B-COVER.png",
+        "navigationFile": "pk_MariaB.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "SanaSafinaz",
+        "displayName": "Sana Safinaz",
+        "region": "PK",
+        "status": true,
+        "logo": "sana-safina-profile.png",
+        "coverPhoto": "sana-safinaz-cover.png",
+        "navigationFile": "pk_SanaSafinaz.json",
+        "pagingVariable": "?p=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Sapphire",
+        "displayName": "Sapphire",
+        "region": "PK",
+        "status": true,
+        "logo": "Sapphire.jpg",
+        "coverPhoto": "sapphire-cover.png",
+        "navigationFile": "pk_Sapphire.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women",
+            "Men"
+        ]
+    },
+    {
+        "brandID": "ThreadsAndMotifs",
+        "displayName": "Threads And Motifs",
+        "region": "PK",
+        "status": true,
+        "logo": "threads-and-motifs-profile.png",
+        "coverPhoto": "Threads-And-Motifs-cover.png",
+        "navigationFile": "pk_ThreadsAndMotifs.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "ZaraShahJahan",
+        "displayName": "Zara Shah Jahan",
+        "region": "PK",
+        "status": true,
+        "logo": "ZaraShahJahan.jpg",
+        "coverPhoto": "ZARA-SHAH-COVER.png",
+        "navigationFile": "pk_ZaraShahJahan.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "EdenRobe",
+        "displayName": "Eden Robe",
+        "region": "PK",
+        "status": true,
+        "logo": "EdenRobe.jpg",
+        "coverPhoto": "EdenRobe_cover.jpg",
+        "navigationFile": "pk_EdenRobe.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Men",
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Saya",
+        "displayName": "Saya",
+        "region": "PK",
+        "status": true,
+        "logo": "Saya.jpg",
+        "coverPhoto": "Saya_cover.jpg",
+        "navigationFile": "pk_Saya.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Men"
+        ]
+    },
+    {
+        "brandID": "ShahzebSaeed",
+        "displayName": "Shahzeb Saeed",
+        "region": "PK",
+        "status": true,
+        "logo": "ShahzebSaeed.jpg",
+        "coverPhoto": "ShahzebSaeed_cover.jpg",
+        "navigationFile": "pk_ShahzebSaeed.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Men"
+        ]
+    },
+    {
+        "brandID": "Diners",
+        "displayName": "Diners",
+        "region": "PK",
+        "status": true,
+        "logo": "Diners.jpg",
+        "coverPhoto": "Diners_cover.jpg",
+        "navigationFile": "pk_Diners.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Men",
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Lakhanay",
+        "displayName": "Lakhany",
+        "region": "PK",
+        "status": true,
+        "logo": "Lakhanay.jpg",
+        "coverPhoto": "Lakhanay.jpg",
+        "navigationFile": "pk_Lakhanay.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Men",
+             "Women"
+        ]
+    },
+    {
+        "brandID": "Cambridge",
+        "displayName": "Cambridge",
+        "region": "PK",
+        "status": true,
+        "logo": "Cambridge.jpg",
+        "coverPhoto": "Cambridge.jpg",
+        "navigationFile": "pk_Cambridge.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Men"
+        ]
+    },
+    {
+        "brandID": "alkaram",
+        "displayName": "Alkaram Studios",
+        "region": "PK",
+        "status": true,
+        "logo": "Alkaram.jpg",
+        "coverPhoto": "Alkaram_cover.jpg",
+        "navigationFile": "pk_AlkaramStudios.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Men",
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Ethnic",
+        "displayName": "Ethnic",
+        "region": "PK",
+        "status": true,
+        "logo": "Ethnic.jpg",
+        "coverPhoto": "Ethnic_cover.jpg",
+        "navigationFile": "pk_Ethnic.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Outfitters",
+        "displayName": "Outfitters",
+        "region": "PK",
+        "status": true,
+        "logo": "Outfitters.jpg",
+        "coverPhoto": "Outfitters_cover.jpg",
+        "navigationFile": "pk_Outfitters.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women",
+            "Men"
+        ]
+    },
+    {
+        "brandID": "Nureh",
+        "displayName": "Nureh",
+        "region": "PK",
+        "status": true,
+        "logo": "Nureh.jpg",
+        "coverPhoto": "Nureh_cover.jpg",
+        "navigationFile": "pk_Nureh.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Vanya",
+        "displayName": "Vanya",
+        "region": "PK",
+        "status": true,
+        "logo": "Vanya.jpg",
+        "coverPhoto": "Vanya_cover.jpg",
+        "navigationFile": "pk_Vanya.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "SoWears",
+        "displayName": "Sowears",
+        "region": "PK",
+        "status": true,
+        "logo": "SoWears.jpg",
+        "coverPhoto": "SoWears_cover.jpg",
+        "navigationFile": "pk_SoWears.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Hijabi",
+        "displayName": "Hijabi",
+        "region": "PK",
+        "status": true,
+        "logo": "Hijabi.jpg",
+        "coverPhoto": "Hijabi_cover.jpg",
+        "navigationFile": "pk_Hijabi.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    },
+    {
+        "brandID": "Zardi",
+        "displayName": "Zardi",
+        "region": "PK",
+        "status": true,
+        "logo": "Zardi.jpg",
+        "coverPhoto": "Zardi_cover.jpg",
+        "navigationFile": "pk_Zardi.json",
+        "pagingVariable": "?page=",
+        "Category": [
+            "Women"
+        ]
+    }
+]
