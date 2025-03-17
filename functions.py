@@ -10,6 +10,27 @@ import re
 today = datetime.datetime.now(pytz.utc)
 yesterday = today - datetime.timedelta(days=1)
 
+def getDataFromJsonFilel(file_path):  
+  with open(file_path, "r") as f:
+    json_data = json.load(f)
+
+  if isinstance(json_data, list):
+    return json_data
+
+  else:
+    list_data = []
+    for key in json_data:
+      list_data.append(json_data[key])
+    return list_data
+
+def saveDataToJsonFile(data, filename):
+    dataJson = json.dumps(data)
+    file = 'data/' + filename + '_'+ today.strftime("%Y-%m-%d") + '.json'
+    f = open(file, "w")
+    f.write(dataJson)
+    f.close()
+    return file
+
 def getNavigationDetails(brandID):
     # takes brandID as an input and returns the JSON navigation file for that brand
     file = config.navigationFile

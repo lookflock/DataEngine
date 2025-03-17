@@ -10,12 +10,44 @@
                     "name": "Unstitched",
                     "subSubCategories": [
                         {
-                            "name": "Unsorted",
+                            "name": "None",
                             "url": "https://www.alkaramstudio.com/collections/unstitched"
                         },
                         {
-                            "name": "Unsorted",
+                            "name": "None",
                             "url": "https://www.alkaramstudio.com/collections/unstitched-sale-1"
+                        }
+                    ]
+                },
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Unsorted",
+                            "url": "https://www.alkaramstudio.com/collections/pret"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Men",
+            "subCategories": [
+                {
+                    "name": "Unstitched",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://www.alkaramstudio.com/collections/men-fabrics"
+                        }
+                    ]
+                },
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://www.alkaramstudio.com/collections/men-ready-to-wear"
                         }
                     ]
                 }
