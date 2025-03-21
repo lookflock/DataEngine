@@ -432,7 +432,7 @@
         "logo": "bonanza-logo.png",
         "coverPhoto": "bonanza-cover.png",
         "navigationFile": "pk_BonanzaSatrangi.json",
-        "pagingVariable": "?p=",
+        "pagingVariable": "?page=",
         "Category": [
             "Women",
             "Men"
