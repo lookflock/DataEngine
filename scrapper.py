@@ -6,7 +6,10 @@ from bs4 import BeautifulSoup
 import datetime
 import functions
 
-import scrappers_pk.pk_AlKaram as alkaram
+import scrappers_pk.pk_AlKaram as Alkaram
+import scrappers_pk.pk_Almirah as Almirah
+import scrappers_pk.pk_BeechTree as BeechTree
+import scrappers_pk.pk_BonanzaSatrangi as BonanzaSatrangi
 
 testEnvironment = False
 
@@ -184,10 +187,10 @@ def removeDuplicates(fileName):
 def scrapProducts(brandID, soup, category, subCategory, subSubCategory, pageURL):
     # wrapper function to call brand specific scrapper
     products = []
-    if (brandID == 'alkaram'):
-        products = alkaram.getProducts(soup, category, subCategory, subSubCategory, pageURL)                
+    try:
+        products = BeechTree.getProducts(soup, category, subCategory, subSubCategory, pageURL)                
     
-    else:
+    except:
         print('No scrapper available for the given brand: ' + brandID)
 
     # print('Product count: ' + str(len(products)) + ' products \n\n')    
@@ -213,7 +216,7 @@ def scrapBrand(brandID):
 
     with open(navFile, 'r') as f:
         navigation = json.load(f)
-
+        productsFile = ""
         for cat in navigation['categories']:
             #print(brandID + ' -> Category: ' + cat['name'])
 
@@ -242,6 +245,10 @@ def scrapBrand(brandID):
 
                         html = functions.getRequest(pageUrl, 'text')
                         soup = BeautifulSoup(html, "html.parser")
+
+                        with open("output.html", "w", encoding="utf-8") as f:
+                            f.write(soup.prettify())
+
                         tempProducts = scrapProducts(brandID, soup, category, subCategory, subSubCategory, pageUrl)
                         # countProducts += len(tempProducts)
                         if tempProducts != previousProducts:  #compares the currenct scrapped with the previous scrapped products if they are same we break loop
