@@ -18,7 +18,7 @@ def sortProducts(file):
     products = functions.getDataFromJsonFilel(file)
     
     lst_1Piece = ['1PC', '1 PC', 'Top','1 piece','1 Piece', '1 PIECE', "1-Pc", "1-pc"]
-    lst_2Piece = ['Co-Ord', 'Coord', "2-Pc","2-pc",'Co-ord', 'Cor-ord', '2- Piece', '2 PIECE', '2-Piece', '2-piece', '2 piece', '2 Piece', '2Piece', '2PC', '2 piece', 'two piece','TWO PIECE', '2 PC','2  PC']
+    lst_2Piece = ['Co-Ord', 'Coord', 'Co Ord', "2-Pc","2-pc",'Co-ord', 'Cor-ord', '2- Piece', '2 PIECE', '2-Piece', '2-piece', '2 piece', '2 Piece', '2Piece', '2PC', '2 piece', 'two piece','TWO PIECE', '2 PC','2  PC']
     lst_3Piece = ['3PC', '3 PC', "3-Pc","3-pc",'3 Piece','three piece','3 piece','THREE PIECE' ,'THREEPIECE', '3 PIECE', '3Pcs']
     lst_bottoms = ['trouser', 'tights', 'lehenga','shalwar', 'jeans','pant', 'peplum','pants', 'cullote','culottes', 'palazzos', 'denim', 'skirt', 'leg', 'sharara']
     lst_dresses = ['angarkhas', 'angarkha', 'maxi','angrakha', 'anarkali', 'kaftan', 'frock', 'gypsy', 'dress', 'gown' ]
@@ -188,7 +188,7 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory, pageURL)
     # wrapper function to call brand specific scrapper
     products = []
     try:
-        products = BeechTree.getProducts(soup, category, subCategory, subSubCategory, pageURL)                
+        products = BonanzaSatrangi.getProducts(soup, category, subCategory, subSubCategory, pageURL)
     
     except:
         print('No scrapper available for the given brand: ' + brandID)
