@@ -7,7 +7,7 @@ if __name__ == "__main__":
     # Step 1: Scrap all the products for the given brand
     productsFile = scrapBrand(brandName)
     # productsFile = 'data/data_alkaram_2025-03-11.json'
-    # print('Product File Name: ' + productsFile)
+    print('Product File Name: ' + productsFile)
 
     # Step 2: Remove duplicate products
     removeDuplicates(productsFile)

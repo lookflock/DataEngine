@@ -10,101 +10,85 @@ import scrappers_pk.pk_AlKaram as Alkaram
 import scrappers_pk.pk_Almirah as Almirah
 import scrappers_pk.pk_BeechTree as BeechTree
 import scrappers_pk.pk_BonanzaSatrangi as BonanzaSatrangi
+import scrappers_pk.pk_Cambridge as Cambridge
+# import scrappers_pk.pk_Chinyere as Chinyere
+# import scrappers_pk.pk_CrossStitch as CrossStitch
+import scrappers_pk.pk_Diners as Diners
+# import scrappers_pk.pk_GulAhmed as GulAhmed
+# import scrappers_pk.pk_Generation as Generation
+import scrappers_pk.pk_JunaidJamshed as JunaidJamshed
 
 testEnvironment = False
 
 def sortProducts(file):
-
     products = functions.getDataFromJsonFilel(file)
-    
-    lst_1Piece = ['1PC', '1 PC', 'Top','1 piece','1 Piece', '1 PIECE', "1-Pc", "1-pc"]
-    lst_2Piece = ['Co-Ord', 'Coord', 'Co Ord', "2-Pc","2-pc",'Co-ord', 'Cor-ord', '2- Piece', '2 PIECE', '2-Piece', '2-piece', '2 piece', '2 Piece', '2Piece', '2PC', '2 piece', 'two piece','TWO PIECE', '2 PC','2  PC']
-    lst_3Piece = ['3PC', '3 PC', "3-Pc","3-pc",'3 Piece','three piece','3 piece','THREE PIECE' ,'THREEPIECE', '3 PIECE', '3Pcs']
-    lst_bottoms = ['trouser', 'tights', 'lehenga','shalwar', 'jeans','pant', 'peplum','pants', 'cullote','culottes', 'palazzos', 'denim', 'skirt', 'leg', 'sharara']
-    lst_dresses = ['angarkhas', 'angarkha', 'maxi','angrakha', 'anarkali', 'kaftan', 'frock', 'gypsy', 'dress', 'gown' ]
-    lst_tops = ['bolero', 'koti', 'kurta', 'kurti', 'shirt', 'tanktop','kimono','cardigan', 'jacket', 'waistcoat', 'kameez', 'tunic', 'drop shoulder', 'sweater']
-    lst_stoles = ['dupatta', 'scarf', 'shawl', 'cape', 'dup']
+     
+    category_mappings = {
+        'kurtaSet': ['1PC', '1 PC', 'top', '1 piece', '1 Piece', '1 PIECE', "1-Pc", "1-pc", 
+                     '3PC', '3 PC', "3-Pc", "3-pc", '3 Piece', 'three piece', '3 piece', 
+                     'THREE PIECE', 'THREEPIECE', '3 PIECE', '3Pcs', '2- Piece', '2 PIECE', 
+                     '2-Piece', '2-piece', '2 piece', '2 Piece', '2Piece', '2PC', '2 piece', 
+                     'two piece', 'TWO PIECE', '2 PC', '2  PC', '2-Pc', '2-pcs'],
+        'coord': ['Co-Ord', 'Coord', 'co ord', 'Co-ord', 'Cor-ord'],
+        'kurta': ['kurta', 'kameez'],
+        'maxi': ['maxi'],
+        'pajama': ['pajama', 'Pajama'],
+        'tights': ['tights'],
+        'lehenga': ['lehenga'],
+        'shawl': ['shawl', 'Stole'],
+        'anarkali':['anarkali'],
+        'dupatta': ['dupatta', 'dup'],
+        'angrakha': ['angrakha', 'angarkhas', 'angarkha'],
+        'kaftan': ['kaftan'],
+        'frock': ['frock'],
+        'gown': ['gown'],
+        'sharara': ['sharara'],
+        'skirt': ['skirt'],
+        'pant': ['jeans', 'pant', 'pants', 'denim', "Chino"],
+        'sweater': ['sweater'],
+        'dropShoulder': ['drop shoulder'],
+        'cullote': ['cullote', 'culottes'],
+        'scarf':['scarf'],
+        'cape':['cape'],
+        'tanktop':['tanktop'],
+        'shirt':['shirt','kimono',"Crew"],
+        'tunic':['tunic'],
+        'dress':['dress','gypsy'],
+        'waistcoat':['waistcoat'],
+        'koti':['koti','bolero'],
+        'tights':['tights','leg'],
+        'trouser':['trouser'],
+        'shalwar':['shalwar','palazzos'],
+        'peplum':['peplum'],
+        'kaftan':['kaftan'],
+        'gown':['gown'],
+        'cardigan':['cardigan'],
+        'sweater':['sweater'],
+        'jacket':['jacket'],
+        'kurti':['kurti'],
+        'saree':['saree','Sarees'],
+        'Sleepwear':['Sleepwear'],
+        'polo':['Polos', 'Polo'],
+        'shorts':['Shorts', 'Short'],
+        'sherwani':['Sherwani', 'sherwani'],
+        'blazer':['Blazer'],
+        'athleisure':['Athleisure'],
+        'Suits':['Suits']
+    }
 
     for p in products:
         if p['subSubCategory'] == 'None':
             name = p['name'].lower()
-            if name in lst_1Piece:
-                p['subSubCategory'] = '1-Pc'
+            # Check for matches in category mappings
+            for category, keywords in category_mappings.items():
+                for keyword in keywords:
+                    if keyword.lower() in name:
+                        p['subSubCategory'] = category
+                        break
+                else:
+                    continue
                 break
-            if name in lst_2Piece:
-                p['subSubCategory'] = '2-Pc'
-                break
-            if name in lst_3Piece:
-                p['subSubCategory'] = '3-Pc'
-                break    
 
-            for cat in lst_1Piece + lst_2Piece + lst_3Piece + lst_dresses + lst_stoles:
-                if cat in p['name'] and cat in lst_2Piece:
-                    p['subSubCategory'] = '2-Pc'
-                    break
-                elif cat in p['name'] and cat in lst_3Piece:
-                    p['subSubCategory'] = '3-Pc'
-                    break
-                elif cat in p['name'] and cat in lst_1Piece:
-                    p['subSubCategory'] = 'Tops'
-                    break
-                elif cat in p['name'].lower() and cat in lst_dresses:
-                    p['subSubCategory'] = 'Dresses'
-                    break
-                elif cat in p['name'].lower() and cat in lst_stoles:
-                    p['subSubCategory'] = 'Stoles'
-                    break
-
-            
-            if 'Saree' in p['name']:
-                p['subSubCategory'] = 'Sarees'
-        
-
-            elif 'Sleepwear' in p['name']:
-                p['subSubCategory'] = 'Sleepwear'
-                
-            elif 'suit' in p['name']:
-                p['subSubCategory'] = 'Suits'
-
-            else:
-                matchCount = 0
-
-                for cat in lst_bottoms + lst_dresses + lst_tops + lst_stoles:
-                    if cat in name:
-                        matchCount += 1
-
-                if matchCount == 0 :
-                    if name in lst_2Piece:
-                        p['subSubCategory'] = '2-Pc'
-                    elif name in lst_3Piece:
-                        p['subSubCategory'] = '3-Pc'    
-                    #elif 'suit' in name:
-                    #    p['subSubCategory'] = 'Suit'
-
-                elif matchCount == 1:
-                    for cat in lst_bottoms + lst_dresses + lst_tops + lst_stoles:
-                        if cat in name and cat in lst_bottoms:
-                            p['subSubCategory'] = 'Bottoms'
-                            
-                        elif cat in name and cat in lst_dresses:
-                            p['subSubCategory'] = 'Dresses'
-                            
-                        elif cat in name and cat in lst_tops:
-                            p['subSubCategory'] = 'Tops'
-                           
-
-                    if name in lst_stoles:
-                        p['subSubCategory'] = 'Stoles'
-                        
-
-                elif matchCount == 2 or name in lst_2Piece:
-                    p['subSubCategory'] = '2-Pc'
-                    
-
-                elif matchCount == 3 or name in lst_3Piece:
-                    p['subSubCategory'] = '3-Pc'
-
-                   
     return products
 
 def getUnsortedProducts(products, brand):
@@ -188,7 +172,28 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory, pageURL)
     # wrapper function to call brand specific scrapper
     products = []
     try:
-        products = BonanzaSatrangi.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        if (brandID == 'Alkaram'):
+            products = Alkaram.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        elif (brandID == 'Almirah'):
+            products = Almirah.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        elif (brandID == 'BeechTree'):
+            products = BeechTree.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        elif (brandID == 'BonanzaSatrangi'):
+            products = BonanzaSatrangi.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        elif (brandID == 'Cambridge'):
+            products = Cambridge.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        # elif (brandID == 'CrossStitch'):
+        #     products = CrossStitch.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        # elif (brandID == 'Chinyere'):
+        #     products = Chinyere.getProducts(soup, category, subCategory, subSubCategory, pageURL)    
+        elif (brandID == 'Diners'):
+            products = Diners.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        # elif (brandID == 'GulAhmed'):
+        #     products = GulAhmed.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        # elif (brandID == 'Generation'):
+        #     products = Generation.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        elif (brandID == 'JunaidJamshed'):
+            products = JunaidJamshed.getProducts(soup, category, subCategory, subSubCategory, pageURL)
     
     except:
         print('No scrapper available for the given brand: ' + brandID)
