@@ -1,0 +1,110 @@
+{
+  "brandName": "lakhany",
+  "logo": "lakhany.jpg",
+  "cover": "lakhany_cover.jpg",
+  "categories": [
+    {
+      "name": "Women",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "3-Pc",
+              "url": "https://lakhanyonline.com/collections/3-piece-rtw"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://lakhanyonline.com/collections/bottoms-stitched"
+            },
+            {
+              "name": "Trousers",
+              "url": "https://lakhanyonline.com/collections/stretchable-cotton-trousers"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://lakhanyonline.com/collections/2-piece-rtw"
+            },
+            {
+              "name": "1-Pc",
+              "url": "https://lakhanyonline.com/collections/1-piece-1"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "Bottoms",
+              "url": "https://lakhanyonline.com/collections/bottoms-unstitched"
+            },
+            {
+              "name": "None",
+              "url": "https://lakhanyonline.com/collections/unstitched-1/Lawn"
+            },
+            {
+              "name": "None",
+              "url": "https://lakhanyonline.com/collections/unstitched-1/Winter"
+            },
+            {
+              "name": "1-Pc",
+              "url": "https://lakhanyonline.com/collections/01-piece"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://lakhanyonline.com/collections/2-piece"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://lakhanyonline.com/collections/3-piece"
+            }
+          ]
+        },
+        {
+          "name": "Western Wear",
+          "subSubCategories": [
+            {
+              "name": "Tops",
+              "url": "https://pk.khaadi.com/western/tops/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Men",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "Kurta",
+              "url": "https://lakhanyonline.com/collections/mens-wear-rtw"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://lakhanyonline.com/collections/denim-kurtas"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://lakhanyonline.com/collections/kurta-collection"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "ShalwarKameez",
+              "url": "https://lakhanyonline.com/collections/men-winter"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://lakhanyonline.com/collections/unstitched-men"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

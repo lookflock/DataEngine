@@ -18,6 +18,7 @@ import scrappers_pk.pk_Diners as Diners
 # import scrappers_pk.pk_Generation as Generation
 import scrappers_pk.pk_JunaidJamshed as JunaidJamshed
 import scrappers_pk.pk_EdenRobe as EdenRobe
+import scrappers_pk.pk_Lakhanay as Lakhanay
 
 testEnvironment = False
 
@@ -199,6 +200,8 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory, pageURL)
             products = JunaidJamshed.getProducts(soup, category, subCategory, subSubCategory, pageURL)
         elif (brandID == 'EdenRobe'):
             products = EdenRobe.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        elif (brandID == 'Lakhanay'):
+            products = Lakhanay.getProducts(soup, category, subCategory, subSubCategory, pageURL)
     
     except:
         print('No scrapper available for the given brand: ' + brandID)
