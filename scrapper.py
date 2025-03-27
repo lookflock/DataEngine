@@ -17,6 +17,7 @@ import scrappers_pk.pk_Diners as Diners
 # import scrappers_pk.pk_GulAhmed as GulAhmed
 # import scrappers_pk.pk_Generation as Generation
 import scrappers_pk.pk_JunaidJamshed as JunaidJamshed
+import scrappers_pk.pk_EdenRobe as EdenRobe
 
 testEnvironment = False
 
@@ -56,7 +57,7 @@ def sortProducts(file):
         'dress':['dress','gypsy'],
         'waistcoat':['waistcoat'],
         'koti':['koti','bolero'],
-        'tights':['tights','leg'],
+        'tights':['tights','leg', 'tight'],
         'trouser':['trouser'],
         'shalwar':['shalwar','palazzos'],
         'peplum':['peplum'],
@@ -73,7 +74,9 @@ def sortProducts(file):
         'sherwani':['Sherwani', 'sherwani'],
         'blazer':['Blazer'],
         'athleisure':['Athleisure'],
-        'Suits':['Suits']
+        'Suits':['Suits'],
+        'coat':['Prince Coat', 'Prince Suit'],
+        't-shirt':['T-Shirt', 'Tee']
     }
 
     for p in products:
@@ -194,6 +197,8 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory, pageURL)
         #     products = Generation.getProducts(soup, category, subCategory, subSubCategory, pageURL)
         elif (brandID == 'JunaidJamshed'):
             products = JunaidJamshed.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        elif (brandID == 'EdenRobe'):
+            products = EdenRobe.getProducts(soup, category, subCategory, subSubCategory, pageURL)
     
     except:
         print('No scrapper available for the given brand: ' + brandID)
