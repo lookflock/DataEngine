@@ -77,7 +77,8 @@
         "navigationFile": "pk_AhmadRaza.json",
         "pagingVariable": "?page=",
         "Category": [
-            "Men"
+            "Men",
+            "Women"
         ]
     },
     {

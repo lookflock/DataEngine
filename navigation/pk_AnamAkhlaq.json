@@ -1,0 +1,33 @@
+{
+  "brandName": "AnamAkhlaq",
+  "logo": "",
+  "cover": "",
+  "categories": [
+    {
+      "name": "Women",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "Suit",
+              "url": "https://anamakhlaq.com/collections/casual-wear"
+            },
+            {
+              "name": "Suit",
+              "url": "https://anamakhlaq.com/collections/luxury-pret"
+            },
+            {
+              "name": "Suit",
+              "url": "https://anamakhlaq.com/collections/new-arrivals"
+            },
+            {
+              "name": "Suit",
+              "url": "https://anamakhlaq.com/collections/smart-pret"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

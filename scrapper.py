@@ -6,13 +6,17 @@ from bs4 import BeautifulSoup
 import datetime
 import functions
 
+
+import scrappers_pk.pk_AhmadRaza as AhmadRaza
 import scrappers_pk.pk_AlKaram as Alkaram
 import scrappers_pk.pk_Almirah as Almirah
+import scrappers_pk.pk_AnamAkhlaq as AnamAkhlaq
 import scrappers_pk.pk_BeechTree as BeechTree
 import scrappers_pk.pk_BonanzaSatrangi as BonanzaSatrangi
 import scrappers_pk.pk_Cambridge as Cambridge
 # import scrappers_pk.pk_Chinyere as Chinyere
 # import scrappers_pk.pk_CrossStitch as CrossStitch
+# import scrappers_pk.pk_Dhanak as Dhanak
 import scrappers_pk.pk_Diners as Diners
 # import scrappers_pk.pk_GulAhmed as GulAhmed
 # import scrappers_pk.pk_Generation as Generation
@@ -178,8 +182,12 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory, pageURL)
     try:
         if (brandID == 'Alkaram'):
             products = Alkaram.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        elif (brandID == 'AhmadRaza'):
+            products = AhmadRaza.getProducts(soup, category, subCategory, subSubCategory, pageURL)
         elif (brandID == 'Almirah'):
             products = Almirah.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        elif (brandID == 'AnamAkhlaq'):
+            products = AnamAkhlaq.getProducts(soup, category, subCategory, subSubCategory, pageURL)
         elif (brandID == 'BeechTree'):
             products = BeechTree.getProducts(soup, category, subCategory, subSubCategory, pageURL)
         elif (brandID == 'BonanzaSatrangi'):
@@ -189,7 +197,9 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory, pageURL)
         # elif (brandID == 'CrossStitch'):
         #     products = CrossStitch.getProducts(soup, category, subCategory, subSubCategory, pageURL)
         # elif (brandID == 'Chinyere'):
-        #     products = Chinyere.getProducts(soup, category, subCategory, subSubCategory, pageURL)    
+        #     products = Chinyere.getProducts(soup, category, subCategory, subSubCategory, pageURL)
+        # elif (brandID == 'Dhanak'):
+        #     products = Dhanak.getProducts(soup, category, subCategory, subSubCategory, pageURL)    
         elif (brandID == 'Diners'):
             products = Diners.getProducts(soup, category, subCategory, subSubCategory, pageURL)
         # elif (brandID == 'GulAhmed'):
