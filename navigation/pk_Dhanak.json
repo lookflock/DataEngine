@@ -1,0 +1,74 @@
+{
+  "brandName": "Dhanak",
+  "logo": "",
+  "cover": "",
+  "categories": [
+    {
+      "name": "Women",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "None",
+              "url": "https://dhanak.com.pk/collections/ready-to-wear"
+            },
+            {
+              "name": "None",
+              "url": "https://dhanak.com.pk/collections/dhanak-couture"
+            },
+            {
+              "name": "None",
+              "url": "https://dhanak.com.pk/collections/mommy-me-1"
+            },
+            {
+              "name": "None",
+              "url": "https://dhanak.com.pk/collections/ss-24-silk-tunic"
+            },
+            {
+              "name": "None",
+              "url": "https://dhanak.com.pk/collections/signature-pret"
+            },
+            {
+              "name": "None",
+              "url": "https://dhanak.com.pk/collections/casual-pret"
+            },
+            {
+              "name": "None",
+              "url": "https://dhanak.com.pk/collections/luxury-pret"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://dhanak.com.pk/collections/bottoms"
+            },
+            {
+              "name": "None",
+              "url": "https://dhanak.com.pk/collections/dupatta"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "3-Pc",
+              "url": "https://dhanak.com.pk/collections/unstitched"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://dhanak.com.pk/collections/maheer-wedding-festive-23-unstitched"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://dhanak.com.pk/collections/ss-24-unstitched"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://dhanak.com.pk/collections/festive-unstitched-24"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -16,7 +16,7 @@ import scrappers_pk.pk_BonanzaSatrangi as BonanzaSatrangi
 import scrappers_pk.pk_Cambridge as Cambridge
 # import scrappers_pk.pk_Chinyere as Chinyere
 # import scrappers_pk.pk_CrossStitch as CrossStitch
-# import scrappers_pk.pk_Dhanak as Dhanak
+import scrappers_pk.pk_Dhanak as Dhanak
 import scrappers_pk.pk_Diners as Diners
 # import scrappers_pk.pk_GulAhmed as GulAhmed
 # import scrappers_pk.pk_Generation as Generation
@@ -198,8 +198,8 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory, pageURL)
         #     products = CrossStitch.getProducts(soup, category, subCategory, subSubCategory, pageURL)
         # elif (brandID == 'Chinyere'):
         #     products = Chinyere.getProducts(soup, category, subCategory, subSubCategory, pageURL)
-        # elif (brandID == 'Dhanak'):
-        #     products = Dhanak.getProducts(soup, category, subCategory, subSubCategory, pageURL)    
+        elif (brandID == 'Dhanak'):
+            products = Dhanak.getProducts(soup, category, subCategory, subSubCategory, pageURL)    
         elif (brandID == 'Diners'):
             products = Diners.getProducts(soup, category, subCategory, subSubCategory, pageURL)
         # elif (brandID == 'GulAhmed'):
