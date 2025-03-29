@@ -1,0 +1,123 @@
+{
+    "brandName": "Charcoal",
+    "logo": "",
+    "cover": "",
+    "categories": [
+        {
+            "name": "Men",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Suits",
+                            "url": "https://charcoal.com.pk/collections/suiting"
+                        },
+                        {
+                            "name": "Suits",
+                            "url": "https://charcoal.com.pk/collections/casual-coat"
+                        },                
+                        {
+                            "name": "Kurta",
+                            "url": "https://charcoal.com.pk/collections/kurta"
+                        },                      
+                                                                
+                        {
+                            "name": "ShalwarKameez",
+                            "url": "https://charcoal.com.pk/collections/shalwar-kameez"
+                        }   
+                        ,                      
+                        {
+                            "name": "ShalwarKameez",
+                            "url": "https://charcoal.com.pk/collections/kurta-pajama"
+                        }  
+                        ,                      
+                        {
+                            "name": "Trouser",
+                            "url": "https://charcoal.com.pk/collections/shalwar-and-pajama"
+                        }  
+                        
+                        ,                      
+                        {
+                            "name": "WaistCoat",
+                            "url": "https://charcoal.com.pk/collections/waistcoat"
+                        }   ,                      
+                        {
+                            "name": "Pant",
+                            "url": "https://charcoal.com.pk/collections/dress-pants"
+                        }      ,                      
+                        {
+                            "name": "Pant",
+                            "url": "https://charcoal.com.pk/collections/casual-pants"
+                        }   
+                        
+                               
+                    ]
+                },
+                {
+                    "name": "Western Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Polos",
+                            "url": "https://charcoal.com.pk/collections/polo-tees"
+                        },
+                        {
+                            "name": "Shirts",
+                            "url": "https://charcoal.com.pk/collections/semi-casual"
+                        },
+                        {
+                            "name": "Shirts",
+                            "url": "https://charcoal.com.pk/collections/half-sleeve-shirts"
+                        },
+                        
+                        {
+                            "name": "Shirts",
+                            "url": "https://charcoal.com.pk/collections/casual-shirts-1"
+                        },
+                        {
+                            "name": "Shirts",
+                            "url": "https://charcoal.com.pk/collections/smart-shirts"
+                        },
+                        {
+                            "name": "Shirts",
+                            "url": "https://charcoal.com.pk/collections/semi-formal-full-sleeve-shirts"
+                        },
+                        {
+                            "name": "Shirts",
+                            "url": "https://charcoal.com.pk/collections/limited-edition-shirts"
+                        },
+                        {
+                            "name": "Shirts",
+                            "url": "https://charcoal.com.pk/collections/dress-shirts"
+                        },
+                        {
+                            "name": "Jeans",
+                            "url": "https://charcoal.com.pk/collections/jeans"
+                        },
+                        {
+                            "name": "T-Shirts",
+                            "url": "https://charcoal.com.pk/collections/t-shirts"
+                        },
+                        {
+                            "name": "T-Shirts",
+                            "url": "https://charcoal.com.pk/collections/t-shirt-full-sleeve-1"
+                        },
+                        {
+                            "name": "T-Shirts",
+                            "url": "https://charcoal.com.pk/collections/semi-formal-full-sleeve-shirts"
+                        },
+                        {
+                            "name": "Shorts",
+                            "url": "https://charcoal.com.pk/collections/casual-shorts"
+                        },
+                        {
+                            "name": "Trouser",
+                            "url": "https://charcoal.com.pk/collections/casual-trouser"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+                

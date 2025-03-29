@@ -1,0 +1,79 @@
+{
+    "brandName": "HafsaMalik",
+    "logo": "HafsaMalik.jpg",
+    "cover": "HafsaMalik_cover.jpg",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/florence"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/suhaye"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/alaya"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/noir"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/mahay"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/zaviya"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/noor-ul-ain"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/regalia"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/khas"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/layla"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/mihrimah"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://hafsamalik.com/collections/pantsanddupattas"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/evening-essential"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/luxury-pret"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://hafsamalik.com/collections/wedding-festive"
+                        }                        
+                    ]
+                }
+            ]
+        }
+       
+    ]
+}
+                

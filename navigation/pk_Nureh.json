@@ -1,0 +1,45 @@
+{
+    "brandName": "Nureh",
+    "logo": "Nureh.jpg",
+    "cover": "Nureh_cover.jpg",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Suit",
+                            "url": "https://nureh.pk/collections/casual-pret"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://nureh.pk/collections/formal-pret"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://nureh.pk/collections/wedding-formals"
+                        },
+                        {
+                            "name":"Trouser",
+                            "url":"https://nureh.pk/collections/bottom"
+                        }
+                             
+                                 
+                    ]    
+                },
+                {
+                    "name": "Unstitched",
+                    "subSubCategories": [
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://nureh.pk/collections/nureh-unstitched"
+                        }
+                    ]    
+                }
+            ]
+        }
+    ]
+}

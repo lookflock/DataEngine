@@ -1,0 +1,112 @@
+{
+    "brandName": "Chinyere",
+    "logo": "",
+    "cover": "",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/casual-basic-pret"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/casual-fusion"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/casual-signature-pret"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/formal-luxury-pret"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/formal-semi-formal"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/formal-wedding-exclusive"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/printed"
+                        },
+                       
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/solids"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/embroidered"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/luxury"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "1-Pc",
+                            "url": "https://www.chinyere.pk/collections/shirts"
+                        },
+                        {
+                            "name": "Shalwar",
+                            "url": "https://www.chinyere.pk/collections/bottoms"
+                        },
+                        {
+                            "name": "Dupatta",
+                            "url": "https://www.chinyere.pk/collections/dupatta-stole"
+                        },
+                        {
+                            "name": "Shawl",
+                            "url": "https://www.chinyere.pk/collections/shawl"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/outfits"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/spring-summer25"
+                        },
+                       
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/eid-pret"
+                        }
+                    ]
+                },
+                {
+                    "name": "Unstitched",
+                    "subSubCategories": [
+                        {
+                            "name": "KurtaSet",
+                            "piece": "2-Pc",
+                            "url": "https://www.chinyere.pk/collections/unstitched-casual-2-pieces-suit"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.chinyere.pk/collections/unstitched-casual-3-pieces-suit"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.chinyere.pk/collections/unstitched-formal-3-pieces-suit"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.chinyere.pk/collections/unstitched-ss25"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

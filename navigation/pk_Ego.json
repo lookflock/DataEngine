@@ -1,0 +1,93 @@
+{
+    "brandName": "Ego",
+    "logo": "",
+    "cover": "",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/all-luxury"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/set-2-3-pieces"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/soul"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/diva"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/boho"
+                        },
+                        {
+                            "name": "Bottoms",
+                            "url": "https://wearego.com/collections/bottoms"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/all-casuals"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "1-Pc",
+                            "url": "https://wearego.com/collections/1-piece"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/edge"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/monzene"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/core"
+                        },
+                        {
+                            "name": "Wrap",
+                            "url": "https://wearego.com/collections/wraps-and-inners"
+                        },                        
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/ready-to-wear-new"
+                        },                        
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/discounted-ready-to-wear"
+                        }
+                        
+                        
+                    ]
+                },
+                {
+                    "name": "Unstitched",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/unstitched"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/new-unstitched"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://wearego.com/collections/discounted-unstitched"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

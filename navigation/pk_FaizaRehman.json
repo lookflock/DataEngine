@@ -1,0 +1,110 @@
+{
+    "brandName": "FaizaRehman",
+    "logo": "",
+    "cover": "",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/casuals-sia"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/kyra"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/azeen"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/casuals-wear"
+                        },                      
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/summer-sierra-23"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/rina-collection"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/mushq"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/luxury-pret-2023"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/phool-nagar-luxury-eid"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/formal-wear"
+                        },
+                        
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/co-ords"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/zarri"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/velvet-de-flair"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/dilbar"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/morni"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/meraki"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/jashn-e-baharan"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/luxe-formals"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/velvet-de-luxe"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/bridal-dresses"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/dastaan"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/collections/rang-mahal"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.faizarehman.com/pages/fr-style-stars"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,47 @@
+{
+    "brandName": "NomiAnsari",
+    "logo": "NomiAnsari.jpg",
+    "cover": "NomiAnsari_cover.jpg",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Suits",
+                            "url": "https://www.nomiansari.com.pk/luxury-pret"
+                        },
+                        {
+                            "name": "Suits",
+                            "url": "https://www.nomiansari.com.pk/womenswear"
+                        },
+                        {
+                            "name": "Suits",
+                            "url": "https://www.nomiansari.com.pk/ready-to-ship"
+                        }
+                    ]
+                }
+            ]
+        }
+        ,
+        {
+            "name": "Men",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        
+                        {
+                            "name": "KurtaSet",
+                            "piece": "2-Pc",
+                            "url": "https://www.nomiansari.com.pk/menswear"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+                

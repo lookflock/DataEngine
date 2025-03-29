@@ -1,0 +1,50 @@
+{
+    "brandName": "FatimaKhan",
+    "logo": "",
+    "cover": "",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Suit",
+                            "url": "https://www.fatimakhanofficial.com/luxury-pret"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.fatimakhanofficial.com/semi-formals-2"
+                        },                      
+                        {
+                            "name": "Suit",
+                            "url": "https://www.fatimakhanofficial.com/formals"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://www.fatimakhanofficial.com/basics"
+                        }
+                    ]
+                }
+            ]
+        }
+        ,
+        {
+            "name": "Men",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        
+                        {
+                            "name": "KurtaSet",
+                            "url": "https://www.fatimakhanofficial.com/menswear"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+                

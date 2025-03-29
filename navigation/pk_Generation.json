@@ -1,0 +1,71 @@
+{
+    "brandName": "Generation",
+    "logo": "generation.jpeg",
+    "cover": "generation_cover.jpg",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "KurtaSet",
+                            "piece": "2-Pc",
+                            "url": "https://generation.com.pk/collections/matching-2-piece"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://generation.com.pk/collections/suits-3-piece"
+                        },
+                        {
+                            "name": "Kurti",
+                            "url": "https://generation.com.pk/collections/kurtas"
+                        },
+                        {
+                            "name": "Tops",
+                            "url": "https://generation.com.pk/collections/tops"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://generation.com.pk/collections/bottoms"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://generation.com.pk/collections/formals"
+                        },
+                        {
+                            "name": "Stoles",
+                            "url": "https://generation.com.pk/collections/dupattas"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://generation.com.pk/collections/hand-crafted"
+                        },
+                        {
+                            "name": "Anarkali",
+                            "url": "https://generation.com.pk/collections/anarkali-frock"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://generation.com.pk/collections/dupattas-shawls"
+                        },
+                        {
+                            "name": "Saree",
+                            "url": "https://generation.com.pk/collections/sarees"
+                        },
+                        {
+                            "name": "Koti",
+                            "url": "https://generation.com.pk/collections/jackets-kotis"
+                        },
+                        {
+                            "name": "Gharara",
+                            "url": "https://generation.com.pk/collections/gharara"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

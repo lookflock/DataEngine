@@ -1,0 +1,163 @@
+{
+    "brandName": "LimeLight",
+    "logo": "limelight.jpg",
+    "cover": "limelight_cover.jpg",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Unstitched",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/unstitched"
+                        }
+                    ]
+                },
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/casual",
+                            "comments": "casual"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/semi-formal",
+                            "comments": "semi-formal"
+                        },
+                        {
+                            "name": "Coord",
+                            "url": "https://www.limelight.pk/collections/co-ords-west"
+
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/solids"
+
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/daily-wear"
+
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/glam-pret"
+
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/signature"
+
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/formals"
+
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/formals",
+                            "comments": "formals"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/ready-to-wear-featured"
+                          
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/western-bottoms"
+                        
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/bottoms"
+                        
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/special-prices",
+                            "comments": "special prices"
+                        },
+                        {
+                            "name": "Kurti",
+                            "url": "https://www.limelight.pk/collections/short-kurti",
+                            "comments": "short-kurti"
+                        },
+                        {
+                            "name": "Coord",
+                            "url": "https://www.limelight.pk/collections/co-ords-east"
+                          
+                        },
+                        {
+                            "name": "Shirt",
+                            "url": "https://www.limelight.pk/collections/tops"
+                            
+                        },
+                        {
+                            "name": "Dress",
+                            "url": "https://www.limelight.pk/collections/dresses"
+                            
+                        },
+                        {
+                            "name": "Kurti",
+                            "url": "https://www.limelight.pk/collections/eastern-tops"
+                            
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/eastern-bottoms"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/silk-pret",
+                            "comments": "silk pret"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/jacquard",
+                            "comments": "jacquard"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/summer-pret",
+                            "comments": "summer pret"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/winter-pret",
+                            "comments": "winter pret"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Men",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Kurta",
+                            "url": "https://www.limelight.pk/collections/men-kurta"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "2-Pc",
+                            "url": "https://www.limelight.pk/collections/men-suits"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.limelight.pk/collections/men-trousers"
+                        }           
+                    ]
+                }
+            ]
+        }
+    ]
+}

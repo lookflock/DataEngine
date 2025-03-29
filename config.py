@@ -9,3 +9,5 @@ navigationFolder = 'navigation'
 navigationFile = 'navigation/navigation.json'
 
 maxNumberOfPages = 135
+
+dataFolder = "htmlData"

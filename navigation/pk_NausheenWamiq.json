@@ -1,0 +1,29 @@
+{
+    "brandName": "NausheenWamiq ",
+    "logo": "",
+    "cover": "",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Dress",
+                            "url": "https://nausheenwamiq.store/collections/luxe-pret"
+                        },
+                        {
+                            "name": "Dress",
+                            "url": "https://nausheenwamiq.store/collections/new-arrivals"
+                        },
+                        {
+                            "name": "Dress",
+                            "url": "https://nausheenwamiq.store/collections/accessories"
+                        }                              
+                    ]    
+                }          
+            ]
+        }
+    ]
+}

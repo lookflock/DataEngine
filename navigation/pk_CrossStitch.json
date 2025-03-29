@@ -1,0 +1,112 @@
+{
+    "brandName": "CrossStitch",
+    "logo": "",
+    "cover": "",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://www.crossstitch.pk/collections/rtw-eid-collection"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.crossstitch.pk/collections/exclusive-pret"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.crossstitch.pk/collections/basic-pret"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.crossstitch.pk/collections/luxury-pret"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.crossstitch.pk/collections/rtw-wedding-collection"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "1-Pc",
+                            "url": "https://www.crossstitch.pk/collections/ready-to-wear-1piece"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "2-Pc",
+                            "url": "https://www.crossstitch.pk/collections/ready-to-wear-2piece"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.crossstitch.pk/collections/ready-to-wear-3piece"
+                        },
+                        {
+                            "name": "Coord",
+                            "url": "https://www.crossstitch.pk/collections/co-ords"
+                        }
+                       
+                        
+                       
+                    ]    
+                },
+                {
+                    "name": "Unstitched",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://www.crossstitch.pk/collections/unstitched-premium-lawn-25"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.crossstitch.pk/collections/emb-lawn-mahiri-25"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.crossstitch.pk/collections/chikankari-lawn"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.crossstitch.pk/collections/unstitched-premium-lawn-25"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.crossstitch.pk/collections/eid-collection"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "4-Pc",
+                            "url": "https://www.crossstitch.pk/collections/luxe-atelier-25"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "4-Pc",
+                            "url": "https://www.crossstitch.pk/collections/daily-wear"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.crossstitch.pk/collections/unstitched-wedding"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.crossstitch.pk/collections/winter-collection-24"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.crossstitch.pk/collections/unstitched-satin-de-luxe"
+                        }
+                        
+                    ]    
+                }
+            ]
+        }
+    ]
+}

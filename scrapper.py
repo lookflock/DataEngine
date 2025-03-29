@@ -5,103 +5,108 @@ import json
 from bs4 import BeautifulSoup
 import datetime
 import functions
+import os
 
 import scrappers_pk.pk_AlKaram as alkaram
+import scrappers_pk.pk_GulAhmed as GulAhmed
+import scrappers_pk.pk_Generation as Generation
+import scrappers_pk.pk_CrossStitch as CrossStitch
+import scrappers_pk.pk_Chinyere as Chinyere
+import scrappers_pk.pk_Charcoal as Charcoal
+import scrappers_pk.pk_Ego as Ego
+import scrappers_pk.pk_LimeLight as LimeLight
+import scrappers_pk.pk_Ethnic as Ethnic
+import scrappers_pk.pk_FaizaRehman as FaizaRehman
+import scrappers_pk.pk_FatimaKhan as FatimaKhan
+import scrappers_pk.pk_NausheenWamiq as NausheenWamiq
+import scrappers_pk.pk_NomiAnsari as NomiAnsari
+import scrappers_pk.pk_Nureh as Nureh
+import scrappers_pk.pk_HafsaMalik as HafsaMalik
 
 testEnvironment = False
 
-def sortProducts(file):
 
+def sortProducts(file):
     products = functions.getDataFromJsonFilel(file)
-    
-    lst_1Piece = ['1PC', '1 PC', 'Top','1 piece','1 Piece', '1 PIECE', "1-Pc", "1-pc"]
-    lst_2Piece = ['Co-Ord', 'Coord', "2-Pc","2-pc",'Co-ord', 'Cor-ord', '2- Piece', '2 PIECE', '2-Piece', '2-piece', '2 piece', '2 Piece', '2Piece', '2PC', '2 piece', 'two piece','TWO PIECE', '2 PC','2  PC']
-    lst_3Piece = ['3PC', '3 PC', "3-Pc","3-pc",'3 Piece','three piece','3 piece','THREE PIECE' ,'THREEPIECE', '3 PIECE', '3Pcs']
-    lst_bottoms = ['trouser', 'tights', 'lehenga','shalwar', 'jeans','pant', 'peplum','pants', 'cullote','culottes', 'palazzos', 'denim', 'skirt', 'leg', 'sharara']
-    lst_dresses = ['angarkhas', 'angarkha', 'maxi','angrakha', 'anarkali', 'kaftan', 'frock', 'gypsy', 'dress', 'gown' ]
-    lst_tops = ['bolero', 'koti', 'kurta', 'kurti', 'shirt', 'tanktop','kimono','cardigan', 'jacket', 'waistcoat', 'kameez', 'tunic', 'drop shoulder', 'sweater']
-    lst_stoles = ['dupatta', 'scarf', 'shawl', 'cape', 'dup']
+     
+    piece_mappings = {
+        '1-Pc': {'1pc', '1 pc', 'top', '1 piece', '1-piece', '1-pc'},
+        '2-Pc': {'2pc', '2 pc', '2-piece', '2 piece', 'two piece'},
+        '3-Pc': {'3pc', '3 pc', '3-piece', '3 piece', 'three piece'}
+    }
+
+    category_mappings = {
+        'KurtaSet': ['1PC', '1 PC', 'top', '1 piece', '1 Piece', '1 PIECE', "1-Pc", "1-pc", 
+                     '3PC', '3 PC', "3-Pc", "3-pc", '3 Piece', 'three piece', '3 piece', 
+                     'THREE PIECE', 'THREEPIECE', '3 PIECE', '3Pcs', '2- Piece', '2 PIECE', 
+                     '2-Piece', '2-piece', '2 piece', '2 Piece', '2Piece', '2PC', '2 piece', 
+                     'two piece', 'TWO PIECE', '2 PC', '2  PC','2-Pc','4pc'],
+        'Coord': ['Co-Ord', 'Coord', 'co ord', 'Co-ord', 'Cor-ord'],
+        'Kurta': ['kurta', 'kameez'],
+        'Maxi': ['maxi'],
+        'Tights': ['tights'],
+        'Lehenga': ['lehenga'],
+        'Shawl': ['shawl'],
+        'Anarkali':['anarkali'],
+        'Dupatta': ['dupatta', 'dup'],
+        'Angrakha': ['angrakha', 'angarkhas', 'angarkha'],
+        'Kaftan': ['kaftan'],
+        'Frock': ['frock'],
+        'Gown': ['gown'],
+        'Sharara': ['sharara'],
+        'Skirt': ['skirt'],
+        'Pant': ['pant', 'pants'],
+        'Jeans': ['jeans','denim'],
+        'Sweater': ['sweater'],
+        'DropShoulder': ['drop shoulder'],
+        'Cullote': ['cullote', 'culottes'],
+        'Scarf':['scarf'],
+        'Cape':['cape'],
+        'Tanktop':['tanktop','Tank Top'],
+        'Shirt':['shirt','kimono','Tee'],
+        'Tunic':['tunic'],
+        'Dress':['dress','gypsy'],
+        'Waistcoat':['waistcoat'],
+        'Koti':['koti','bolero'],
+        'Tights':['tights','leg'],
+        'Trouser':['trouser','trousers'],
+        'Shalwar':['shalwar','palazzos'],
+        'Peplum':['peplum'],
+        'Kaftan':['kaftan'],
+        'Gown':['gown'],
+        'Cardigan':['cardigan','Blazer'],
+        'Sweater':['sweater'],
+        'Jacket':['jacket'],
+        'Kurti':['kurti'],
+        'Saree':['saree','Sarees'],
+        'Sleepwear':['Sleepwear'],
+        'Suits':['Suits','Suit'],
+        'Polos':['Polos','Polo'],
+        'T-Shirts':['t-Shirt'],
+        'Shorts':['shorts'],
+        'Gharara':['gharara']
+    }
 
     for p in products:
         if p['subSubCategory'] == 'None':
             name = p['name'].lower()
-            if name in lst_1Piece:
-                p['subSubCategory'] = '1-Pc'
-                break
-            if name in lst_2Piece:
-                p['subSubCategory'] = '2-Pc'
-                break
-            if name in lst_3Piece:
-                p['subSubCategory'] = '3-Pc'
-                break    
+            matched_categories = set()
 
-            for cat in lst_1Piece + lst_2Piece + lst_3Piece + lst_dresses + lst_stoles:
-                if cat in p['name'] and cat in lst_2Piece:
-                    p['subSubCategory'] = '2-Pc'
-                    break
-                elif cat in p['name'] and cat in lst_3Piece:
-                    p['subSubCategory'] = '3-Pc'
-                    break
-                elif cat in p['name'] and cat in lst_1Piece:
-                    p['subSubCategory'] = 'Tops'
-                    break
-                elif cat in p['name'].lower() and cat in lst_dresses:
-                    p['subSubCategory'] = 'Dresses'
-                    break
-                elif cat in p['name'].lower() and cat in lst_stoles:
-                    p['subSubCategory'] = 'Stoles'
-                    break
+            for category, keywords in category_mappings.items():
+                if any(keyword.lower() in name for keyword in keywords):
+                    matched_categories.add(category)
 
-            
-            if 'Saree' in p['name']:
-                p['subSubCategory'] = 'Sarees'
-        
-
-            elif 'Sleepwear' in p['name']:
-                p['subSubCategory'] = 'Sleepwear'
+            if matched_categories:
+                p['subSubCategory'] = list(matched_categories)[0]  # Assign the first found category
                 
-            elif 'suit' in p['name']:
-                p['subSubCategory'] = 'Suits'
 
-            else:
-                matchCount = 0
+                # If the assigned category is 'KurtaSet' and piece is not already set
+                if p['subSubCategory'] == 'KurtaSet' and 'piece' not in p:
+                    for piece_key, piece_values in piece_mappings.items():
+                        if any(piece_value in name for piece_value in piece_values):
+                            p['piece'] = piece_key
+                            break
 
-                for cat in lst_bottoms + lst_dresses + lst_tops + lst_stoles:
-                    if cat in name:
-                        matchCount += 1
-
-                if matchCount == 0 :
-                    if name in lst_2Piece:
-                        p['subSubCategory'] = '2-Pc'
-                    elif name in lst_3Piece:
-                        p['subSubCategory'] = '3-Pc'    
-                    #elif 'suit' in name:
-                    #    p['subSubCategory'] = 'Suit'
-
-                elif matchCount == 1:
-                    for cat in lst_bottoms + lst_dresses + lst_tops + lst_stoles:
-                        if cat in name and cat in lst_bottoms:
-                            p['subSubCategory'] = 'Bottoms'
-                            
-                        elif cat in name and cat in lst_dresses:
-                            p['subSubCategory'] = 'Dresses'
-                            
-                        elif cat in name and cat in lst_tops:
-                            p['subSubCategory'] = 'Tops'
-                           
-
-                    if name in lst_stoles:
-                        p['subSubCategory'] = 'Stoles'
-                        
-
-                elif matchCount == 2 or name in lst_2Piece:
-                    p['subSubCategory'] = '2-Pc'
-                    
-
-                elif matchCount == 3 or name in lst_3Piece:
-                    p['subSubCategory'] = '3-Pc'
-
-                   
     return products
 
 def getUnsortedProducts(products, brand):
@@ -112,16 +117,17 @@ def getUnsortedProducts(products, brand):
     for p in products:
         if p['subSubCategory'] == 'None':
             i += 1
-            unsorttedProducts = unsorttedProducts + '\n' + p['name']
+            unsorttedProducts = unsorttedProducts + '\n' + p['name'] + '  ' + p['url']
 
     if i > 0:
-
+        # Generate timestamp string
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H%M%S")
+        filename = f'data/unsorted_{brand}_{timestamp}.txt'
         unsorttedProducts = unsorttedProducts + '\n\n Total: ' + str(i)
-        f = open('data/unsorted_' + brand + '.txt', 'w')
-        f.write(unsorttedProducts)
-        f.close()
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(unsorttedProducts)   
     
-    return [i, 'data/unsorted_' + brand + '.txt']
+    return [i, filename if i > 0 else None]
 
 
 def categoriseProducts(brandName, fileName):
@@ -181,14 +187,51 @@ def removeDuplicates(fileName):
     except:
         None
 
-def scrapProducts(brandID, soup, category, subCategory, subSubCategory, pageURL):
+def scrapProducts(brandID, soup, category, subCategory, subSubCategory,piece, pageURL):
     # wrapper function to call brand specific scrapper
     products = []
-    if (brandID == 'alkaram'):
-        products = alkaram.getProducts(soup, category, subCategory, subSubCategory, pageURL)                
+
+    SCRAPER_MAP = {
+        'alkaram': alkaram,
+        'GulAhmed': GulAhmed,
+        'Generation': Generation,
+        'CrossStitch': CrossStitch,
+        'Chinyere': Chinyere,
+        'Charcoal': Charcoal,
+        'Ego': Ego,
+        'LimeLight': LimeLight,
+        'Ethnic': Ethnic,
+        'FaizaRehman': FaizaRehman,
+        'FatimaKhan': FatimaKhan,
+        'NausheenWamiq': NausheenWamiq,
+        'NomiAnsari': NomiAnsari,
+        'Nureh': Nureh,
+        'HafsaMalik': HafsaMalik
+    }
     
-    else:
-        print('No scrapper available for the given brand: ' + brandID)
+    # Get the appropriate scraper module
+    scraper_module = SCRAPER_MAP.get(brandID)
+    
+    if not scraper_module:
+        print(f'No scrapper available for the given brand: {brandID}')
+        return []
+    
+    try:
+        # Call the getProducts function from the appropriate module
+        return scraper_module.getProducts(
+            soup=soup,
+            category=category,
+            subCategory=subCategory,
+            subSubCategory=subSubCategory,
+            piece=piece,
+            pageURL=pageURL
+        )
+    except AttributeError:
+        print(f'Scraper module {brandID} is missing required getProducts function')
+        return []
+    except Exception as e:
+        print(f'Error in {brandID} scraper: {str(e)}')
+        return []
 
     # print('Product count: ' + str(len(products)) + ' products \n\n')    
     return products
@@ -205,7 +248,8 @@ def scrapBrand(brandID):
         print(navFile)
     except:
         navFile = ''
-    
+
+    productsFile = None
     # countProducts = 0
     if navFile == '':
         print('Navigation file does not exist for: ' + brandID)
@@ -226,6 +270,7 @@ def scrapBrand(brandID):
                     category = cat['name']
                     subCategory = subCat['name']
                     subSubCategory = subSubCat['name']
+                    piece = subSubCat.get('piece', '')
                     previousProducts = []
                     
                     maxNumberOfPages = config.maxNumberOfPages
@@ -241,8 +286,22 @@ def scrapBrand(brandID):
                         print(pageUrl)
 
                         html = functions.getRequest(pageUrl, 'text')
-                        soup = BeautifulSoup(html, "html.parser")
-                        tempProducts = scrapProducts(brandID, soup, category, subCategory, subSubCategory, pageUrl)
+
+                        soup = BeautifulSoup(html, 'html.parser')
+                        # for script in soup(["script", "style", "link", "meta", "noscript"]):
+                        # for script in soup([ "style"]):
+                        #     script.decompose()  # Remove the tag from the HTML
+                        # cleaned_html = soup.prettify()
+
+                        # Save the cleaned HTML to a file
+                        # html_folder = os.path.join(config.dataFolder, 'html', brandID)
+                        # if not os.path.exists(html_folder):
+                        #     os.makedirs(html_folder)
+                        # html_file_path = os.path.join(html_folder, f"{category}_{subCategory}_{subSubCategory}_page_{i}.html")
+                        # with open(html_file_path, 'w', encoding='utf-8') as html_file:
+                        #     html_file.write(cleaned_html)
+
+                        tempProducts = scrapProducts(brandID, soup, category, subCategory, subSubCategory,piece, pageUrl)
                         # countProducts += len(tempProducts)
                         if tempProducts != previousProducts:  #compares the currenct scrapped with the previous scrapped products if they are same we break loop
                             previousProducts = tempProducts

@@ -1,0 +1,333 @@
+{
+    "brandName": "GulAhmed",
+    "logo": "gulahmed.jpg",
+    "cover": "gulahmed_cover.jpg",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "KurtaSet",
+                            "piece": "2-Pc",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/signature/shirt-and-trouser"
+                           
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "2-Pc",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/signature/shirt-and-dupatta"
+                            
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/signature/3-piece"
+                            
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/everyday-edit/3-piece"
+                            
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/essentials/3-piece"
+                            
+                        },
+                        {
+                            "name": "Shirt",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/everyday-edit/shirt"
+                            
+                        },
+                        {
+                            "name": "Shirt",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/essentials/shirt"
+                            
+                        },
+                        {
+                            "name": "Coord",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/everyday-edit/co-ord-sets"
+                            
+                        },
+                        {
+                            "name": "Coord",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/9-to-5/co-ord-sets"
+                            
+                        },
+                        {
+                            "name": "Trouser",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/everyday-edit/trousers"
+                            
+                        },
+                        {
+                            "name": "Dupatta",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/signature/dupattas"
+                            
+                        },
+                        {
+                            "name": "Dupatta",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/everyday-edit/dupattas"
+                            
+                        },
+                        {
+                            "name": "Shawl",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/shawls"
+                            
+                        },
+                        {
+                            "name": "Burqa",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/abaya-collection"
+                            
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/solids",
+                            "comments": "Solids"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/digitals",
+                            "comments": "Digitals"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/embroidered",
+                            "comments": "Embroidered"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/stitched-suits",
+                            "comments": "Suits"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/formals",
+                            "comments": "Formals"
+                        },
+                        {
+                            "name": "Trouser",
+                            "url": "https://www.gulahmedshop.com/women/ideas-pret/trousers"
+                   
+                        },
+                       
+                        
+                        {
+                            "name": "Tunic",
+                            "url": "https://www.gulahmedshop.com/women/stitched-fabric/stitched-kurtis"
+                      
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/women/stitched-fabric/suits",
+                            "comments": "Suits"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/limited-edition",
+                            "comments": "Suits"
+                        }
+                        
+                    ]
+                },
+                {
+                    "name": "Unstitched",
+                    "subSubCategories": [
+                        {
+                            "name": "KurtaSet",
+                            "piece": "2-Pc",
+                            "url": "https://www.gulahmedshop.com/unstitched-fabric/2pc"
+                        },
+                        {
+                            "name": "KurtaSet",
+                            "piece": "3-Pc",
+                            "url": "https://www.gulahmedshop.com/unstitched-fabric/3pc"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/unstitched-fabric/lawn-collection/summer-premium-collection"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/unstitched-fabric/lawn-collection/summer-essential-collection"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/unstitched-fabric/winter-collections"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/unstitched-fabric/capsule-collections/cambric-2023"
+                        }
+                        ,
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/unstitched-fabric/lawn-collection"
+                        }
+                        ,
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/unstitched-fabric"
+                        }
+                        
+                        
+                    ]
+                },
+                {
+                    "name": "Western Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Shirt",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/women/women-shirts-and-blouses"
+                          
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/women/women-tees-and-tops"
+                          
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/women"
+                          
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/women/trousers"
+                          
+                        },
+                        {
+                            "name": "Jeans",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/women/jeans"
+                          
+                        },
+                        {
+                            "name": "Sweaters",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/women/sweaters"
+                       
+                        },
+                        {
+                            "name": "Hoodies",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/women/hoodies-and-sweatshirts"
+                          
+                        },
+                        {
+                            "name": "Jackets",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/women/jackets"
+                     
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/women/women-tees-and-tops"
+                     
+                        },
+                       
+                       
+                        {
+                            "name": "T-Shirts",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/women?cat=3973",
+                            "comments": "T-Shirts & Tops"
+                        },
+                        {
+                            "name": "Bottoms",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/women?cat=4015_women-trousers-and-skirts",
+                            "comments": "Trousers & Skirts"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Men",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Kurta",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/eastern/gents-kurta"
+                        },
+                        {
+                            "name": "ShalwarKameez",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/eastern/shalwar-kameez"
+                        },
+                        {
+                            "name": "WaistCoat",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/eastern/waistcoats"
+                        },
+                        {
+                            "name": "Shalwar",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/eastern/ethnic-bottoms"
+                        }
+                        
+                        
+                    ]
+                },
+                {
+                    "name": "Unstitched",
+                    "subSubCategories": [
+                        {
+                            "name": "ShalwarKameez",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/unstitched/latha-collection"
+                        },
+                        {
+                            "name": "ShalwarKameez",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/unstitched/summer"
+                        },
+                        {
+                            "name": "ShalwarKameez",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/unstitched/winter"
+                        },
+                        {
+                            "name": "ShalwarKameez",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/unstitched/regular-collection"
+                        },
+                        {
+                            "name": "ShalwarKameez",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/unstitched/men-unstitched-with-box"
+                        }
+                    ]
+                },
+                {
+                    "name": "Western Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Shirts",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/western/mens-casual-shirts"
+                        },
+                        {
+                            "name": "Polos",
+                            "url": "https://www.gulahmedshop.com/salt-western-wear/men/men-polos"
+                        },
+                        {
+                            "name": "T-Shirts",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/western/mens-t-shirts"
+                        },
+                        {
+                            "name": "Sweaters",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/western/sweaters"
+                        },
+                        {
+                            "name": "Jackets",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/western/jackets"
+                        },
+                        {
+                            "name": "Hoodies",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/western/hoodies-sweatshirts"
+                        },
+                        {
+                            "name": "Coord",
+                            "url": "https://www.gulahmedshop.com/mens-clothes/western/co-ord-set"
+                        }
+                        
+                    ]
+                }
+            ]
+        }
+    ]
+}
+                

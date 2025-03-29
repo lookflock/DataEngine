@@ -1,0 +1,129 @@
+{
+    "brandName": "Ethnic",
+    "logo": "Ethnic.jpg",
+    "cover": "Ethnic_cover",
+    "categories": [
+        {
+            "name": "Women",
+            "subCategories": [
+                {
+                    "name": "Ready to Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://pk.ethnc.com/collections/casual"
+                        },
+                        
+                        {
+                            "name": "Dupatta",
+                            "url": "https://pk.ethnc.com/collections/women-dupattas23"
+                        },
+                        
+                        {
+                            "name": "None",
+                            "url": "https://pk.ethnc.com/collections/basics"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://pk.ethnc.com/collections/trousers"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://pk.ethnc.com/collections/bottoms"
+                        },
+                        
+                        {
+                            "name": "None",
+                            "url": "https://shop.ethnic.pk/collections/boutique"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://shop.ethnic.pk/collections/capsule"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://pk.ethnc.com/collections/rozana"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://pk.ethnc.com/collections/casual"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://pk.ethnc.com/collections/luxe-2025"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://pk.ethnc.com/collections/basics"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://shop.ethnic.pk/collections/women-pret-sale"
+                        },
+                        {
+                            "name": "Suit",
+                            "url": "https://pk.ethnc.com/collections/semi-formal-women-collection"
+                        }
+                       
+                        
+                        
+                    ]    
+                },
+                {
+                    "name": "Unstitched",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://pk.ethnc.com/collections/unstitched-collection-25"
+                        },
+                       
+                        {
+                            "name": "3-Pc",
+                            "url": "https://pk.ethnc.com/collections/unstitched-three-piece"
+                        }
+                        
+                    ]    
+                },
+                {
+                    "name": "Western Wear",
+                    "subSubCategories": [
+                        
+                        {
+                            "name": "Shirt",
+                            "url": "https://pk.ethnc.com/pages/the-new"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://pk.ethnc.com/collections/western"
+                        },
+                        {
+                            "name": "Suits",
+                            "url": "https://pk.ethnc.com/collections/basics-ss25"
+                        },
+                        {
+                            "name": "Suits",
+                            "url": "https://pk.ethnc.com/collections/studio"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://pk.ethnc.com/collections/jeans"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://shop.ethnic.pk/collections/western-shirts-tops"
+                        },
+                        {
+                            "name": "None",
+                            "url": "https://shop.ethnic.pk/collections/western-outerwear"
+                        },
+                        {
+                            "name": "Jeans",
+                            "url": "https://pk.ethnc.com/collections/jeans-and-trousers-western"
+                        }
+                        
+                    ]    
+                }
+            ]
+        }
+    ]
+}
