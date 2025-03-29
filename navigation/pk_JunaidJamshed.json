@@ -1,0 +1,163 @@
+{
+  "brandName": "junaidjamshed",
+  "logo": "",
+  "cover": "",
+  "categories": [
+    {
+      "name": "Women",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "Stoles",
+              "url": "https://www.junaidjamshed.com/womens/stoles.html"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://www.junaidjamshed.com/womens/women-trouser.html"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://www.junaidjamshed.com/womens/stitched/2-piece.html"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://www.junaidjamshed.com/womens/stitched/3-piece.html"
+            },
+            {
+              "name": "Kurti",
+              "url": "https://www.junaidjamshed.com/womens/kurti/tops.html"
+            },
+            {
+              "name": "Kurti",
+              "url": "https://www.junaidjamshed.com/womens/kurti/formals.html"
+            },
+            {
+              "name": "None",
+              "url": "https://www.junaidjamshed.com/womens/semi-formal-stitched/formal-stitched.html"
+            },
+            {
+              "name": "None",
+              "url": "https://www.junaidjamshed.com/womens/mama-me.html"
+            },
+            {
+              "name": "None",
+              "url": "https://www.junaidjamshed.com/womens/nearang-handwoven-collection.html"
+            },
+            {
+              "name": "None",
+              "url": "https://www.junaidjamshed.com/womens/matching-separates.html"
+            },
+            {
+              "name": "Abaya",
+              "url": "https://www.junaidjamshed.com/womens/modest-wear-abaya.html"
+            },
+            {
+              "name": "Sarees",
+              "url": "https://www.junaidjamshed.com/womens/saree.html"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "1-Pc",
+              "url": "https://www.junaidjamshed.com/womens/un-stitched/1-piece.html"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://www.junaidjamshed.com/womens/un-stitched/2-piece.html"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://www.junaidjamshed.com/womens/un-stitched/3-piece.html"
+            },
+            {
+              "name": "None",
+              "url": "https://www.junaidjamshed.com/womens/semi-formal-stitched/formal-unstitched.html"
+            },
+            {
+              "name": "None",
+              "url": "https://www.junaidjamshed.com/womens/saree.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Men",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "ShalwarKameez",
+              "url": "https://www.junaidjamshed.com/mens/kameez-shalwar.html"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://www.junaidjamshed.com/mens/kurta.html"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://www.junaidjamshed.com/mens/kurta-pajama.html"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://www.junaidjamshed.com/mens/kameez-shalwar-with-waistcoat.html"
+            },
+            {
+              "name": "Waist Coat",
+              "url": "https://www.junaidjamshed.com/mens/waist-coat.html"
+            },
+            {
+              "name": "Shawls",
+              "url": "https://www.junaidjamshed.com/mens/shawl.html"
+            },
+            {
+              "name": "None",
+              "url": "https://www.junaidjamshed.com/mens/grooms-collection.html"
+            },
+
+            {
+              "name": "Bottoms ShalwarKameez",
+              "url": "https://www.junaidjamshed.com/mens/bottom.html"
+            },
+            {
+              "name": "None",
+              "url": "https://www.junaidjamshed.com/mens/grooms-collection/prince-coat.html"
+            },
+            {
+              "name": "None",
+              "url": "https://www.junaidjamshed.com/mens/grooms-collection/sherwani-j.html"
+            },
+            {
+              "name": "None",
+              "url": "https://www.junaidjamshed.com/mens/grooms-collection/special-kurta.html"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "ShalwarKameez",
+              "url": "https://www.junaidjamshed.com/mens/unstitched.html"
+            }
+          ]
+        },
+        {
+          "name": "Western Wear",
+          "subSubCategories": [
+            {
+              "name": "Sweaters",
+              "url": "https://www.junaidjamshed.com/mens/sweaters.html"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -7,7 +7,23 @@ import datetime
 import functions
 import os
 
-import scrappers_pk.pk_AlKaram as alkaram
+
+import scrappers_pk.pk_AhmadRaza as AhmadRaza
+import scrappers_pk.pk_AlKaram as Alkaram
+import scrappers_pk.pk_Almirah as Almirah
+import scrappers_pk.pk_AnamAkhlaq as AnamAkhlaq
+import scrappers_pk.pk_BeechTree as BeechTree
+import scrappers_pk.pk_BonanzaSatrangi as BonanzaSatrangi
+import scrappers_pk.pk_Cambridge as Cambridge
+# import scrappers_pk.pk_Chinyere as Chinyere
+# import scrappers_pk.pk_CrossStitch as CrossStitch
+import scrappers_pk.pk_Dhanak as Dhanak
+import scrappers_pk.pk_Diners as Diners
+# import scrappers_pk.pk_GulAhmed as GulAhmed
+# import scrappers_pk.pk_Generation as Generation
+import scrappers_pk.pk_JunaidJamshed as JunaidJamshed
+import scrappers_pk.pk_EdenRobe as EdenRobe
+import scrappers_pk.pk_Lakhanay as Lakhanay
 import scrappers_pk.pk_GulAhmed as GulAhmed
 import scrappers_pk.pk_Generation as Generation
 import scrappers_pk.pk_CrossStitch as CrossStitch
@@ -257,7 +273,7 @@ def scrapBrand(brandID):
 
     with open(navFile, 'r') as f:
         navigation = json.load(f)
-
+        productsFile = ""
         for cat in navigation['categories']:
             #print(brandID + ' -> Category: ' + cat['name'])
 

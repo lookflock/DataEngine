@@ -1,0 +1,171 @@
+{
+  "brandName": "BeachTree",
+  "logo": "beechtree-profile.png",
+  "cover": "BEECHTREE-COVER.png",
+  "categories": [
+    {
+      "name": "Women",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "High Casual",
+              "url": "https://beechtree.pk/collections/pret-high-casual"
+            },
+            {
+              "name": "New Arrival",
+              "url": "https://beechtree.pk/collections/new-arrivals-pret-wear"
+            },
+            {
+              "name": "New Arrival",
+              "url": "https://beechtree.pk/collections/new-arrivals-luxury-pret"
+            },
+            {
+              "name": "Scarf",
+              "url": "https://beechtree.pk/collections/new-arrivals-accessories"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://beechtree.pk/collections/pret-exclusive-priced"
+            },
+            {
+              "name": "Embroidered",
+              "url": "https://beechtree.pk/collections/embroidered-pret"
+            },
+            {
+              "name": "Printed",
+              "url": "https://beechtree.pk/collections/printed-pret"
+            },
+            {
+              "name": "Basic",
+              "url": "https://beechtree.pk/collections/basic-pret"
+            },
+            {
+              "name": "Tops",
+              "url": "https://beechtree.pk/collections/fusion-pret"
+            },
+            {
+              "name": "Tops",
+              "url": "https://beechtree.pk/collections/pret-shirts"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://beechtree.pk/collections/pret-2-piece"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://beechtree.pk/collections/pret-3-piece"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://beechtree.pk/collections/women-trouser-design"
+            },
+            {
+              "name": "Tops",
+              "url": "https://beechtree.pk/collections/luxury-pret-shirts"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://beechtree.pk/collections/luxury-pret-2-piece"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://beechtree.pk/collections/luxury-pret-3-piece"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://beechtree.pk/collections/luxury-pret-bottoms"
+            },
+            {
+              "name": "New Arrival",
+              "url": "https://beechtree.pk/collections/new-arrivals-luxury-pret"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "1-Pc",
+              "url": "https://beechtree.pk/collections/1-piece"
+            },
+            {
+              "name": "Embroidered",
+              "url": "https://beechtree.pk/collections/unstitched-embroidered"
+            },
+            {
+              "name": "Printed",
+              "url": "https://beechtree.pk/collections/unstitched-printed"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://beechtree.pk/collections/unstitched-2-piece-suit"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://beechtree.pk/collections/unstitched-3-piece-suit"
+            },
+            {
+              "name": "Eid",
+              "url": "https://beechtree.pk/collections/unstitched-the-eid-edit"
+            },
+            {
+              "name": "New Arrival",
+              "url": "https://beechtree.pk/collections/new-arrivals-unstitched"
+            }
+          ]
+        },
+        {
+          "name": "Western Wear",
+          "subSubCategories": [
+            {
+              "name": "Shirts",
+              "url": "https://beechtree.pk/collections/west-costal-dreams"
+            },
+            {
+              "name": "New Arrival",
+              "url": "https://beechtree.pk/collections/new-arrivals-western"
+            },
+            {
+              "name": "Shrugs",
+              "url": "https://beechtree.pk/collections/shrugs-and-cardigans"
+            },
+            {
+              "name": "Sweaters",
+              "url": "https://beechtree.pk/collections/sweaters-dress"
+            },
+            {
+              "name": "Sweaters",
+              "url": "https://beechtree.pk/collections/sweaters"
+            },
+            {
+              "name": "Capes",
+              "url": "https://beechtree.pk/collections/capes"
+            },
+            {
+              "name": "Scarf",
+              "url": "https://beechtree.pk/collections/scarves"
+            },
+            {
+              "name": "Tops",
+              "url": "https://beechtree.pk/collections/tops-for-women"
+            },
+            {
+              "name": "Dresses",
+              "url": "https://beechtree.pk/collections/western-dresses"
+            },
+            {
+              "name": "None",
+              "url": "https://beechtree.pk/collections/western-coord-sets"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://beechtree.pk/collections/women-western-pants"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

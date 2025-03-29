@@ -1,0 +1,75 @@
+{
+  "brandName": "AhmedRaza",
+  "logo": "AhmedRaza.jpg",
+  "cover": "AhmedRaza_cover.jpg",
+  "categories": [
+    {
+      "name": "Women",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "Suit",
+              "url": "https://www.ahmadraza.com.pk/collections/formals"
+            },
+            {
+              "name": "Suit",
+              "url": "https://www.ahmadraza.com.pk/collections/velvet"
+            },
+            {
+              "name": "Suit",
+              "url": "https://www.ahmadraza.com.pk/collections/afsana-1"
+            },
+            {
+              "name": "Suit",
+              "url": "https://www.ahmadraza.com.pk/collections/siren"
+            },
+            {
+              "name": "Suit",
+              "url": "https://www.ahmadraza.com.pk/collections/aaghaz"
+            },
+            {
+              "name": "Suit",
+              "url": "https://www.ahmadraza.com.pk/collections/roserair"
+            },
+            {
+              "name": "Suit",
+              "url": "https://www.ahmadraza.com.pk/collections/rang-e-bahar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Men",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "Sherwani",
+              "url": "https://www.ahmadraza.com.pk/collections/sherwani"
+            },
+            {
+              "name": "Suit",
+              "url": "https://www.ahmadraza.com.pk/collections/prince-suit"
+            },
+            {
+              "name": "WaistCoat",
+              "url": "https://www.ahmadraza.com.pk/collections/waistcoats"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://www.ahmadraza.com.pk/collections/kurta-pajama"
+            },
+            {
+              "name": "Shawls",
+              "url": "https://www.ahmadraza.com.pk/collections/shawls"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

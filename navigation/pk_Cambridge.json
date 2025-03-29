@@ -1,0 +1,159 @@
+{
+  "brandName": "Cambridge",
+  "logo": "Cambridge.jpg",
+  "cover": "Cambridge_cover.jpg",
+  "categories": [
+    {
+      "name": "Men",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "ShalwarKameez",
+              "url": "https://thecambridgeshop.com/collections/eid-collection"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://thecambridgeshop.com/collections/designer-shalwar-kameez"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://thecambridgeshop.com/collections/shalwar-kameez"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://thecambridgeshop.com/collections/kurta"
+            },
+            {
+              "name": "Suits",
+              "url": "https://thecambridgeshop.com/collections/mashriq-combo"
+            },
+            {
+              "name": "WaistCoat",
+              "url": "https://thecambridgeshop.com/collections/waistcoat"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://thecambridgeshop.com/collections/basic-fancy"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://thecambridgeshop.com/collections/mens-eastern-bottoms"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://thecambridgeshop.com/collections/boys-shalwar-kameez"
+            },
+            {
+              "name": "Shawls",
+              "url": "https://thecambridgeshop.com/collections/shawl"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://thecambridgeshop.com/collections/mashriq-sale-all"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://thecambridgeshop.com/collections/winter-collection"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "ShalwarKameez",
+              "url": "https://thecambridgeshop.com/collections/mens-unstitched-fabric"
+            }
+          ]
+        },
+        {
+          "name": "Western Wear",
+          "subSubCategories": [
+            {
+              "name": "None",
+              "url": "https://thecambridgeshop.com/collections/new-arrivals"
+            },
+            {
+              "name": "None",
+              "url": "https://thecambridgeshop.com/collections/summer-2025"
+            },
+            {
+              "name": "Polos",
+              "url": "https://thecambridgeshop.com/collections/polo-shirts"
+            },
+            {
+              "name": "T-Shirts",
+              "url": "https://thecambridgeshop.com/collections/t-shirts"
+            },
+            {
+              "name": "CasualShirts",
+              "url": "https://thecambridgeshop.com/collections/casual-shirts"
+            },
+            {
+              "name": "FormalTops",
+              "url": "https://thecambridgeshop.com/collections/formal-shirts"
+            },
+            {
+              "name": "FormalBottoms",
+              "url": "https://thecambridgeshop.com/collections/chinos-pants"
+            },
+            {
+              "name": "FormalBottoms",
+              "url": "https://thecambridgeshop.com/collections/formal-pants"
+            },
+            {
+              "name": "FormalBottoms",
+              "url": "https://thecambridgeshop.com/collections/dress-pants"
+            },
+            {
+              "name": "Trousers",
+              "url": "https://thecambridgeshop.com/collections/mens-trousers"
+            },
+            {
+              "name": "Shorts",
+              "url": "https://thecambridgeshop.com/collections/all-shorts"
+            },
+            {
+              "name": "Jeans",
+              "url": "https://thecambridgeshop.com/collections/jeans"
+            },
+            {
+              "name": "Sweaters",
+              "url": "https://thecambridgeshop.com/collections/sweaters"
+            },
+            {
+              "name": "Jackets",
+              "url": "https://thecambridgeshop.com/collections/jackets"
+            },
+            {
+              "name": "Blazers",
+              "url": "https://thecambridgeshop.com/collections/blazers"
+            },
+            {
+              "name": "Suits",
+              "url": "https://thecambridgeshop.com/collections/formal-suits"
+            },
+            {
+              "name": "Athleisure",
+              "url": "https://thecambridgeshop.com/collections/athleisure"
+            },
+            {
+              "name": "None",
+              "url": "https://thecambridgeshop.com/collections/winter-24-sale-products"
+            },
+            {
+              "name": "None",
+              "url": "https://thecambridgeshop.com/collections/summer-sale-24"
+            },
+            {
+              "name": "None",
+              "url": "https://thecambridgeshop.com/collections/winter-wear"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

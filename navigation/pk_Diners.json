@@ -1,0 +1,266 @@
+{
+  "brandName": "Diners",
+  "logo": "Diners.jpg",
+  "cover": "Diners_cover.jpg",
+  "categories": [
+    {
+      "name": "Women",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "Suits",
+              "url": "https://diners.com.pk/collections/eid-edit"
+            },
+            {
+              "name": "Suits",
+              "url": "https://diners.com.pk/collections/dastoor-collection"
+            },
+            {
+              "name": "Suits",
+              "url": "https://diners.com.pk/collections/dastoor-festive-collection"
+            },
+            {
+              "name": "Suits",
+              "url": "https://diners.com.pk/collections/kefi"
+            },
+            {
+              "name": "Suits",
+              "url": "https://diners.com.pk/collections/fiore-collection"
+            },
+            {
+              "name": "Suits",
+              "url": "https://diners.com.pk/collections/solids-collection-24"
+            },
+            {
+              "name": "Suits",
+              "url": "https://diners.com.pk/collections/ilaf-collection-24"
+            },
+            {
+              "name": "Suits",
+              "url": "https://diners.com.pk/collections/mehmal-winter-collection"
+            },
+            {
+              "name": "Suits",
+              "url": "https://diners.com.pk/collections/hayal-velvet-collection-2024"
+            },
+            {
+              "name": "Suits",
+              "url": "https://diners.com.pk/collections/allure-festive-collection"
+            },
+            {
+              "name": "Suits",
+              "url": "https://diners.com.pk/collections/ready-to-wear-sale"
+            },
+            {
+              "name": "Printed",
+              "url": "https://diners.com.pk/collections/pret-printed"
+            },
+            {
+              "name": "Embroidered",
+              "url": "https://diners.com.pk/collections/pret-embroidered"
+            },
+            {
+              "name": "Basic",
+              "url": "https://diners.com.pk/collections/basic"
+            },
+            {
+              "name": "Fusion",
+              "url": "https://diners.com.pk/collections/fusion"
+            },
+            {
+              "name": "Luxury",
+              "url": "https://diners.com.pk/collections/luxury-pret"
+            },
+            {
+              "name": "1-Pc",
+              "url": "https://diners.com.pk/collections/1-pcs-ready-to-wear"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://diners.com.pk/collections/2-pcs-ready-to-wear"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://diners.com.pk/collections/3-pcs-ready-to-wear"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://diners.com.pk/collections/women-trousers"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://diners.com.pk/collections/women-shalwar"
+            },
+            {
+              "name": "Stoles",
+              "url": "https://diners.com.pk/collections/stole-dupattas"
+            },
+            {
+              "name": "Shawls",
+              "url": "https://diners.com.pk/collections/women-sweaters"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "1-Pc",
+              "url": "https://diners.com.pk/collections/1-pieces"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://diners.com.pk/collections/2-pieces"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://diners.com.pk/collections/unstitched-lawn-3-piece-suit"
+            },
+            {
+              "name": "Printed",
+              "url": "https://diners.com.pk/collections/women-unstitched-printed"
+            },
+            {
+              "name": "Embroidered",
+              "url": "https://diners.com.pk/collections/women-unstitched-embroidered"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Men",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "ShalwarKameez",
+              "url": "https://diners.com.pk/collections/festive-collection-25"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://diners.com.pk/collections/summer-unstitched-collection"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://diners.com.pk/collections/diner-tassawur-collection"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://diners.com.pk/collections/winter-suiting-collection"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://diners.com.pk/collections/ethnic-winter-collection"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://diners.com.pk/collections/ethnic-wear-sale"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://diners.com.pk/collections/kameez-shalwar-combo"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://diners.com.pk/collections/shalwar-kameez"
+            },
+            {
+              "name": "WaistCoat",
+              "url": "https://diners.com.pk/collections/diners-waist-coat"
+            },
+            {
+              "name": "Shawls",
+              "url": "https://diners.com.pk/collections/mens-shawl"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "ShalwarKameez",
+              "url": "https://diners.com.pk/collections/men-unstitched-fabric-sale"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://diners.com.pk/collections/diners-men-fabric"
+            }
+          ]
+        },
+        {
+          "name": "Western Wear",
+          "subSubCategories": [
+            {
+              "name": "FormalTops",
+              "url": "https://diners.com.pk/collections/western-wear-sale"
+            },
+            {
+              "name": "FormalTops",
+              "url": "https://diners.com.pk/collections/diners-formal-shirts"
+            },
+            {
+              "name": "FormalBottoms",
+              "url": "https://diners.com.pk/collections/trouser-sale"
+            },
+            {
+              "name": "Hoodies",
+              "url": "https://diners.com.pk/collections/winter-men-sale"
+            },
+            {
+              "name": "Blazers",
+              "url": "https://diners.com.pk/collections/blazers-for-men"
+            },
+            {
+              "name": "CasualShirts",
+              "url": "https://diners.com.pk/collections/diners-casual-shirts"
+            },
+            {
+              "name": "Polos",
+              "url": "https://diners.com.pk/collections/diners-men-polo"
+            },
+            {
+              "name": "T-Shirts",
+              "url": "https://diners.com.pk/collections/diners-t-shirts"
+            },
+            {
+              "name": "FormalBottoms",
+              "url": "https://diners.com.pk/collections/diners-formal-trouser"
+            },
+            {
+              "name": "Trousers",
+              "url": "https://diners.com.pk/collections/diners-chinos-pant"
+            },
+            {
+              "name": "Sweaters",
+              "url": "https://diners.com.pk/collections/men-sweaters"
+            },
+            {
+              "name": "Jackets",
+              "url": "https://diners.com.pk/collections/jackets-for-men"
+            },
+            {
+              "name": "Hoodies",
+              "url": "https://diners.com.pk/collections/mens-hoodies"
+            },
+            {
+              "name": "SweatShirts",
+              "url": "https://diners.com.pk/collections/mens-sweatshirts"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://diners.com.pk/collections/diners-casual-bottom"
+            },
+            {
+              "name": "Jeans",
+              "url": "https://diners.com.pk/collections/jeans-for-men"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

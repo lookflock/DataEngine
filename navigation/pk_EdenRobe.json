@@ -1,0 +1,242 @@
+{
+  "brandName": "EdenRobe",
+  "logo": "EdenRobe.jpg",
+  "cover": "EdenRobe_cover.jpg",
+  "categories": [
+    {
+      "name": "Men",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "ShawlarKameez",
+              "url": "https://edenrobe.com/collections/men-festive?"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://edenrobe.com/collections/men-kurtas?"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://edenrobe.com/collections/men-kurta-pajama?"
+            },
+            {
+              "name": "ShawlarKameez",
+              "url": "https://edenrobe.com/collections/men-shalwar-suits?"
+            },
+            {
+              "name": "ShawlarKameez",
+              "url": "https://edenrobe.com/collections/festive-threads?"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://edenrobe.com/collections/men-shalwar-pajamas?"
+            },
+            {
+              "name": "WaistCoats",
+              "url": "https://edenrobe.com/collections/men-waistcoats?"
+            },
+            {
+              "name": "Sherwanis",
+              "url": "https://edenrobe.com/collections/men-sherwanis?"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://edenrobe.com/collections/men-sale?filter.p.product_type=Men+Kurta&filter.p.product_type=Men+Kurta+Pajama&filter.p.product_type=Men+Kurta+Shalwar&filter.p.product_type=Men+Waist+Coat&"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/men-sale?filter.p.product_type=Men+Blazer&filter.p.product_type=Men+Coat+Pant&filter.p.product_type=Men+Prince+Coat&filter.p.product_type=Men+Prince+Suit&filter.p.product_type=Men+Sherwani&"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "Suits",
+              "url": "https://edenrobe.com/collections/men-unstitched?"
+            }
+          ]
+        },
+        {
+          "name": "Western Wear",
+          "subSubCategories": [
+            {
+              "name": "Coats",
+              "url": "https://edenrobe.com/collections/men-prince-coat-suits?"
+            },
+            {
+              "name": "FormalBottoms",
+              "url": "https://edenrobe.com/collections/men-formal-pants?"
+            },
+            {
+              "name": "FormalBottoms",
+              "url": "https://edenrobe.com/collections/men-chino-pants?"
+            },
+            {
+              "name": "Jeans",
+              "url": "https://edenrobe.com/collections/men-denim-jeans?"
+            },
+            {
+              "name": "Jackets",
+              "url": "https://edenrobe.com/collections/suave?"
+            },
+            {
+              "name": "Jackets",
+              "url": "https://edenrobe.com/collections/men-jackets?"
+            },
+            {
+              "name": "Hoodies",
+              "url": "https://edenrobe.com/collections/men-hoodies?"
+            },
+            {
+              "name": "Sweaters",
+              "url": "https://edenrobe.com/collections/men-sweaters?"
+            },
+            {
+              "name": "SweatShirts",
+              "url": "https://edenrobe.com/collections/men-sweat-shirts?"
+            },
+            {
+              "name": "Coats",
+              "url": "https://edenrobe.com/collections/men-winter-coats?"
+            },
+            {
+              "name": "CoatPant",
+              "url": "https://edenrobe.com/collections/men-coat-pants?"
+            },
+            {
+              "name": "Blazers",
+              "url": "https://edenrobe.com/collections/men-coats-blazers?"
+            },
+            {
+              "name": "FormalTops",
+              "url": "https://edenrobe.com/collections/men-shirts?"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/men-sale?filter.p.product_type=Men+Blazer&filter.p.product_type=Men+High+Necks&filter.p.product_type=Men+Hoodies&filter.p.product_type=Men+Jackets&filter.p.product_type=Men+Sweaters&filter.p.product_type=Men+Sweatshirts&"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/men-sale?filter.p.product_type=Men+Chino+Pants&filter.p.product_type=Men+Denim+Pants&filter.p.product_type=Men+Formal+Pants&filter.p.product_type=Men+Graphic+Tees&filter.p.product_type=Men+Polo+Shirt&filter.p.product_type=Men+Shirts&filter.p.product_type=Men+Shirts+Plain&"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Women",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "1-Pc",
+              "url": "https://edenrobe.com/collections/women-ready-to-wear/1_pcs?"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://edenrobe.com/collections/women-ready-to-wear/2_pcs?"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://edenrobe.com/collections/women-ready-to-wear/3_pcs?"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://edenrobe.com/collections/luxe-edit?"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/women-festive?filter.p.product_type=Woman+Pret+Embroidered&filter.p.product_type=Woman+Pret+Festive&filter.p.product_type=Woman+Pret+Luxe&"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/women-sale?filter.p.product_type=Woman+Basic+Tights&filter.p.product_type=Woman+Pret+Embroidered&filter.p.product_type=Woman+Pret+Festive&filter.p.product_type=Woman+Pret+Luxe&filter.p.product_type=Woman+Pret+Printed&filter.p.product_type=Woman+Pret+Solid&filter.p.product_type=Woman+Trousers&"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "Shawls",
+              "url": "https://edenrobe.com/collections/women-shawls?"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://edenrobe.com/collections/women-unstitched-merak-khaddar?"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://edenrobe.com/collections/merak-chiffon-silhouettes?"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://edenrobe.com/collections/velour-merak-shawl-collection?"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://edenrobe.com/collections/merak-blockart?"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://edenrobe.com/collections/women-unstitched-festive?"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://edenrobe.com/collections/women-unstitched-premium?"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://edenrobe.com/collections/woman-unstitched-merak?"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/women-unstitched-allure?"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://edenrobe.com/collections/the-lounge-premium-unstitched-edit?"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://edenrobe.com/collections/zarqash?"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/women-festive?filter.p.product_type=Woman+Un+Stitched&"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/women-unstitched-special-prices?"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/women-festive?filter.p.product_type=Woman+Un+Stitched&"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/women-sale?filter.p.product_type=Woman+Un+Stitched+Allure+Khaddar&"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/women-sale?filter.p.product_type=Woman+Un+Stitched+Allure+Cambric&"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/women-sale?filter.p.product_type=Woman+Un+Stitched+Allure+Lawn&"
+            },
+            {
+              "name": "None",
+              "url": "https://edenrobe.com/collections/women-sale?filter.p.product_type=Woman+Un+Stitched&"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "brandName": "BonanzaSatrangi",
+  "logo": "bonanza-logo.png",
+  "cover": "bonanza-cover.png",
+  "categories": [
+    {
+      "name": "Women",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/ready-to-wear-everyday-wear"
+            },
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/pakistan-day-sale"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://bonanzasatrangi.com/collections/girls-summer-pret25"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://bonanzasatrangi.com/collections/raha-collection-25"
+            },
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/summer-pret-25"
+            },
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/summer-collection-25"
+            },
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/ready-to-wear-luxury-wear"
+            },
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/ready-to-wear-printed"
+            },
+            {
+              "name": "Printed",
+              "url": "https://bonanzasatrangi.com/collections/ready-to-wear-printed"
+            },
+            {
+              "name": "Embroidered",
+              "url": "https://bonanzasatrangi.com/collections/ready-to-wear-embroidered"
+            },
+            {
+              "name": "1-Pc",
+              "url": "https://bonanzasatrangi.com/collections/ready-to-wear-1-pc"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://bonanzasatrangi.com/collections/ready-to-wear-2-pc"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://bonanzasatrangi.com/collections/ready-to-wear-3-pc"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/unstitched"
+            },
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/unstitched-everyday-wear"
+            },
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/unstitched-luxury-wear"
+            },
+            {
+              "name": "Embroidered",
+              "url": "https://bonanzasatrangi.com/collections/unstitched-embroidered"
+            },
+            {
+              "name": "Printed",
+              "url": "https://bonanzasatrangi.com/collections/unstitched-printed"
+            },
+            {
+              "name": "2-Pc",
+              "url": "https://bonanzasatrangi.com/collections/unstitched-2-pc"
+            },
+            {
+              "name": "3-Pc",
+              "url": "https://bonanzasatrangi.com/collections/unstitched-3-pc"
+            },
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/unstitched-lawn"
+            },
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/unstitched-cambric"
+            },
+            {
+              "name": "None",
+              "url": "https://bonanzasatrangi.com/collections/unstitched-khaddar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Men",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "ShalwarKameez",
+              "url": "https://bonanzasatrangi.com/collections/men-ready-to-wear"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://bonanzasatrangi.com/collections/men-ready-to-wear"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://bonanzasatrangi.com/collections/kurta-shalwar"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://bonanzasatrangi.com/collections/kurta-shalwar"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://bonanzasatrangi.com/collections/kurta-trouser"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://bonanzasatrangi.com/collections/shalwar-suit"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://bonanzasatrangi.com/collections/blended"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://bonanzasatrangi.com/collections/cotton"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "ShalwarKameez",
+              "url": "https://bonanzasatrangi.com/collections/men-unstitched"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

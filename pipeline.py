@@ -1,7 +1,8 @@
 from scrapper import *
+import sys
 
-
-brandName = 'GulAhmed'
+if __name__ == "__main__":
+    brandName = sys.argv[1]
 
 # Step 1: Scrap all the products for the given brand
 productsFile = scrapBrand(brandName)
@@ -11,8 +12,8 @@ if productsFile:
 else:
     print("No products were scraped or an error occurred.")
 
-# Step 2: Remove duplicate products
-removeDuplicates(productsFile)
+    # Step 2: Remove duplicate products
+    removeDuplicates(productsFile)
 
-# Step 3: Sort products into different categories
-categoriseProducts(brandName, productsFile)
+    # Step 3: Sort products into different categories
+    categoriseProducts(brandName, productsFile)

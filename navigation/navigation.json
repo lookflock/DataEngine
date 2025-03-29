@@ -77,7 +77,8 @@
         "navigationFile": "pk_AhmadRaza.json",
         "pagingVariable": "?page=",
         "Category": [
-            "Men"
+            "Men",
+            "Women"
         ]
     },
     {
@@ -432,7 +433,7 @@
         "logo": "bonanza-logo.png",
         "coverPhoto": "bonanza-cover.png",
         "navigationFile": "pk_BonanzaSatrangi.json",
-        "pagingVariable": "?p=",
+        "pagingVariable": "?page=",
         "Category": [
             "Women",
             "Men"
@@ -591,7 +592,7 @@
         "logo": "EdenRobe.jpg",
         "coverPhoto": "EdenRobe_cover.jpg",
         "navigationFile": "pk_EdenRobe.json",
-        "pagingVariable": "?page=",
+        "pagingVariable": "page=",
         "Category": [
             "Men",
             "Women"
