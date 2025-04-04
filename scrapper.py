@@ -38,6 +38,7 @@ import scrappers_pk.pk_NausheenWamiq as NausheenWamiq
 import scrappers_pk.pk_NomiAnsari as NomiAnsari
 import scrappers_pk.pk_Nureh as Nureh
 import scrappers_pk.pk_HafsaMalik as HafsaMalik
+import scrappers_pk.pk_Hijabi as Hijabi
 
 testEnvironment = False
 
@@ -235,6 +236,7 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory,piece, pa
         'NomiAnsari': NomiAnsari,
         'Nureh': Nureh,
         'HafsaMalik': HafsaMalik,
+        'Hijabi': Hijabi,
         "JunaidJamshed":JunaidJamshed,
         "Lakhanay":Lakhanay,
     }
