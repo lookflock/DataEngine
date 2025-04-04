@@ -7,7 +7,7 @@ import config
 import functions
 import random
 
-def getProducts(soup, category, subCategory, subSubCategory, pageURL):
+def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     products = []
     mainContainer = soup.find('ul', {'id': 'product-grid'})
     if mainContainer:
@@ -34,7 +34,8 @@ def getProducts(soup, category, subCategory, subSubCategory, pageURL):
                 'shares' : 0,
                 'favourites' : 0,
                 'list' : 0,
-                'keywords': []
+                'keywords': [],
+                'piece': ''
             }
             try:
                 productID = i.find('div',{'class':'card'})['data-product-id']
@@ -64,7 +65,7 @@ def getProducts(soup, category, subCategory, subSubCategory, pageURL):
                 tmp_product['category'] =  category
                 tmp_product['subCategory'] = subCategory
                 tmp_product['subSubCategory'] = subSubCategory
-                
+                tmp_product['piece'] = piece
                 products.append(tmp_product) 
             except Exception as e:
                 with open("errors/error_BeechTree.json", "a") as f:

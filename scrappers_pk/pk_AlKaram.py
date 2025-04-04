@@ -5,7 +5,7 @@ import math
 import sys
 import os
 
-def getProducts(soup, category, subCategory, subSubCategory, pageURL):
+def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     
     products = []
     #with open("output.html", "w", encoding="utf-8") as file:
@@ -31,7 +31,8 @@ def getProducts(soup, category, subCategory, subSubCategory, pageURL):
                 'shares' : 0,
                 'favourites' : 0,
                 'list' : 0,
-                'keywords': []
+                'keywords': [],
+                'piece': ''
             }
             name = i.find('h3',{'class','t4s-product-title'}).text.strip()
             url = i.find('a',{'class','t4s-full-width-link'})['href']
@@ -72,7 +73,7 @@ def getProducts(soup, category, subCategory, subSubCategory, pageURL):
                 tmp_product['category'] =  category
                 tmp_product['subCategory'] = subCategory
                 tmp_product['subSubCategory'] = subSubCategory
-        
+                tmp_product['piece'] = piece
                 products.append(tmp_product) 
                 
                 

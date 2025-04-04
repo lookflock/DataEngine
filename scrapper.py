@@ -15,12 +15,12 @@ import scrappers_pk.pk_AnamAkhlaq as AnamAkhlaq
 import scrappers_pk.pk_BeechTree as BeechTree
 import scrappers_pk.pk_BonanzaSatrangi as BonanzaSatrangi
 import scrappers_pk.pk_Cambridge as Cambridge
-# import scrappers_pk.pk_Chinyere as Chinyere
-# import scrappers_pk.pk_CrossStitch as CrossStitch
+import scrappers_pk.pk_Chinyere as Chinyere
+import scrappers_pk.pk_CrossStitch as CrossStitch
 import scrappers_pk.pk_Dhanak as Dhanak
 import scrappers_pk.pk_Diners as Diners
-# import scrappers_pk.pk_GulAhmed as GulAhmed
-# import scrappers_pk.pk_Generation as Generation
+import scrappers_pk.pk_GulAhmed as GulAhmed
+import scrappers_pk.pk_Generation as Generation
 import scrappers_pk.pk_JunaidJamshed as JunaidJamshed
 import scrappers_pk.pk_EdenRobe as EdenRobe
 import scrappers_pk.pk_Lakhanay as Lakhanay
@@ -57,7 +57,7 @@ def sortProducts(file):
                      'THREE PIECE', 'THREEPIECE', '3 PIECE', '3Pcs', '2- Piece', '2 PIECE', 
                      '2-Piece', '2-piece', '2 piece', '2 Piece', '2Piece', '2PC', '2 piece', 
                      'two piece', 'TWO PIECE', '2 PC', '2  PC','2-Pc','4pc'],
-        'Coord': ['Co-Ord', 'Coord', 'co ord', 'Co-ord', 'Cor-ord'],
+        'Coord': ['Co-Ord', 'Coord', 'co ord', 'Co-ord', 'Cor-ord', 'Co Ord'],
         'Kurta': ['kurta', 'kameez'],
         'Maxi': ['maxi'],
         'Tights': ['tights'],
@@ -98,9 +98,12 @@ def sortProducts(file):
         'Sleepwear':['Sleepwear'],
         'Suits':['Suits','Suit'],
         'Polos':['Polos','Polo'],
-        'T-Shirts':['t-Shirt'],
-        'Shorts':['shorts'],
-        'Gharara':['gharara']
+        'T-Shirts':['t-Shirt', 'Tee'],
+        'Shorts':['shorts', 'Short'],
+        'Gharara':['gharara'],
+        'Sherwani':['Sherwani', 'sherwani'],
+        'Athleisure':['Athleisure'],
+        'Coat':['Prince Coat', 'Prince Suit'],
     }
 
     for p in products:
@@ -208,12 +211,21 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory,piece, pa
     products = []
 
     SCRAPER_MAP = {
-        'alkaram': alkaram,
+        'Alkaram': Alkaram,
+        'AhmadRaza': AhmadRaza,
+        'Almirah': Almirah,
+        "AnamAkhlaq":AnamAkhlaq,
         'GulAhmed': GulAhmed,
+        "BeechTree":BeechTree,
+        "BonanzaSatrangi":BonanzaSatrangi,
         'Generation': Generation,
+        "Cambridge":Cambridge,
         'CrossStitch': CrossStitch,
         'Chinyere': Chinyere,
         'Charcoal': Charcoal,
+        "Dhanak":Dhanak,
+        "Diners":Diners,
+        "EdenRobe":EdenRobe,
         'Ego': Ego,
         'LimeLight': LimeLight,
         'Ethnic': Ethnic,
@@ -222,7 +234,9 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory,piece, pa
         'NausheenWamiq': NausheenWamiq,
         'NomiAnsari': NomiAnsari,
         'Nureh': Nureh,
-        'HafsaMalik': HafsaMalik
+        'HafsaMalik': HafsaMalik,
+        "JunaidJamshed":JunaidJamshed,
+        "Lakhanay":Lakhanay,
     }
     
     # Get the appropriate scraper module

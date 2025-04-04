@@ -8,7 +8,7 @@ import config
 import functions
 import random
 
-def getProducts(soup, category, subCategory, subSubCategory, pageURL):
+def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     
     products = []
     mainContainer = soup.find('div', {'class':'sr4-products'})
@@ -35,7 +35,8 @@ def getProducts(soup, category, subCategory, subSubCategory, pageURL):
                 'shares' : 0,
                 'favourites' : 0,
                 'list' : 0,
-                'keywords': []
+                'keywords': [],
+                'piece': ''
             }
         with open("output3.html", "w", encoding="utf-8") as f:
             f.write(i.prettify())
@@ -70,7 +71,7 @@ def getProducts(soup, category, subCategory, subSubCategory, pageURL):
             tmp_product['category'] =  category
             tmp_product['subCategory'] = subCategory
             tmp_product['subSubCategory'] = subSubCategory
-        
+            tmp_product['piece'] = piece
             products.append(tmp_product) 
 
         except Exception as e:

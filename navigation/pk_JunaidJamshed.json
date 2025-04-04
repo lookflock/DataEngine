@@ -18,11 +18,13 @@
               "url": "https://www.junaidjamshed.com/womens/women-trouser.html"
             },
             {
-              "name": "2-Pc",
+              "name": "KurtaSet",
+              "piece": "2-Pc",
               "url": "https://www.junaidjamshed.com/womens/stitched/2-piece.html"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://www.junaidjamshed.com/womens/stitched/3-piece.html"
             },
             {
@@ -63,15 +65,18 @@
           "name": "Unstitched",
           "subSubCategories": [
             {
-              "name": "1-Pc",
+              "name": "KurtaSet",
+              "piece": "1-Pc",
               "url": "https://www.junaidjamshed.com/womens/un-stitched/1-piece.html"
             },
             {
-              "name": "2-Pc",
+              "name": "KurtaSet",
+              "piece": "2-Pc",
               "url": "https://www.junaidjamshed.com/womens/un-stitched/2-piece.html"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://www.junaidjamshed.com/womens/un-stitched/3-piece.html"
             },
             {

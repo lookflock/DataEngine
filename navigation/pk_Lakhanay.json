@@ -10,7 +10,8 @@
           "name": "Ready to Wear",
           "subSubCategories": [
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://lakhanyonline.com/collections/3-piece-rtw"
             },
             {
@@ -22,11 +23,13 @@
               "url": "https://lakhanyonline.com/collections/stretchable-cotton-trousers"
             },
             {
-              "name": "2-Pc",
+              "name": "KurtaSet",
+              "piece": "2-Pc",
               "url": "https://lakhanyonline.com/collections/2-piece-rtw"
             },
             {
-              "name": "1-Pc",
+              "name": "KurtaSet",
+              "piece": "1-Pc",
               "url": "https://lakhanyonline.com/collections/1-piece-1"
             }
           ]
@@ -47,15 +50,18 @@
               "url": "https://lakhanyonline.com/collections/unstitched-1/Winter"
             },
             {
-              "name": "1-Pc",
+              "name": "KurtaSet",
+              "piece": "1-Pc",
               "url": "https://lakhanyonline.com/collections/01-piece"
             },
             {
-              "name": "2-Pc",
+              "name": "KurtaSet",
+              "piece": "2-Pc",
               "url": "https://lakhanyonline.com/collections/2-piece"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://lakhanyonline.com/collections/3-piece"
             }
           ]

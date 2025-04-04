@@ -134,19 +134,23 @@
           "name": "Ready to Wear",
           "subSubCategories": [
             {
-              "name": "1-Pc",
+              "name": "KurtaSet",
+              "piece": "1-Pc",
               "url": "https://edenrobe.com/collections/women-ready-to-wear/1_pcs?"
             },
             {
-              "name": "2-Pc",
+              "name": "KurtaSet",
+              "piece": "2-Pc",
               "url": "https://edenrobe.com/collections/women-ready-to-wear/2_pcs?"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://edenrobe.com/collections/women-ready-to-wear/3_pcs?"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://edenrobe.com/collections/luxe-edit?"
             },
             {
@@ -167,31 +171,38 @@
               "url": "https://edenrobe.com/collections/women-shawls?"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://edenrobe.com/collections/women-unstitched-merak-khaddar?"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://edenrobe.com/collections/merak-chiffon-silhouettes?"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://edenrobe.com/collections/velour-merak-shawl-collection?"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://edenrobe.com/collections/merak-blockart?"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://edenrobe.com/collections/women-unstitched-festive?"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://edenrobe.com/collections/women-unstitched-premium?"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://edenrobe.com/collections/woman-unstitched-merak?"
             },
             {
@@ -199,11 +210,13 @@
               "url": "https://edenrobe.com/collections/women-unstitched-allure?"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://edenrobe.com/collections/the-lounge-premium-unstitched-edit?"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://edenrobe.com/collections/zarqash?"
             },
             {

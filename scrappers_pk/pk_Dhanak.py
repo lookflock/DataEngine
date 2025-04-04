@@ -7,7 +7,7 @@ import random
 import functions
 
 
-def getProducts(soup, category, subCategory, subSubCategory, pageURL):
+def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     products = []
     try:
         mainContainer = soup.find('ul', {'class': 'productListing'})
@@ -34,7 +34,8 @@ def getProducts(soup, category, subCategory, subSubCategory, pageURL):
                 'shares' : 0,
                 'favourites' : 0,
                 'list' : 0,
-                'keywords': []
+                'keywords': [],
+                'piece': ''
             }
         
         
@@ -71,6 +72,7 @@ def getProducts(soup, category, subCategory, subSubCategory, pageURL):
             tmp_product['category'] =  category
             tmp_product['subCategory'] = subCategory
             tmp_product['subSubCategory'] = subSubCategory
+            tmp_product['piece'] = piece
             # print(json.dumps(tmp_product, indent=4 ,ensure_ascii=False))
             products.append(tmp_product)    
 

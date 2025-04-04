@@ -12,8 +12,8 @@ if productsFile:
 else:
     print("No products were scraped or an error occurred.")
 
-    # Step 2: Remove duplicate products
-    removeDuplicates(productsFile)
+# Step 2: Remove duplicate products
+removeDuplicates(productsFile)
 
-    # Step 3: Sort products into different categories
-    categoriseProducts(brandName, productsFile)
+# Step 3: Sort products into different categories
+categoriseProducts(brandName, productsFile)

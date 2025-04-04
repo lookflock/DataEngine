@@ -1,166 +1,169 @@
 {
-    "brandName": "Almirah",
-    "logo": "almirah-profile.png",
-    "cover": "Almirah_cover.jpg",
-    "categories": [
+  "brandName": "Almirah",
+  "logo": "almirah-profile.png",
+  "cover": "Almirah_cover.jpg",
+  "categories": [
+    {
+      "name": "Women",
+      "subCategories": [
         {
-            "name": "Women",
-            "subCategories": [
-                {
-                    "name": "Ready to Wear",
-                    "subSubCategories": [
-                        {
-                            "name": "2-Pc",
-                            "url": "https://www.almirah.com.pk/collections/2pc-stitched"
-                        },
-                        {
-                            "name": "3-Pc",
-                            "url": "https://www.almirah.com.pk/collections/3pc-stitched"
-                        },
-                        {
-                            "name": "RozMarrah",
-                            "url": "https://almirah.com.pk/collections/roz-marrah-25"
-                        },
-                        {
-                            "name": "Tops",
-                            "url": "https://www.almirah.com.pk/collections/tunic-kurti"
-                        },
-                        {
-                            "name": "WaistCoat",
-                            "url": "https://www.almirah.com.pk/collections/jacket-waistcoat"
-                        },
-                        {
-                            "name": "CasualWear",
-                            "url": "https://almirah.com.pk/collections/cozy-wear"
-                        },
-                        {
-                            "name": "Bottoms",
-                            "url": "https://www.almirah.com.pk/collections/women-bottoms"
-                        },
-                        {
-                            "name": "Stoles",
-                            "url": "https://www.almirah.com.pk/collections/shawls-stoles"
-                        },
-                        {
-                            "name": "FormalStitched",
-                            "url": "https://www.almirah.com.pk/collections/formal-stitched"
-                        }                        
-                    ]    
-                },
-                {
-                    "name": "Unstitched",
-                    "subSubCategories": [
-                        {
-                            "name": "2-Pc",
-                            "url": "https://www.almirah.com.pk/collections/2pc-unstitched-collection"
-                        },
-                        {
-                            "name": "3-Pc",
-                            "url": "https://www.almirah.com.pk/collections/3pc-unstitched-collection"
-                        },
-                        {
-                            "name": "Sarees",
-                            "url": "https://www.almirah.com.pk/collections/saree-1"
-                        },
-                        {
-                            "name": "FormalUnstitched",
-                            "url": "https://www.almirah.com.pk/collections/formal-unstitched"
-                        }
-                    ]    
-                }
-            ]
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "KurtaSet",
+              "piece": "2-Pc",
+              "url": "https://www.almirah.com.pk/collections/2pc-stitched"
+            },
+            {
+              "name": "KurtaSet",
+              "piece": "3-Pc",
+              "url": "https://www.almirah.com.pk/collections/3pc-stitched"
+            },
+            {
+              "name": "RozMarrah",
+              "url": "https://almirah.com.pk/collections/roz-marrah-25"
+            },
+            {
+              "name": "Tops",
+              "url": "https://www.almirah.com.pk/collections/tunic-kurti"
+            },
+            {
+              "name": "WaistCoat",
+              "url": "https://www.almirah.com.pk/collections/jacket-waistcoat"
+            },
+            {
+              "name": "CasualWear",
+              "url": "https://almirah.com.pk/collections/cozy-wear"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://www.almirah.com.pk/collections/women-bottoms"
+            },
+            {
+              "name": "Stoles",
+              "url": "https://www.almirah.com.pk/collections/shawls-stoles"
+            },
+            {
+              "name": "FormalStitched",
+              "url": "https://www.almirah.com.pk/collections/formal-stitched"
+            }
+          ]
         },
         {
-            "name": "Men",
-            "subCategories": [
-                {
-                    "name": "Ready to Wear",
-                    "subSubCategories": [
-                        {
-                            "name": "ShalwarKameez",
-                            "url": "https://www.almirah.com.pk/collections/kameez-shalwar"
-                        },
-                        {
-                            "name": "Kurta",
-                            "url": "https://www.almirah.com.pk/collections/formal-kurta"
-                        },
-                        {
-                            "name": "WaistCoat",
-                            "url": "https://www.almirah.com.pk/collections/waistcoat"
-                        },
-                        {
-                            "name": "Bottoms",
-                            "url": "https://www.almirah.com.pk/collections/men-bottoms"
-                        },
-                        {
-                            "name": "Kurta",
-                            "url": "https://almirah.com.pk/collections/kurta"
-                        },
-                        {
-                            "name": "Kurta",
-                            "url": "https://almirah.com.pk/collections/kurta-trouser"
-                        },
-                        {
-                            "name": "Buraq",
-                            "url": "https://almirah.com.pk/collections/buraq-men"
-                        },
-                        {
-                            "name": "Blazer",
-                            "url": "https://www.almirah.com.pk/collections/blazer"
-                        },
-                        {
-                            "name": "ExoticSuit",
-                            "url": "https://www.almirah.com.pk/collections/prince-suit"
-                        },
-                        {
-                            "name": "ExoticSuit",
-                            "url": "https://www.almirah.com.pk/collections/sherwani"
-                        },
-                        {
-                            "name": "WaistCoat",
-                            "url": "https://almirah.com.pk/collections/ethos-waistcoat"
-                        },
-                        {
-                            "name": "Kurta",
-                            "url": "https://almirah.com.pk/collections/ethos-kurta-trouser"
-                        },
-                        {
-                            "name": "Kurta",
-                            "url": "https://almirah.com.pk/collections/comrade-kurta-trouser"
-                        },
-                        {
-                            "name": "Kurta",
-                            "url": "https://almirah.com.pk/collections/comrade-men"
-                        },
-                        {
-                            "name": "Kurta",
-                            "url": "https://almirah.com.pk/collections/men-short-kurta"
-                        },
-                        {
-                            "name": "Stoles",
-                            "url": "https://almirah.com.pk/collections/stoles-shawls"
-                        },
-                        {
-                            "name": "ShalwarKameez",
-                            "url": "https://almirah.com.pk/collections/ethos-collection-24"
-                        },
-                        {
-                            "name": "ShalwarKameez",
-                            "url": "https://almirah.com.pk/collections/men-clothing"
-                        }                       
-                    ]
-                },
-                {
-                    "name": "Unstitched",
-                    "subSubCategories": [
-                        {
-                            "name": "ShalwarKameez",
-                            "url": "https://www.almirah.com.pk/collections/men-unstitched"
-                        }
-                    ]
-                }
-            ]
-            
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "KurtaSet",
+              "piece": "2-Pc",
+              "url": "https://www.almirah.com.pk/collections/2pc-unstitched-collection"
+            },
+            {
+              "name": "KurtaSet",
+              "piece": "3-Pc",
+              "url": "https://www.almirah.com.pk/collections/3pc-unstitched-collection"
+            },
+            {
+              "name": "Sarees",
+              "url": "https://www.almirah.com.pk/collections/saree-1"
+            },
+            {
+              "name": "FormalUnstitched",
+              "url": "https://www.almirah.com.pk/collections/formal-unstitched"
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "name": "Men",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "ShalwarKameez",
+              "url": "https://www.almirah.com.pk/collections/kameez-shalwar"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://www.almirah.com.pk/collections/formal-kurta"
+            },
+            {
+              "name": "WaistCoat",
+              "url": "https://www.almirah.com.pk/collections/waistcoat"
+            },
+            {
+              "name": "Bottoms",
+              "url": "https://www.almirah.com.pk/collections/men-bottoms"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://almirah.com.pk/collections/kurta"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://almirah.com.pk/collections/kurta-trouser"
+            },
+            {
+              "name": "Buraq",
+              "url": "https://almirah.com.pk/collections/buraq-men"
+            },
+            {
+              "name": "Blazer",
+              "url": "https://www.almirah.com.pk/collections/blazer"
+            },
+            {
+              "name": "ExoticSuit",
+              "url": "https://www.almirah.com.pk/collections/prince-suit"
+            },
+            {
+              "name": "ExoticSuit",
+              "url": "https://www.almirah.com.pk/collections/sherwani"
+            },
+            {
+              "name": "WaistCoat",
+              "url": "https://almirah.com.pk/collections/ethos-waistcoat"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://almirah.com.pk/collections/ethos-kurta-trouser"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://almirah.com.pk/collections/comrade-kurta-trouser"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://almirah.com.pk/collections/comrade-men"
+            },
+            {
+              "name": "Kurta",
+              "url": "https://almirah.com.pk/collections/men-short-kurta"
+            },
+            {
+              "name": "Stoles",
+              "url": "https://almirah.com.pk/collections/stoles-shawls"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://almirah.com.pk/collections/ethos-collection-24"
+            },
+            {
+              "name": "ShalwarKameez",
+              "url": "https://almirah.com.pk/collections/men-clothing"
+            }
+          ]
+        },
+        {
+          "name": "Unstitched",
+          "subSubCategories": [
+            {
+              "name": "ShalwarKameez",
+              "url": "https://www.almirah.com.pk/collections/men-unstitched"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

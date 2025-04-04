@@ -51,19 +51,23 @@
           "name": "Unstitched",
           "subSubCategories": [
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://dhanak.com.pk/collections/unstitched"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://dhanak.com.pk/collections/maheer-wedding-festive-23-unstitched"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://dhanak.com.pk/collections/ss-24-unstitched"
             },
             {
-              "name": "3-Pc",
+              "name": "KurtaSet",
+              "piece": "3-Pc",
               "url": "https://dhanak.com.pk/collections/festive-unstitched-24"
             }
           ]

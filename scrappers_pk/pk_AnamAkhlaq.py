@@ -7,7 +7,7 @@ import random
 import functions
 
 
-def getProducts(soup, category, subCategory, subSubCategory, pageURL):
+def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     products = []
     mainContainer = soup.find('ul', {'class': 'grid grid--uniform grid--view-items'})
     productsDiv = mainContainer.find_all('li',{'class': 'grid__item'})    
@@ -29,7 +29,8 @@ def getProducts(soup, category, subCategory, subSubCategory, pageURL):
                 'shares' : 0,
                 'favourites' : 0,
                 'list' : 0,
-                'keywords': []
+                'keywords': [],
+                'piece': ''
             }
         nameDiv = product.find('a', {'class': 'grid-view-item__link'})
         name = nameDiv.text.strip()
@@ -64,7 +65,7 @@ def getProducts(soup, category, subCategory, subSubCategory, pageURL):
             tmp_product['category'] =  category
             tmp_product['subCategory'] = subCategory
             tmp_product['subSubCategory'] = subSubCategory
-            # print(tmp_product)
+            tmp_product['piece'] = piece
             products.append(tmp_product)    
 
         except Exception as e:
