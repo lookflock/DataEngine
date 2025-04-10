@@ -1,0 +1,155 @@
+{
+  "brandName": "Outfitters",
+  "logo": "Outfitters.jpg",
+  "cover": "Outfitters_cover.jpg",
+  "categories": [
+    {
+      "name": "Women",
+      "subCategories": [
+        {
+          "name": "Western Wear",
+          "subSubCategories": [
+            {
+              "name": "None",
+              "url": "https://outfitters.com.pk/collections/women-new-arrivals-view-all"
+            },
+            {
+              "name": "Shirts",
+              "url": "https://outfitters.com.pk/collections/women-shirts"
+            },
+            {
+              "name": "T-Shirts",
+              "url": "https://outfitters.com.pk/collections/women-t-shirts"
+            },
+            {
+              "name": "Dresses",
+              "url": "https://outfitters.com.pk/collections/women-dresses-and-jumpsuit"
+            },
+            {
+              "name": "Shorts",
+              "url": "https://outfitters.com.pk/collections/women-skirts-and-shorts"
+            },
+            {
+              "name": "Jeans",
+              "url": "https://outfitters.com.pk/collections/women-denim-collection"
+            },
+            {
+              "name": "Trousers",
+              "url": "https://outfitters.com.pk/collections/women-trouser"
+            },
+            {
+              "name": "None",
+              "url": "https://outfitters.com.pk/collections/women-activewear"
+            },
+            {
+              "name": "Sweaters",
+              "url": "https://outfitters.com.pk/collections/women-sweaters-sale"
+            },
+            {
+              "name": "Hoodies",
+              "url": "https://outfitters.com.pk/collections/women-sweatshirt-sale"
+            },
+            {
+              "name": "Jackets",
+              "url": "https://outfitters.com.pk/collections/women-jacket-sale"
+            },
+            {
+              "name": "None",
+              "url": "https://outfitters.com.pk/collections/women-coat-blazers-sale"
+            },
+            {
+              "name": "Shirts",
+              "url": "https://outfitters.com.pk/collections/women-shirts-sale"
+            },
+            {
+              "name": "T-Shirts",
+              "url": "https://outfitters.com.pk/collections/women-t-shirts-sale"
+            },
+            {
+              "name": "None",
+              "url": "https://outfitters.com.pk/collections/women-shorts-sale"
+            },
+            {
+              "name": "Jeans",
+              "url": "https://outfitters.com.pk/collections/women-jeans-sale"
+            },
+            {
+              "name": "Jeans",
+              "url": "https://outfitters.com.pk/collections/women-trousers-sale"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Men",
+      "subCategories": [
+        {
+          "name": "Western Wear",
+          "subSubCategories": [
+            {
+              "name": "None",
+              "url": "https://outfitters.com.pk/collections/men-new-arrivals-view-all"
+            },
+            {
+              "name": "Shirts",
+              "url": "https://outfitters.com.pk/collections/men-shirts"
+            },
+            {
+              "name": "T-Shirts",
+              "url": "https://outfitters.com.pk/collections/men-activewear"
+            },
+            {
+              "name": "T-Shirts",
+              "url": "https://outfitters.com.pk/collections/men-t-shirts"
+            },
+            {
+              "name": "Polos",
+              "url": "https://outfitters.com.pk/collections/men-polo-shirts"
+            },
+            {
+              "name": "Shorts",
+              "url": "https://outfitters.com.pk/collections/men-shorts"
+            },
+            {
+              "name": "Trousers",
+              "url": "https://outfitters.com.pk/collections/men-trousers"
+            },
+            {
+              "name": "Jeans",
+              "url": "https://outfitters.com.pk/collections/men-denim-collection"
+            },
+            {
+              "name": "Hoodies",
+              "url": "https://outfitters.com.pk/collections/men-sweatshirt-sale"
+            },
+            {
+              "name": "Sweaters",
+              "url": "https://outfitters.com.pk/collections/men-sweater-sale"
+            },
+            {
+              "name": "Jackets",
+              "url": "https://outfitters.com.pk/collections/men-jackets-sale"
+            },
+            {
+              "name": "Jeans",
+              "url": "https://outfitters.com.pk/collections/men-jeans-sale"
+            },
+            {
+              "name": "Jeans",
+              "url": "https://outfitters.com.pk/collections/men-trousers-sale"
+            },
+            {
+              "name": "Jeans",
+              "url": "https://outfitters.com.pk/collections/men-activewear-sale"
+            },
+            {
+              "name": "Jeans",
+              "url": "https://outfitters.com.pk/collections/men-jeans-sale"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

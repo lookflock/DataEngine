@@ -1,27 +1,13 @@
-<div class="t4s-product-wrapper">
-    <div data-cacl-slide="" class="t4s-product-inner t4s-pr t4s-oh"><div class="t4s-product-img t4s_ratio is-show-img2" data-style="--aspect-ratioapt: 0.6664285714285715">
-    <img data-pr-img="" class="t4s-product-main-img lazyautosizes ls-is-cached lazyloadt4sed" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-widths="[100,200,400,600,700,800,900]" data-optimumx="1.5" data-sizes="auto" width="auto" height="1400" alt="Stitched - 2 Pc Embroidered Cambric Outfit" data-srcset="//us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=100 100w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=200 200w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=400 400w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=600 600w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=700 700w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=800 800w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=900 900w" sizes="568px" srcset="//us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=100 100w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=200 200w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=400 400w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=600 600w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=700 700w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=800 800w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&amp;width=900 900w">
-    <span class="lazyloadt4s-loader"></span>
-    <img data-pr-img2="" class="t4s-product-hover-img lazyautosizes ls-is-cached lazyloadt4sed" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-widths="[100,200,400,600,700,800,900]" data-optimumx="1.5" data-sizes="auto" alt="undefined" data-srcset="//us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=100 100w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=200 200w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=400 400w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=600 600w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=700 700w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=800 800w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=900 900w" sizes="568px" srcset="//us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=100 100w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=200 200w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=400 400w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=600 600w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=700 700w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=800 800w, //us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_2_aa6db8d4-bf0a-4f46-8cf8-198f615ad409.jpg?v=1740134270&amp;width=900 900w" width="auto">
-    <noscript><img class="t4s-product-main-img" loading="lazy" src="//us.alkaramstudio.com/cdn/shop/files/WSPE3P-11-984_1_56569952-2196-4800-8525-db8a4fbb7ef6.jpg?v=1740134270&width=600"  alt="Stitched - 2 Pc Embroidered Cambric Outfit"></noscript>
-</div><div data-product-badge="" data-sort="sale,new,soldout,preOrder,custom" class="
-   not-available  t4s-product-badge"><span class="t4s-badge-item t4s-badge-new remove-top-space">New</span></div>
-      <div class="t4s-product-btns"><div class="t4s-pr-group-btns">
-           
-           <a href="/collections/eastern/products/stitched-2-pc-embroidered-cambric-outfit-gfsu5905-lilac" data-atc-selector="" data-tooltip="top" data-id="9799597195546" rel="nofollow" class="t4s-pr-item-btn t4s-pr-addtocart t4s-tooltip-actived" dat-qty="1" data-action-quickshop="" aria-label="link"><span class="t4s-svg-pr-icon">
-  
-  <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M21.4062 17.3312L20.0656 5.33116C20.0261 4.96406 19.8518 4.62466 19.5764 4.37872C19.301 4.13278 18.9442 3.9978 18.575 3.99991H15.4343C15.2538 2.95468 14.7099 2.0068 13.8986 1.32355C13.0873 0.640309 12.0607 0.265625 11 0.265625C9.93925 0.265625 8.91265 0.640309 8.10131 1.32355C7.28997 2.0068 6.74607 2.95468 6.56558 3.99991H3.42495C3.05574 3.9978 2.69888 4.13278 2.42349 4.37872C2.14811 4.62466 1.9738 4.96406 1.93433 5.33116L0.593705 17.3312C0.570999 17.5418 0.592633 17.755 0.657217 17.9568C0.7218 18.1586 0.827904 18.3447 0.968705 18.503C1.10904 18.6599 1.28101 18.7853 1.4733 18.871C1.66559 18.9566 1.87383 19.0006 2.08433 18.9999H19.9156C20.1261 19.0006 20.3343 18.9566 20.5266 18.871C20.7189 18.7853 20.8909 18.6599 21.0312 18.503C21.172 18.3447 21.2781 18.1586 21.3427 17.9568C21.4073 17.755 21.4289 17.5418 21.4062 17.3312ZM11 1.74991C11.6649 1.75118 12.3107 1.97264 12.8365 2.3797C13.3623 2.78675 13.7384 3.35649 13.9062 3.99991H8.09371C8.26149 3.35649 8.63765 2.78675 9.16344 2.3797C9.68922 1.97264 10.335 1.75118 11 1.74991ZM2.08433 17.4999L3.42495 5.49991H6.49996V7.74991C6.49996 7.94882 6.57897 8.13959 6.71962 8.28024C6.86028 8.42089 7.05104 8.49991 7.24996 8.49991C7.44887 8.49991 7.63963 8.42089 7.78028 8.28024C7.92094 8.13959 7.99996 7.94882 7.99996 7.74991V5.49991H14V7.74991C14 7.94882 14.079 8.13959 14.2196 8.28024C14.3603 8.42089 14.551 8.49991 14.75 8.49991C14.9489 8.49991 15.1396 8.42089 15.2803 8.28024C15.4209 8.13959 15.5 7.94882 15.5 7.74991V5.49991H18.575L19.9156 17.4999H2.08433Z" fill="#414042"></path>
-			</svg>
-  </span><span class="t4s-text-pr">Add to cart</span></a>
-        </div>
-      </div><a data-pr-href="" class="t4s-full-width-link is--href-replaced" href="/collections/eastern/products/stitched-2-pc-embroidered-cambric-outfit-gfsu5905-lilac" aria-label="link"></a>
-    </div>
-    <div class="t4s-product-info">
-      <div class="t4s-product-info__inner"><h3 class="t4s-product-title"><a data-pr-href="" href="/collections/eastern/products/stitched-2-pc-embroidered-cambric-outfit-gfsu5905-lilac" class="is--href-replaced" aria-label="link">Stitched - 2 Pc Embroidered Cambric Outfit</a></h3>
-<div class="t4s-product-price" data-pr-price="" data-product-price="">$26
-</div>
-
-</div>
-    </div>
-  </div>
+Ahmad Raza 
+Almirah
+Anam Akhlaq
+BeechTree
+Bonanza
+Cambridge
+Dhanak
+Diners
+EdenRobe
+Hijabi
+JunaidJamshed
+Lakhanay
+Outfitters
