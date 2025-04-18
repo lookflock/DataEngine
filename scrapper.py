@@ -40,6 +40,8 @@ import scrappers_pk.pk_Nureh as Nureh
 import scrappers_pk.pk_HafsaMalik as HafsaMalik
 import scrappers_pk.pk_Hijabi as Hijabi
 import scrappers_pk.pk_Outfitters as Outfitters
+import scrappers_pk.pk_Rasofficial as Rasofficial
+# import scrappers_pk.pk_SMP as SMP
 
 testEnvironment = False
 
@@ -241,6 +243,8 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory,piece, pa
         'Outfitters': Outfitters,
         "JunaidJamshed":JunaidJamshed,
         "Lakhanay":Lakhanay,
+        "Rasofficial":Rasofficial,
+        # "SMP":SMP
     }
     
     # Get the appropriate scraper module
