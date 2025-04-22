@@ -4,3 +4,4 @@ output3.html
 *.pyc
 scrapper_new.py
 error_*
+serviceAccountKey.json
