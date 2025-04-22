@@ -7,7 +7,7 @@ import datetime
 import functions
 import os
 
-
+from lib.logger import log_info, log_error
 import scrappers_pk.pk_AhmadRaza as AhmadRaza
 import scrappers_pk.pk_AlKaram as Alkaram
 import scrappers_pk.pk_Almirah as Almirah

@@ -5,7 +5,8 @@ import json
 import os
 import pytz
 import re
-
+import config
+from firebaseConfig import db
 # Get today's date in UTC
 today = datetime.datetime.now(pytz.utc)
 yesterday = today - datetime.timedelta(days=1)
@@ -148,3 +149,108 @@ def saveDataToJsonFile(data, filename):
     f.close()
     return file
 
+def fetchbrandName(brandName):
+    filename = config.navigationFile
+    with open(filename, 'r') as f:
+        brands = json.load(f)
+
+    for brand in brands:
+        if brand["brandID"] == brandName:
+            return brand["displayName"]
+    return -1
+
+def UploadProducts(brandName):
+
+    file = open('data/data_' + brandName + '_' + today.strftime("%Y-%m-%d") + '.json')
+    data = json.load(file)
+    # for testing env we only upload a few data 
+    #dataLen = len(data)//2
+    #data = data[:dataLen]
+    menCount= 0
+    womenCount = 0
+    menSubCategoryCount = {}
+    womenSubCategoryCount = {}
+    brand_Sizes = []
+    product_Colors = set()
+
+
+    brandId = brandName
+    brandName = fetchbrandName(brandName)
+
+
+    for d in data:
+        supplier = brandId
+        brandDisplayName = brandName
+        productID = str(d.get('productID', ''))
+        name = d.get('name', None)
+        oldPrice = d.get('oldPrice', None)
+        newPrice = d.get('newPrice', None)
+        discount = int(d.get('discount', 0))
+        category = d.get('category', None)
+        subCategory = d.get('subCategory', None)
+        subSubCategory = d.get('subSubCategory', None)
+        url = d.get('url', None)
+        imageUrl = d.get('imageUrl', None)
+        keywords = d.get('keywords',None)
+        views = d.get('views',None)
+        likes = d.get('likes',None)
+        shares = d.get('shares',None)
+        favourites = d.get('favourites',None)
+        colors = d.get('Colors',[])
+        sizes = d.get('Sizes',[])
+        description = d.get('Description',None)
+        sizeColors = d.get('sizeColors',None)
+        secondaryImages = d.get('secondaryImages',None)
+        lst = d.get('list',None)
+        piece = d.get('piece', None)
+        views = 0
+        likes = 0
+        shares = 0
+        favourites = 0
+        lst = 0
+        date = datetime.datetime.now()
+
+
+        if sizes not in brand_Sizes:
+            brand_Sizes.append(sizes)
+        for color in colors:
+            product_Colors.add(color)
+
+        product = {
+            'id':productID,
+            'brandName':brandDisplayName,
+            'name': str(name),
+            'oldPrice': oldPrice,
+            'newPrice': newPrice,
+            'discount': discount,
+            'category': category,
+            'subCategory': subCategory,
+            'subSubCategory': subSubCategory,
+            'url': str(url),
+            'imageUrl': imageUrl,
+            'supplier': supplier,
+            'status': 1,
+            'views' : views,
+            'likes' : likes,
+            'shares' : shares,
+            'favourites' : favourites,
+            'list' : lst,
+            'keywords' : keywords,
+            'dateCreated': date,
+            'dateLastUpdate': date,
+            'description' : description,
+            'colors' : colors,
+            'sizes' : sizes,
+            'sizeColors' :sizeColors,
+            'secondaryImages':secondaryImages,
+            'promoted' : False,
+            'advertised': False,
+            'piece':piece
+        }
+
+
+        try:
+            db.collection('products').document(productID).set(product)
+            
+        except Exception as e:
+            print(f"ERROR: Failed to add product {productID}: {str(e)}")

@@ -8,6 +8,6 @@ user_agent = user_agent_mac
 navigationFolder = 'navigation'
 navigationFile = 'navigation/navigation.json'
 
-maxNumberOfPages = 135
+maxNumberOfPages = 1
 
 dataFolder = "htmlData"
