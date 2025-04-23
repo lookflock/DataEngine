@@ -1,0 +1,29 @@
+{
+  "brandName": "Rasofficial",
+  "logo": "Rasofficial.jpg",
+  "cover": "Rasofficial_cover.jpg",
+  "categories": [
+    {
+      "name": "Women",
+      "subCategories": [
+        {
+          "name": "Ready to Wear",
+          "subSubCategories": [
+            {
+              "name": "Suits",
+              "url": "https://rasofficial.co/product-category/formal/"
+            },
+            {
+              "name": "Suits",
+              "url": "https://rasofficial.co/new-arrivals/"
+            },
+            {
+              "name": "Suits",
+              "url": "https://rasofficial.co/product-category/informal/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
