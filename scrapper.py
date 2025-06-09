@@ -6,6 +6,8 @@ from bs4 import BeautifulSoup
 import datetime
 import functions
 import os
+from urllib.parse import urljoin
+
 
 from lib.logger import log_info, log_error
 import scrappers_pk.pk_AhmadRaza as AhmadRaza
@@ -274,87 +276,83 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory,piece, pa
     # print('Product count: ' + str(len(products)) + ' products \n\n')    
     return products
 
+
 def scrapBrand(brandID):
     print('Brand Name: ' + brandID)
-    renamedFile = functions.renameDataFile(brandID) # rename the previously scrapped data file if it exists
+    renamedFile = functions.renameDataFile(brandID)
 
     products = []
-    navDetails =functions.getNavigationDetails(brandID)
-    
+    navDetails = functions.getNavigationDetails(brandID)
+
     try:
         navFile = config.navigationFolder + '/' + navDetails['navigationFile']
         print(navFile)
     except:
         navFile = ''
 
-    productsFile = None
-    # countProducts = 0
     if navFile == '':
         print('Navigation file does not exist for: ' + brandID)
         return products
 
+    productsFile = None
+
     with open(navFile, 'r') as f:
         navigation = json.load(f)
-        productsFile = ""
+
         for cat in navigation['categories']:
-            #print(brandID + ' -> Category: ' + cat['name'])
-
             for subCat in cat['subCategories']:
-                #print(brandID + ' -> Category: ' + cat['name'] + ' -> SubCategory: ' + subCat['name'])
-
                 for subSubCat in subCat['subSubCategories']:
-                    print('\n' + brandID + ' -> Category: ' + cat['name'] + ' -> SubCategory: ' + subCat['name'] + ' -> SubSubCategory: ' + subSubCat['name'])
+                    print(f"\n{brandID} -> Category: {cat['name']} -> SubCategory: {subCat['name']} -> SubSubCategory: {subSubCat['name']}")
+
                     url = subSubCat['url']
                     category = cat['name']
                     subCategory = subCat['name']
                     subSubCategory = subSubCat['name']
                     piece = subSubCat.get('piece', '')
                     previousProducts = []
-                    
+                    visitedUrls = set()
+
+                    page = 1
                     maxNumberOfPages = config.maxNumberOfPages
-                    i = 1
-
                     if testEnvironment:
-                        i = 1
-                        maxNumberOfPages = i + 1;
+                        maxNumberOfPages = 2
 
-                    while (i <= maxNumberOfPages):
-                        page = i
-                        pageUrl = url + navDetails['pagingVariable'] + str(i)
-                        print(pageUrl)
+                    pageUrl = url
+                    while True:
+                        # Standard brands use pagingVariable
+                        if brandID.lower() != "almirah":
+                            pageUrl = url + navDetails['pagingVariable'] + str(page)
 
+                        if pageUrl in visitedUrls:
+                            print("Repeated page URL detected. Stopping to prevent infinite loop.")
+                            break
+                        visitedUrls.add(pageUrl)
+
+                        print(f"Page URL: {pageUrl}")
                         html = functions.getRequest(pageUrl, 'text')
-
                         soup = BeautifulSoup(html, 'html.parser')
-                        # for script in soup(["script", "style", "link", "meta", "noscript"]):
-                        # for script in soup([ "style"]):
-                        #     script.decompose()  # Remove the tag from the HTML
-                        # cleaned_html = soup.prettify()
 
-                        # Save the cleaned HTML to a file
-                        # html_folder = os.path.join(config.dataFolder, 'html', brandID)
-                        # if not os.path.exists(html_folder):
-                        #     os.makedirs(html_folder)
-                        # html_file_path = os.path.join(html_folder, f"{category}_{subCategory}_{subSubCategory}_page_{i}.html")
-                        # with open(html_file_path, 'w', encoding='utf-8') as html_file:
-                        #     html_file.write(cleaned_html)
+                        tempProducts = scrapProducts(brandID, soup, category, subCategory, subSubCategory, piece, pageUrl)
 
-                        tempProducts = scrapProducts(brandID, soup, category, subCategory, subSubCategory,piece, pageUrl)
-                        # countProducts += len(tempProducts)
-                        if tempProducts != previousProducts:  #compares the currenct scrapped with the previous scrapped products if they are same we break loop
-                            previousProducts = tempProducts
+                        if not tempProducts or tempProducts == previousProducts:
+                            print("No new products or duplicate page detected. Breaking loop.")
+                            break
+
+                        previousProducts = tempProducts
+                        products += tempProducts
+                        productsFile = functions.saveDataToJsonFile(products, 'data_' + brandID)
+
+                        # For Almirah (Shopify-based pagination)
+                        if brandID.lower() == "almirah":
+                            next_link = soup.select_one('link[rel=next], a.pagination__item--next[href], a[rel="next"]')
+                            if not next_link:
+                                print("No next page link found. Ending pagination.")
+                                break
+                            next_href = next_link.get('href') or next_link.get('src') or next_link['href']
+                            pageUrl = next_href if next_href.startswith('http') else urljoin(url, next_href)
                         else:
-                            break
+                            page += 1
+                            if page > maxNumberOfPages:
+                                break
 
-                        if(len(tempProducts) == 0):
-                            break
-                        elif(len(tempProducts) > 0):
-                            products = products + tempProducts
-                            productsFile = functions.saveDataToJsonFile(products, 'data_' + brandID)
-                            
-                        else:
-                            break
-                        i+=1
     return productsFile
-
-

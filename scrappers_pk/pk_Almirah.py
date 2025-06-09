@@ -6,77 +6,70 @@ import os
 import random
 import functions
 
+import datetime
+import json
+import re
+import functions  # Assuming you have a module named functions.py
+
 
 def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     products = []
-    mainContainer = soup.find('div', {'class': 'grid grid--uniform grid--collection'})
-    productsDiv = mainContainer.find_all('div',{'class': 'grid-product__content'})
+    container = soup.find('ul', id='product-grid')
+    if not container:
+        print(f"ERROR: No products container found using selector 'ul#product-grid'")
+        with open("errors/error_Almirah.json", "a") as f:
+                json.dump({
+                    "datetime": datetime.datetime.now().isoformat(),
+                    "error": "ERROR: No products container found using selector 'ul#product-grid'",
+                }, f)
+                f.write("\n")
+        return products
 
-    for i in productsDiv:
-        tmp_product = {
-                'productID': '',
-                'name': '',
-                'oldPrice': '',
-                'newPrice': '',
-                'discount': '',
-                'category': '',
-                'subCategory': '',
-                'subSubCategory': '',
-                'url': '',
-                'imageUrl': '',
+    items = container.find_all('li', class_='grid__item')
+    print(f"Found {len(items)} items in grid")
+
+    for li in items:
+        try:
+            link = li.find('a', class_='custom-product-link-wrap')
+            url = link['href']
+            title_img = link.find('img')
+            name = title_img['alt'].strip()
+            productID = name.split('-')[-1].strip()
+
+            # Price extraction: requires looking for price container
+            price_el = li.select_one('.price-item--regular')
+            new_el   = li.select_one('.price-item--sold .price--highlight') or price_el
+
+            oldPrice = re.sub(r'[^\d]', '', price_el.text) if price_el else '0'
+            newPrice = re.sub(r'[^\d]', '', new_el.text) if new_el else oldPrice
+            discount = int(100 * (int(oldPrice) - int(newPrice)) / int(oldPrice)) if int(oldPrice) else 0
+
+            img_url = title_img['src'].replace('width=533', 'width=1000') if title_img else ''
+
+            products.append({
+                'productID': productID,
+                'name': functions.filterName(name, productID),
+                'oldPrice': int(oldPrice),
+                'newPrice': int(newPrice),
+                'discount': discount,
+                'url': 'https://www.almirah.com.pk' + url,
+                'imageUrl': img_url,
+                'category': category,
+                'subCategory': subCategory,
+                'subSubCategory': subSubCategory,
                 'pageUrl': pageURL,
-                'views' : 0,
-                'likes' : 0,
-                'shares' : 0,
-                'favourites' : 0,
-                'list' : 0,
-                'keywords': [],
-                'piece': ''
-            }
-        
-        
-        name = i.find('div', {'class': 'grid-product__title grid-product__title--body'}).text.strip()
-        name.replace("\u00a02", ' ')
-        try:    
-            productID = name.split(' - ')[1]
-            url = i.find('a', {'class': 'grid-product__link'})['href']
-            imageUrl = i.find('img', {'class': 'grid-product__image lazyloaded'})['src']
-            imageUrl = imageUrl.replace('400x', '1000x')
-            price_elements = i.find_all('span', {'class': 'money'})
-            oldPrice = price_elements[0].text.strip().split('.')[1].replace(',', '')
-            try:
-                newPrice = price_elements[1].text.strip().split('.')[1].replace(',', '')
-                temp_discount = i.find('div', {'class': 'grid-product__tag grid-product__tag--sale'}).text.strip()
-                discount = temp_discount.split('%')[0]
-            except:
-                newPrice = oldPrice
-                oldPrice = 0
-                discount = 0
-            
-            tmp_product['productID'] = productID
-            # tmp_product['name'] = name
-            tmp_product['name'] = functions.filterName(name,productID)
-            tmp_product['oldPrice'] = int(oldPrice)
-            tmp_product['newPrice'] = int(newPrice)
-            tmp_product['discount'] = int(discount)
-            tmp_product['url'] =  'https://www.almirah.com.pk' + url
-            tmp_product['imageUrl'] = 'https:' + imageUrl 
-            tmp_product['category'] =  category
-            tmp_product['subCategory'] = subCategory
-            tmp_product['subSubCategory'] = subSubCategory
-            tmp_product['piece'] = piece
-            products.append(tmp_product)    
-
+                'piece': piece,
+                'views': 0, 'likes': 0, 'shares': 0,
+                'favourites': 0, 'list': 0, 'keywords': []
+            })
         except Exception as e:
             with open("errors/error_Almirah.json", "a") as f:
-                error_log = {
+                json.dump({
                     "datetime": datetime.datetime.now().isoformat(),
-                    "product_name": str(name),
-                    "exception_message": str(e),
-                    "pageURL number": pageURL
-                    }
-                json.dump(error_log, f)
-       
+                    "error": str(e),
+                    "item_html": str(li)[:200]
+                }, f)
+                f.write("\n")
     return products
 
 
