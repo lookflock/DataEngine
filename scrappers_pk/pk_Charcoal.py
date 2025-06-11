@@ -68,6 +68,7 @@ def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
             tmp_product['subCategory'] = subCategory
             tmp_product['subSubCategory'] = subSubCategory
             tmp_product['piece'] = piece
+            tmp_product=getCharcoalProductDetails(tmp_product)
             products.append(tmp_product)    
 
         except Exception as e:
@@ -83,64 +84,52 @@ def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
     return products
 
 
-def getCharcoalProductDetails(product):  
+def getCharcoalProductDetails(product):
     try:
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")
         
-        with open("output.html", "w", encoding="utf-8") as f:
+        with open("output_generate.html", "w", encoding="utf-8") as f:
              f.write(soup.prettify())
         
         availableSizes = []
-        availableColors = []
         secondaryImages = []
-        # Extracting available sizes,colors and description
+
+        # -----------------------
+        # Get Sizes
+        # -----------------------
         sizeElements = soup.find('fieldset',{'class','variant-picker__option'}).find_all('label',{'class','block-swatch'})
         for element in sizeElements:
             availableSizes.append(element.text.strip())
 
-        
-
-        productDescription= str(soup.find('div', {'class': 'product-info__description'}))
-        
-        # to include the table
-        # productDescription += str(soup.find('div', {'class': 'collapsible-content__inner rte'}))
-
-        secondaryImagesDiv = soup.find_all('button',{'class','product-gallery__thumbnail'})
-        
-        for img in secondaryImagesDiv:
-            img = img.find('img')
-            # print(img)
-            if 'src' in img.attrs:
-                    # print(img["data-src"])
-                    img_url = img["src"].split('&width')[0]
-                    secondaryImages.append('https:' + img_url)
-
-        secondaryImages= list(set(secondaryImages))
-        # secondaryImages = [image for image in secondaryImages if image != product['imageUrl']]
-        availableColors= list(set(availableColors))
-
-        productDescription = functions.filterDescription(productDescription)
-        availableSizes = functions.sortSizes('Charcoal',availableSizes)
-        availableColors = functions.sortColors('Charcoal',availableColors)
-
-
-        print(product["url"],productDescription,availableSizes,availableColors,secondaryImages[:4])
-
-        product['Description'] = productDescription
-        product['Sizes'] = availableSizes
-        product['Colors'] = availableColors
-        product['secondaryImages'] = secondaryImages[:4]
-        product['sizeColors'] = functions.crossJoin(availableSizes,availableColors)
+        # Get Secondary Images
+        # -----------------------
+        for img in soup.select('div.product-gallery__media img[src]'):
+            img_url = img['src']
+            if img_url.startswith('//'):
+                img_url = 'https:' + img_url
+            # Remove width parameter and keep base URL
+            clean_url = img_url.split('?')[0]
+            if clean_url not in secondaryImages:
+                secondaryImages.append(clean_url)
+       
+        # Remove duplicates and limit to 4
+        secondaryImages = list(dict.fromkeys(secondaryImages))[:4]
+        product['secondaryImages'] = secondaryImages
+        product['sizes'] = availableSizes
 
     except Exception as e:
-        print ("An Error Occured While Getting The Product Details")
+        print("An Error Occurred While Getting The Product Details")
         print(str(e))
-        with open("errors/error_AnamAkhlaq.json", "a") as f:
+
+        with open("errors/error_Charcoal.json", "a") as f:
             error_log = {
                 "datetime": datetime.datetime.now().isoformat(),
                 "product_name": str(product['name']),
                 "exception_message": str(e)
-                }
-            json.dump(error_log, f)  
+            }
+            json.dump(error_log, f)
+            f.write(',')
+
     return product
+

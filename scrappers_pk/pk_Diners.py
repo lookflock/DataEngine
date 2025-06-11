@@ -69,6 +69,7 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                 tmp_product['subCategory'] = subCategory
                 tmp_product['subSubCategory'] = subSubCategory
                 tmp_product['piece'] = piece
+                tmp_product=getDinersProductDetails(tmp_product)
                 #print(tmp_product)
                 products.append(tmp_product) 
             
@@ -91,16 +92,15 @@ def getDinersProductDetails(product):
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")
         
-        with open("output.html", "w", encoding="utf-8") as f:
-            f.write(soup.prettify())
-
-
+        # with open("output_generate.html", "w", encoding="utf-8") as f:
+        #      f.write(soup.prettify())
+        
         availableSizes = []
-        availableColors = []
         secondaryImages = []
-        # Element = soup.find_all('div', {'class': 'swatch clearfix'})
-        # sizeElement = Element[1]
-        # colorElement = Element[0]
+
+        # -----------------------
+        # Get Sizes
+        # -----------------------
         try:
             sizeElement = soup.find('div',{'class':'productView-options'}).find_all('span',{'class':'text'})
             for size in sizeElement:
@@ -108,18 +108,8 @@ def getDinersProductDetails(product):
         except:
             availableSizes = []
 
-        try:
-            colorElement = colorElement.find_all('div',{'class':'swatch-element'})
-            for color in colorElement:
-                availableColors.append(color.text.strip())
-        except:
-            SKUcolor = soup.find('div',{'class','productView-info-item'}).find_all('span')[1].text.strip().split('-')[-1]
-            availableColors.append(SKUcolor)
-
-
-        productDescription= soup.find('div', {'id': 'tab-product-detail-mobile'})
-        productDescription = str(productDescription)        
-        
+        # Get Secondary Images
+        # -----------------------
         mainContainer = soup.find('div',{'class':'productView-image-wrapper'})
         secondaryImagesDiv = mainContainer.find_all('img')
         
@@ -128,34 +118,24 @@ def getDinersProductDetails(product):
                 if 'src' in img.attrs:
                     img_url = img["src"]
                     secondaryImages.append('https:' + img_url)
+       
+        # Remove duplicates and limit to 4
+        secondaryImages = list(dict.fromkeys(secondaryImages))[:4]
 
-        secondaryImages= list(set(secondaryImages))
-        # secondaryImages = [image for image in secondaryImages if image != product['imageUrl']]
-        productDescription = functions.filterDescription(productDescription)
-        availableSizes = functions.sortSizes('Diners',availableSizes)
-        availableColors = functions.sortColors('Diners',availableColors)
-        
-        print(product["url"],productDescription,availableSizes,availableColors,secondaryImages[:4])
-
-
-        product['Description'] = productDescription
-        product['Sizes'] = availableSizes
-        product['Colors'] = availableColors
-        product['secondaryImages'] = secondaryImages[:4]
-        product['sizeColors'] = functions.crossJoin(availableSizes,availableColors)
-
-
-
-
+        product['secondaryImages'] = secondaryImages
+        product['sizes'] = availableSizes
 
     except Exception as e:
-        print ("An Error Occured While Getting The Product Details")
+        print("An Error Occurred While Getting The Product Details")
         print(str(e))
+
         with open("errors/error_Diners.json", "a") as f:
             error_log = {
                 "datetime": datetime.datetime.now().isoformat(),
                 "product_name": str(product['name']),
                 "exception_message": str(e)
-                }
-            json.dump(error_log, f)  
-    return product              
+            }
+            json.dump(error_log, f)
+            f.write(',')
+
+    return product

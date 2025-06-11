@@ -15,5 +15,8 @@ else:
 # Step 2: Remove duplicate products
 removeDuplicates(productsFile)
 
-# Step 3: Sort products into different categories
+# Step 3: Compare current and previous files to find new products
+compareWithPrevious(productsFile)
+
+# Step 4: Sort products into different categories
 categoriseProducts(brandName, productsFile)

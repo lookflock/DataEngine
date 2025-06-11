@@ -71,6 +71,7 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                 tmp_product['subCategory'] = subCategory
                 tmp_product['subSubCategory'] = subSubCategory
                 tmp_product['piece'] = piece
+                tmp_product=getCambridgeProductDetails(tmp_product)
                 products.append(tmp_product) 
                 #print(tmp_product)
             except Exception as e:
@@ -91,59 +92,126 @@ def getCambridgeProductDetails(product):
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")
         
-        with open("output.html", "w", encoding="utf-8") as f:
+        with open("output_generate.html", "w", encoding="utf-8") as f:
              f.write(soup.prettify())
-
+        
         availableSizes = []
-        availableColors = []
-        secondaryImages =[]
-        Elements = soup.find_all('div', {'class': 't4s-swatch__list'})
+        secondaryImages = []
+
+        # -----------------------
+        # Get Sizes
+        # -----------------------
+        # Elements = soup.find_all('div', {'class': 't4s-swatch__list'})
+        # sizeElement =Elements[1].find_all('div', {'class': 't4s-swatch__item'})
+        # for size in sizeElement:
+        #     availableSizes.append(size.text.strip())
+        # availableSizes = [el.get('data-value') for el in soup.select('div.t4s-swatch__item')]
+        standard_sizes = {"XS", "S", "M", "L", "XL", "XXL", "XXXL"}
+        availableSizes = [
+            size for size in (
+                el.get('data-value') 
+                for el in soup.select('div.t4s-swatch__item')
+            ) 
+            if size in standard_sizes
+        ]
+        # Get Secondary Images
+        # -----------------------
+        # mainContainer = soup.find('div',{'class':'t4s-row t4s-g-0'})
+        # secondaryImagesDiv = mainContainer.find_all('div',{'class':'t4s-col-md-6'})
         
-        sizeElement =Elements[1].find_all('div', {'class': 't4s-swatch__item'})
-        for size in sizeElement:
-            availableSizes.append(size.text.strip())
-
-        colorElement = Elements[0].find_all('div', {'class': 't4s-swatch__item'})
-        for color in colorElement:
-            availableColors.append(color.text.strip())
+        # for img in secondaryImagesDiv:
+        #     img = img.find('img')
+        #     if img is not None:
+        #         if 'srcset' in img.attrs:
+        #             img_url = img["srcset"].split(',')[0][:-5].replace('&width=288','&width=1000')
+        #             secondaryImages.append('https:' + img_url)
+        for img in soup.select('img[data-master]'):
+            img_url = img.get('data-master')
+            if img_url:
+                if img_url.startswith('//'):
+                    img_url = 'https:' + img_url
+                secondaryImages.append(img_url.split('?')[0])  # Remove query params
         
-
-        productDescription= str(soup.find('div', {'class': 'full description'}))
-
-        mainContainer = soup.find('div',{'class':'t4s-row t4s-g-0'})
-        secondaryImagesDiv = mainContainer.find_all('div',{'class':'t4s-col-md-6'})
-        
-        for img in secondaryImagesDiv:
-            img = img.find('img')
-            if img is not None:
-                if 'srcset' in img.attrs:
-                    img_url = img["srcset"].split(',')[0][:-5].replace('&width=288','&width=1000')
-                    secondaryImages.append('https:' + img_url)
-
         secondaryImages= list(set(secondaryImages))
-        # secondaryImages = [image for image in secondaryImages if image != product['imageUrl']]
-        productDescription = functions.filterDescription(productDescription)
-        availableSizes = functions.sortSizes('Cambridge',availableSizes)
-        availableColors = functions.sortColors("Cambridge",availableColors)
         
-        print(product["url"],productDescription,availableSizes,availableColors,secondaryImages[:4])
 
+        # Remove duplicates and limit to 4
+        secondaryImages = list(dict.fromkeys(secondaryImages))[:4]
+        product['secondaryImages'] = secondaryImages
+        product['sizes'] = availableSizes
 
-        product['Description'] = productDescription
-        product['Sizes'] = availableSizes
-        product['Colors'] = availableColors
-        product['secondaryImages'] = secondaryImages[:4]
-        product['sizeColors'] = functions.crossJoin(availableSizes,availableColors)
-
-        
     except Exception as e:
-        print ("An Error Occured While Getting The Product Details")
+        print("An Error Occurred While Getting The Product Details")
         print(str(e))
+
         with open("errors/error_Cambridge.json", "a") as f:
             error_log = {
                 "datetime": datetime.datetime.now().isoformat(),
                 "product_name": str(product['name']),
                 "exception_message": str(e)
-                }
-            json.dump(error_log, f)  
-    return product          
+            }
+            json.dump(error_log, f)
+            f.write(',')
+
+    return product
+# def getCambridgeProductDetails(product):
+#     try:
+#         html = functions.getRequest(product["url"], 'text')
+#         soup = BeautifulSoup(html, "html.parser")
+        
+#         with open("output.html", "w", encoding="utf-8") as f:
+#              f.write(soup.prettify())
+
+#         availableSizes = []
+#         availableColors = []
+#         secondaryImages =[]
+#         Elements = soup.find_all('div', {'class': 't4s-swatch__list'})
+        
+#         sizeElement =Elements[1].find_all('div', {'class': 't4s-swatch__item'})
+#         for size in sizeElement:
+#             availableSizes.append(size.text.strip())
+
+#         colorElement = Elements[0].find_all('div', {'class': 't4s-swatch__item'})
+#         for color in colorElement:
+#             availableColors.append(color.text.strip())
+        
+
+#         productDescription= str(soup.find('div', {'class': 'full description'}))
+
+#         mainContainer = soup.find('div',{'class':'t4s-row t4s-g-0'})
+#         secondaryImagesDiv = mainContainer.find_all('div',{'class':'t4s-col-md-6'})
+        
+#         for img in secondaryImagesDiv:
+#             img = img.find('img')
+#             if img is not None:
+#                 if 'srcset' in img.attrs:
+#                     img_url = img["srcset"].split(',')[0][:-5].replace('&width=288','&width=1000')
+#                     secondaryImages.append('https:' + img_url)
+
+#         secondaryImages= list(set(secondaryImages))
+#         # secondaryImages = [image for image in secondaryImages if image != product['imageUrl']]
+#         productDescription = functions.filterDescription(productDescription)
+#         availableSizes = functions.sortSizes('Cambridge',availableSizes)
+#         availableColors = functions.sortColors("Cambridge",availableColors)
+        
+#         print(product["url"],productDescription,availableSizes,availableColors,secondaryImages[:4])
+
+
+#         product['Description'] = productDescription
+#         product['Sizes'] = availableSizes
+#         product['Colors'] = availableColors
+#         product['secondaryImages'] = secondaryImages[:4]
+#         product['sizeColors'] = functions.crossJoin(availableSizes,availableColors)
+
+        
+#     except Exception as e:
+#         print ("An Error Occured While Getting The Product Details")
+#         print(str(e))
+#         with open("errors/error_Cambridge.json", "a") as f:
+#             error_log = {
+#                 "datetime": datetime.datetime.now().isoformat(),
+#                 "product_name": str(product['name']),
+#                 "exception_message": str(e)
+#                 }
+#             json.dump(error_log, f)  
+#     return product          

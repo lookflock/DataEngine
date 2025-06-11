@@ -66,10 +66,11 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
             tmp_product['subCategory'] = subCategory
             tmp_product['subSubCategory'] = subSubCategory
             tmp_product['piece'] = piece
+            tmp_product=getAnamAkhlaqDetails(tmp_product)
             products.append(tmp_product)    
 
         except Exception as e:
-            with open("errors/error_Almirah.json", "a") as f:
+            with open("errors/error_AnamAkhlaq.json", "a") as f:
                 error_log = {
                     "datetime": datetime.datetime.now().isoformat(),
                     "product_name": str(name),
@@ -80,73 +81,53 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
        
     return products
 
-
-def getAnamAkhlaqProductDetails(product):  
+def getAnamAkhlaqDetails(product):
     try:
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")
         
-        # with open("output.html", "w", encoding="utf-8") as f:
-            #  f.write(soup.prettify())
-        
+        with open("output_generate.html", "w", encoding="utf-8") as f:
+             f.write(soup.prettify())
+        # html = functions.getRequest(product["url"], 'text')
+        # with open("debug_output.html", "w", encoding="utf-8") as f:
+        #     f.write(html)
+
+        # soup = BeautifulSoup(html, "html.parser")
+
         availableSizes = []
-        availableColors = []
         secondaryImages = []
-        # Extracting available sizes,colors and description
-        try:
-            sizeElements = soup.find('select',{'class','single-option-selector'}).find_all('option')
-            for element in sizeElements:
-                availableSizes.append(element['value'])
-        except:
-            availableSizes = []
-        
 
-        productDescription= str(soup.find('div', {'class': 'product-single__description rte'}))
-        
-        # to include the table
-        # productDescription += str(soup.find('div', {'class': 'collapsible-content__inner rte'}))
-        try:
-            mainContainer = soup.find('ul',{'class':'grid grid--uniform product-single__thumbnails product-single__thumbnails-product-template'})
-            secondaryImagesDiv = mainContainer.find_all('li',{'class':'grid__item'})
-            
-            for img in secondaryImagesDiv:
-                img = img.find('a')
-                # print(img)
-                if 'href' in img.attrs:
-                        # print(img["data-src"])
-                        img_url = img["href"]
-                        secondaryImages.append('https:' + img_url)
-
-            secondaryImages= list(set(secondaryImages))
-        except:
-            secondaryImages = []
-
-        
-        # secondaryImages = [image for image in secondaryImages if image != product['imageUrl']]
-        availableColors= list(set(availableColors))
-
-        productDescription = functions.filterDescription(productDescription)
-        availableSizes = functions.sortSizes('AnamAkhlaq',availableSizes)
-        availableColors = functions.sortColors('AnamAkhlaq',availableColors)
+        # -----------------------
+        # Get Sizes
+        # -----------------------
+        size_select = soup.select_one('select#SingleOptionSelector-0')
+        availableSizes = [option.get_text(strip=True) for option in size_select.find_all('option')]
+        # -----------------------
+        # Get Secondary Images
+        # -----------------------
+        for a_tag in soup.select('ul.product-single__thumbnails a[href]'):
+            img_url = a_tag['href']
+            if img_url.startswith('//'):
+                img_url = 'https:' + img_url  # Convert to full URL
+            secondaryImages.append(img_url)        
 
 
-        print(product["url"],productDescription,availableSizes,availableColors,secondaryImages[:4])
-
-        product['Description'] = productDescription
-        product['Sizes'] = availableSizes
-        product['Colors'] = availableColors
-        product['secondaryImages'] = secondaryImages[:4]
-        product['sizeColors'] = functions.crossJoin(availableSizes,availableColors)
+        # Remove duplicates and limit to 4
+        secondaryImages = list(dict.fromkeys(secondaryImages))[:4]
+        product['secondaryImages'] = secondaryImages
+        product['sizes'] = availableSizes
 
     except Exception as e:
-        print(product["url"])
-        print ("An Error Occured While Getting The Product Details")
+        print("An Error Occurred While Getting The Product Details")
         print(str(e))
+
         with open("errors/error_AnamAkhlaq.json", "a") as f:
             error_log = {
                 "datetime": datetime.datetime.now().isoformat(),
                 "product_name": str(product['name']),
                 "exception_message": str(e)
-                }
-            json.dump(error_log, f)  
+            }
+            json.dump(error_log, f)
+            f.write(',')
+
     return product

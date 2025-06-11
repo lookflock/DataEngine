@@ -68,7 +68,7 @@ def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
                 tmp_product['subCategory'] = subCategory
                 tmp_product['subSubCategory'] = subSubCategory
                 tmp_product['piece'] = piece
-                
+                tmp_product=getCrossStitchProductDetails(tmp_product)
                 products.append(tmp_product) 
 
             except Exception as e:
@@ -83,19 +83,20 @@ def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
  
     return products
 
-
-def getCrossStitchProductDetails(product) :
+def getCrossStitchProductDetails(product):
     try:
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")
         
-        with open("output.html", "w", encoding="utf-8") as f:
-             f.write(soup.prettify())
-
-
+        # with open("output_generate.html", "w", encoding="utf-8") as f:
+        #      f.write(soup.prettify())
+        
         availableSizes = []
-        availableColors = []
         secondaryImages = []
+
+        # -----------------------
+        # Get Sizes
+        # -----------------------
         Element = soup.find_all('div', {'class': 'swatch clearfix'})
         try:
             sizeElement = Element[1]
@@ -104,17 +105,9 @@ def getCrossStitchProductDetails(product) :
                 availableSizes.append(size.text.strip())
         except:
             availableSizes = []
-        
-        try: 
-            colorElement = Element[0]
-            colorElement = colorElement.find_all('div',{'class':'swatch-element'})
-            for color in colorElement:
-                availableColors.append(color.text.strip())
-        except:
-            availableColors = []
 
-        productDescription= str(soup.find('div', {'class': 'fulldescription'}))
-
+        # Get Secondary Images
+        # -----------------------
         mainContainer = soup.find('div',{'class':'MagicToolboxSelectorsContainer'})
         secondaryImagesDiv = mainContainer.find_all('img')
         
@@ -123,33 +116,24 @@ def getCrossStitchProductDetails(product) :
                 if 'src' in img.attrs:
                     img_url = img["src"].replace('_medium','_1000x')
                     secondaryImages.append('https:' + img_url)
+       
+        # Remove duplicates and limit to 4
+        secondaryImages = list(dict.fromkeys(secondaryImages))[:4]
 
-        secondaryImages= list(set(secondaryImages))
-        # secondaryImages = [image for image in secondaryImages if image != product['imageUrl']]
-        productDescription = functions.filterDescription(productDescription)
-        availableSizes = functions.sortSizes('CrossStitch',availableSizes)
-        availableColors = functions.sortColors('CrossStitch',availableColors)
-        
-        print(product["url"],productDescription,availableSizes,availableColors,secondaryImages[:4])
-
-
-        product['Description'] = productDescription
-        product['Sizes'] = availableSizes
-        product['Colors'] = availableColors
-        product['secondaryImages'] = secondaryImages[:4]
-        product['sizeColors'] = functions.crossJoin(availableSizes,availableColors)
-
-
-
+        product['secondaryImages'] = secondaryImages
+        product['sizes'] = availableSizes
 
     except Exception as e:
-        print ("An Error Occured While Getting The Product Details")
-        print(product["url"],str(e))
+        print("An Error Occurred While Getting The Product Details")
+        print(str(e))
+
         with open("errors/error_CrossStitch.json", "a") as f:
             error_log = {
                 "datetime": datetime.datetime.now().isoformat(),
                 "product_name": str(product['name']),
                 "exception_message": str(e)
-                }
-            json.dump(error_log, f)  
-    return product            
+            }
+            json.dump(error_log, f)
+            f.write(',')
+
+    return product

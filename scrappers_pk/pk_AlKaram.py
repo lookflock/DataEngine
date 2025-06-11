@@ -1,9 +1,12 @@
-import functions
-import datetime
 import json
+from bs4 import BeautifulSoup
 import math
-import sys
 import os
+import datetime
+import re
+import config
+import functions
+import random
 
 def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     
@@ -74,6 +77,7 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                 tmp_product['subCategory'] = subCategory
                 tmp_product['subSubCategory'] = subSubCategory
                 tmp_product['piece'] = piece
+                tmp_product=getAlKaramProductDetails(tmp_product)
                 products.append(tmp_product) 
                 
                 
@@ -96,3 +100,65 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                     json.dump(error_log, f)    
  
     return products
+
+def getAlKaramProductDetails(product):
+    try:
+        html = functions.getRequest(product["url"], 'text')
+        with open("debug_output.html", "w", encoding="utf-8") as f:
+            f.write(html)
+
+        soup = BeautifulSoup(html, "html.parser")
+
+        availableSizes = []
+        secondaryImages = []
+
+        # -----------------------
+        # Get Sizes
+        # -----------------------
+        # size_elements = soup.select("div.t4s-swatch__option div.t4s-swatch__item")
+        
+        # size_elements=soup.select('div.t4s-swatch__option div.t4s-swatch__item:not([data-tooltip])')
+        # for size_tag in size_elements:
+        #     size_text = size_tag.get_text(strip=True)
+        #     if size_text and size_text.upper() not in availableSizes:
+        #         availableSizes.append(size_text.upper())
+# Find the Size section by checking the title
+        size_elements = soup.select('div.t4s-swatch__option:has(h4:-soup-contains("Size:")) div.t4s-swatch__item[data-value]')
+        for size_tag in size_elements:
+            size_text = size_tag.get_text(strip=True)
+            if size_text and size_text.upper() not in availableSizes:
+                availableSizes.append(size_text.upper())
+
+        # -----------------------
+        # Get Secondary Images
+        # -----------------------
+        media_items = soup.select('div[data-product-single-media-wrapper] img')
+        for img in media_items:
+            img_url = img.get('data-master') or img.get('data-src') or img.get('src')
+            if img_url:
+                if img_url.startswith('//'):
+                    img_url = 'https:' + img_url
+                elif img_url.startswith('/'):
+                    img_url = 'https://www.alkaramstudio.com' + img_url
+                if img_url not in secondaryImages:
+                    secondaryImages.append(img_url)
+
+        # Remove duplicates and limit to 4
+        secondaryImages = list(dict.fromkeys(secondaryImages))[:4]
+        product['secondaryImages'] = secondaryImages
+        product['sizes'] = availableSizes
+
+    except Exception as e:
+        print("An Error Occurred While Getting The Product Details")
+        print(str(e))
+
+        with open("errors/error_AlKaram.json", "a") as f:
+            error_log = {
+                "datetime": datetime.datetime.now().isoformat(),
+                "product_name": str(product['name']),
+                "exception_message": str(e)
+            }
+            json.dump(error_log, f)
+            f.write(',')
+
+    return product

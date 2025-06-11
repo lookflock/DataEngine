@@ -74,6 +74,7 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
             tmp_product['subSubCategory'] = subSubCategory
             tmp_product['piece'] = piece
             # print(json.dumps(tmp_product, indent=4 ,ensure_ascii=False))
+            tmp_product=getDhanakProductDetails(tmp_product)
             products.append(tmp_product)    
 
         except Exception as e:
@@ -89,18 +90,20 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     return products
 
 
-def getDhanakProductDetails(product):  
+def getDhanakProductDetails(product):
     try:
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")
         
-        with open("output.html", "w", encoding="utf-8") as f:
-             f.write(soup.prettify())
+        # with open("output_generate.html", "w", encoding="utf-8") as f:
+        #      f.write(soup.prettify())
         
         availableSizes = []
-        availableColors = []
         secondaryImages = []
-        # Extracting available sizes,colors and description
+
+        # -----------------------
+        # Get Sizes
+        # -----------------------
         try:
             sizeElements = soup.find('fieldset',{'class','js product-form__input clearfix'}).find_all('input',{'class','product-form__radio'})
             for element in sizeElements:
@@ -108,20 +111,8 @@ def getDhanakProductDetails(product):
         except:
             availableSizes = []
 
-
-        try:
-            colorElement = soup.find('span',{'class','productView-info-value'}).text.strip().split(' ')[-1]
-            availableColors.append(colorElement)
-            # print(availableSizes)
-
-        except:
-            availableColors = []
-        productDescription= str(soup.find('div', {'id': 'tab-description'}).find('div',{'class','tab-popup-content'}).find('p'))
-
-        
-        # to include the table
-        # productDescription += str(soup.find('div', {'class': 'collapsible-content__inner rte'}))
-
+        # Get Secondary Images
+        # -----------------------
         mainContainer = soup.find_all('div',{'class','productView-thumbnail'})
         # secondaryImagesDiv = mainContainer.find('img')
         # print(secondaryImagesDiv)
@@ -133,32 +124,24 @@ def getDhanakProductDetails(product):
                     img_url = img["src"]
                     img_url = img_url.replace('_large','_1000x')
                     secondaryImages.append('https:' + img_url)
+       
+        # Remove duplicates and limit to 4
+        secondaryImages = list(dict.fromkeys(secondaryImages))[:4]
 
-        secondaryImages= list(set(secondaryImages))
-        # secondaryImages = [image for image in secondaryImages if image != product['imageUrl']]
-        availableColors= list(set(availableColors))
-
-        productDescription = functions.filterDescription(productDescription)
-        availableSizes = functions.sortSizes('Dhanak',availableSizes)
-        availableColors = functions.sortColors('Dhanak',availableColors)
-
-
-        print(product["url"],productDescription,availableSizes,availableColors,secondaryImages[:4])
-
-        product['Description'] = productDescription
-        product['Sizes'] = availableSizes
-        product['Colors'] = availableColors
-        product['secondaryImages'] = secondaryImages[:4]
-        product['sizeColors'] = functions.crossJoin(availableSizes,availableColors)
+        product['secondaryImages'] = secondaryImages
+        product['sizes'] = availableSizes
 
     except Exception as e:
-        print ("An Error Occured While Getting The Product Details")
-        print(product["url"],str(e))
-        with open("errors/error_AnamAkhlaq.json", "a") as f:
+        print("An Error Occurred While Getting The Product Details")
+        print(str(e))
+
+        with open("errors/error_Dhanak.json", "a") as f:
             error_log = {
                 "datetime": datetime.datetime.now().isoformat(),
                 "product_name": str(product['name']),
                 "exception_message": str(e)
-                }
-            json.dump(error_log, f)  
+            }
+            json.dump(error_log, f)
+            f.write(',')
+
     return product

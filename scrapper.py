@@ -8,7 +8,6 @@ import functions
 import os
 from urllib.parse import urljoin
 
-
 from lib.logger import log_info, log_error
 import scrappers_pk.pk_AhmadRaza as AhmadRaza
 import scrappers_pk.pk_AlKaram as Alkaram
@@ -17,7 +16,9 @@ import scrappers_pk.pk_AnamAkhlaq as AnamAkhlaq
 import scrappers_pk.pk_BeechTree as BeechTree
 import scrappers_pk.pk_BonanzaSatrangi as BonanzaSatrangi
 import scrappers_pk.pk_Cambridge as Cambridge
+import scrappers_pk.pk_Deepakperwani as Deepakperwani
 import scrappers_pk.pk_Chinyere as Chinyere
+import scrappers_pk.pk_Chicophicial as Chicophicial
 import scrappers_pk.pk_CrossStitch as CrossStitch
 import scrappers_pk.pk_Dhanak as Dhanak
 import scrappers_pk.pk_Diners as Diners
@@ -224,11 +225,13 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory,piece, pa
         'GulAhmed': GulAhmed,
         "BeechTree":BeechTree,
         "BonanzaSatrangi":BonanzaSatrangi,
+        "Deepakperwani":Deepakperwani,
         'Generation': Generation,
         "Cambridge":Cambridge,
         'CrossStitch': CrossStitch,
         'Chinyere': Chinyere,
         'Charcoal': Charcoal,
+        'Chicophicial':Chicophicial,
         "Dhanak":Dhanak,
         "Diners":Diners,
         "EdenRobe":EdenRobe,
@@ -276,11 +279,10 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory,piece, pa
     # print('Product count: ' + str(len(products)) + ' products \n\n')    
     return products
 
-
 def scrapBrand(brandID):
     print('Brand Name: ' + brandID)
     renamedFile = functions.renameDataFile(brandID)
-
+    print(renamedFile)
     products = []
     navDetails = functions.getNavigationDetails(brandID)
 
@@ -310,21 +312,20 @@ def scrapBrand(brandID):
                     subSubCategory = subSubCat['name']
                     piece = subSubCat.get('piece', '')
                     previousProducts = []
-                    visitedUrls = set()
 
                     page = 1
-                    maxNumberOfPages = config.maxNumberOfPages
-                    if testEnvironment:
-                        maxNumberOfPages = 2
+                    maxNumberOfPages = config.maxNumberOfPages if not testEnvironment else 2
+                    paginationType = None  # Automatically detect pagination style
+                    visitedUrls = set()
+                    pageUrl = url  # Will be updated if number-based paging
 
-                    pageUrl = url
                     while True:
-                        # Standard brands use pagingVariable
-                        if brandID.lower() != "almirah":
+                        # If number-based (default assumption), construct URL with page number
+                        if paginationType != 'link':
                             pageUrl = url + navDetails['pagingVariable'] + str(page)
 
                         if pageUrl in visitedUrls:
-                            print("Repeated page URL detected. Stopping to prevent infinite loop.")
+                            print("Detected loop, this page was already visited.")
                             break
                         visitedUrls.add(pageUrl)
 
@@ -335,24 +336,111 @@ def scrapBrand(brandID):
                         tempProducts = scrapProducts(brandID, soup, category, subCategory, subSubCategory, piece, pageUrl)
 
                         if not tempProducts or tempProducts == previousProducts:
-                            print("No new products or duplicate page detected. Breaking loop.")
+                            print("No new products or repeated results. Stopping pagination.")
                             break
 
                         previousProducts = tempProducts
                         products += tempProducts
                         productsFile = functions.saveDataToJsonFile(products, 'data_' + brandID)
 
-                        # For Almirah (Shopify-based pagination)
-                        if brandID.lower() == "almirah":
+                        # Auto-detect pagination type after first page
+                        if paginationType is None:
+                            next_link = soup.select_one('link[rel=next], a.pagination__item--next[href], a[rel="next"]')
+                            if next_link:
+                                paginationType = 'link'
+                                print("Pagination style: LINK-based detected.")
+                            else:
+                                paginationType = 'number'
+                                print("Pagination style: NUMBER-based detected.")
+
+                        # Handle based on pagination type
+                        if paginationType == 'link':
                             next_link = soup.select_one('link[rel=next], a.pagination__item--next[href], a[rel="next"]')
                             if not next_link:
-                                print("No next page link found. Ending pagination.")
+                                print("No next link found. Ending.")
                                 break
                             next_href = next_link.get('href') or next_link.get('src') or next_link['href']
                             pageUrl = next_href if next_href.startswith('http') else urljoin(url, next_href)
                         else:
                             page += 1
                             if page > maxNumberOfPages:
+                                print("Reached max number of pages.")
                                 break
 
     return productsFile
+
+import os
+import json
+import datetime
+import pytz
+import re
+
+def compareWithPrevious(current_file_path):
+    # Extract brand and date from filename
+    try:
+        match = re.match(r"data/data_(\w+)_(\d{4}-\d{2}-\d{2})(?:_\d+)?\.json", current_file_path)
+        if not match:
+            print(f"[❌ Error] Invalid filename format: {current_file_path}")
+            return
+        brandname = match.group(1)
+        date_str = match.group(2)
+        today = datetime.datetime.strptime(date_str, "%Y-%m-%d")
+    except Exception as e:
+        print(f"[❌ Error] Could not parse filename: {e}")
+        return
+
+    # Try to find the most recent previous file
+    previous_file_path = None
+    yesterday = today - datetime.timedelta(days=1)
+
+    # Scan data directory for all matching brand files before today
+    candidates = []
+    for file in os.listdir("data"):
+        if file.startswith(f"data_{brandname}_") and file.endswith(".json"):
+            file_match = re.match(rf"data_{brandname}_(\d{{4}}-\d{{2}}-\d{{2}})(?:_\d+)?\.json", file)
+            if file_match:
+                file_date = datetime.datetime.strptime(file_match.group(1), "%Y-%m-%d")
+                if file_date < today:
+                    candidates.append((file_date, file))
+
+    if not candidates:
+        print(f"[ℹ️ Info] No previous file found for {brandname} to compare against.")
+        return
+
+    # Use the most recent file before today
+    candidates.sort(reverse=True)
+    previous_file_path = os.path.join("data", candidates[0][1])
+
+    # Load JSON files
+    try:
+        with open(current_file_path, 'r', encoding='utf-8') as f:
+            current_products = json.load(f)
+
+        with open(previous_file_path, 'r', encoding='utf-8') as f:
+            previous_products = json.load(f)
+    except Exception as e:
+        print(f"[❌ Error] Failed to load JSON: {e}")
+        return
+
+    # Compare using productID
+    previous_ids = {prod.get("productID") for prod in previous_products}
+    new_products = [prod for prod in current_products if prod.get("productID") not in previous_ids]
+
+    if not new_products:
+        print(f"[✅] No new products found for {brandname} compared to {candidates[0][1]}.")
+        return
+
+    # Save new products to a versioned file (no overwrite)
+    base_output_name = f"data/new_products_{brandname}_{date_str}"
+    version = 1
+    output_file = f"{base_output_name}_{version}.json"
+    while os.path.exists(output_file):
+        version += 1
+        output_file = f"{base_output_name}_{version}.json"
+
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(new_products, f, ensure_ascii=False, indent=2)
+
+    print(f"[✅] Found {len(new_products)} new product(s) for {brandname}.")
+    print(f"[💾] New products saved to: {output_file}")
+

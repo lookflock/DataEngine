@@ -6,7 +6,7 @@ import os
 import pytz
 import re
 import config
-from firebaseConfig import db
+# from firebaseConfig import db
 # Get today's date in UTC
 today = datetime.datetime.now(pytz.utc)
 yesterday = today - datetime.timedelta(days=1)
@@ -46,43 +46,91 @@ def getNavigationDetails(brandID):
                 navigationDetails = b
                 break
     return navigationDetails
-
 def getRequest(url, requestType):
-    # print(requestType)
     user_agent = config.user_agent
     r = requests.get(url, headers=user_agent)
     statusCode = r.status_code
-    # print(statusCode)
 
-    if (statusCode != 200):
-        errorFilePath = 'errors//connection_' + str(datetime.datetime.now()) + '.txt'
-        # Check if the file exists, create it if not
-        if not os.path.exists(errorFilePath):
-            with open(errorFilePath, 'w') as file:
-                file.write('')
+    if statusCode != 200:
+        # Format timestamp safely
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        errorFilePath = f"errors/connection_{timestamp}.txt"
 
+        # Ensure 'errors' directory exists
+        os.makedirs('errors', exist_ok=True)
+
+        # Write error details
         with open(errorFilePath, 'a') as exc:
-            exc.write('\n\nWrong Status Code \nStatus Code: ' +str(statusCode) + '\nURL: ' + url)
+            exc.write('\n\nWrong Status Code\n')
+            exc.write(f'Status Code: {statusCode}\n')
+            exc.write(f'URL: {url}\n')
 
     if requestType == 'text':
-        # print(r.text)
         return r.text
     elif requestType == 'json':
         return json.loads(r.text)
+# def getRequest(url, requestType):
+#     # print(requestType)
+#     user_agent = config.user_agent
+#     r = requests.get(url, headers=user_agent)
+#     statusCode = r.status_code
+#     # print(statusCode)
+
+#     if (statusCode != 200):
+#         errorFilePath = 'errors//connection_' + str(datetime.datetime.now()) + '.txt'
+#         # Check if the file exists, create it if not
+#         if not os.path.exists(errorFilePath):
+#             with open(errorFilePath, 'w') as file:
+#                 file.write('')
+
+#         with open(errorFilePath, 'a') as exc:
+#             exc.write('\n\nWrong Status Code \nStatus Code: ' +str(statusCode) + '\nURL: ' + url)
+
+#     if requestType == 'text':
+#         # print(r.text)
+#         return r.text
+#     elif requestType == 'json':
+#         return json.loads(r.text)
+
+# def renameDataFile(brandName):
+#     # Get today's date in UTC
+#     today = datetime.datetime.now(pytz.utc)
+#     yesterday = today - datetime.timedelta(days=1)
+
+#     existingFile = 'data/data_' + brandName + '_' + today.strftime("%Y-%m-%d") + '.json'
+#     renamedFile = 'data/data_' + brandName + '_' + yesterday.strftime("%Y-%m-%d") + '.json'
+
+#     if os.path.isfile(existingFile):
+#         os.rename(existingFile, renamedFile)
+#         return renamedFile
+#     else:
+#         return None
+import os
+import datetime
+import pytz
 
 def renameDataFile(brandName):
-    # Get today's date in UTC
-    today = datetime.datetime.now(pytz.utc)
-    yesterday = today - datetime.timedelta(days=1)
+    today = datetime.datetime.now(pytz.utc).strftime("%Y-%m-%d")
+    base_name = f"data/data_{brandName}_{today}"
+    ext = ".json"
 
-    existingFile = 'data/data_' + brandName + '_' + today.strftime("%Y-%m-%d") + '.json'
-    renamedFile = 'data/data_' + brandName + '_' + yesterday.strftime("%Y-%m-%d") + '.json'
+    version = 1
+    while True:
+        candidate_name = f"{base_name}_{version}{ext}"
+        if not os.path.isfile(candidate_name):
+            break
+        version += 1
 
-    if os.path.isfile(existingFile):
-        os.rename(existingFile, renamedFile)
-        return renamedFile
+    original_file = f"{base_name}{ext}"
+
+    if os.path.isfile(original_file):
+        os.rename(original_file, candidate_name)
+        print(f"[🔁] Renamed old file to: {candidate_name}")
+        return candidate_name
     else:
+        print(f"[ℹ️] No original file found to rename: {original_file}")
         return None
+
 
 def extractInt(string):
     if isinstance(string, str):
