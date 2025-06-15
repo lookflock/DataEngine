@@ -1,16 +1,95 @@
 import json
 from bs4 import BeautifulSoup
-import datetime
 import math
 import os
-import random
-import functions
-
 import datetime
-import json
 import re
-import functions  # Assuming you have a module named functions.py
+import config
+import functions
+import random
+import time
+from urllib.parse import urlparse, urlunparse
+import requests
 
+supplier='Almirah'
+
+# def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
+#     print("In Almirah")
+#     products = []
+#     mainContainer = soup.find('div', {'class': 'product-grid-container'})
+#     productsDiv = mainContainer.find_all('div',{'class': 'product-grid'})
+
+#     for i in productsDiv:
+#         tmp_product = {
+#                 'supplier': supplier,
+#                 'id': '',
+#                 'name': '',
+#                 'oldPrice': '',
+#                 'newPrice': '',
+#                 'discount': '',
+#                 'category': '',
+#                 'subCategory': '',
+#                 'subSubCategory': '',
+#                 'url': '',
+#                 'imageUrl': '',
+#                 'page': pageURL,
+#                 'views' : 0,
+#                 'likes' : 0,
+#                 'shares' : 0,
+#                 'favourites' : 0,
+#                 'status' : 1,
+#                 'list' : 0,
+#                 'keywords': [],
+#                 'piece': '',
+#                 'valid': 1
+#             }
+#         # product__title grid-product__title--body
+        
+        
+        
+#         name = i.find('div', {'class': 'grid-'}).text.strip()
+#         name.replace("\u00a02", ' ')
+#         try:    
+#             productID = name.split(' - ')[1]            
+#             url = i.find('a', {'class': 'grid-product__link'})['href']
+#             imageUrl = i.find('img', {'class': 'grid-product__image lazyloaded'})['src']
+#             imageUrl = imageUrl.replace('400x', '1000x')
+#             price_elements = i.find_all('span', class_='money')
+#             oldPrice = price_elements[0].text.strip().split('.')[1].replace(',', '')
+#             try:
+#                 newPrice = price_elements[1].text.strip().split('.')[1].replace(',', '')
+#                 temp_discount = i.find('div', {'class': 'grid-product__tag grid-product__tag--sale'}).text.strip()
+#                 discount = temp_discount.split('%')[0]
+#             except:
+#                 newPrice = oldPrice
+#                 oldPrice = 0
+#                 discount = 0
+            
+#             tmp_product['productID'] = productID
+#             # tmp_product['name'] = name
+#             tmp_product['name'] = functions.filterName(name,productID)
+#             tmp_product['oldPrice'] = int(oldPrice)
+#             tmp_product['newPrice'] = int(newPrice)
+#             tmp_product['discount'] = int(discount)
+#             tmp_product['url'] =  'https://www.almirah.com.pk' + url
+#             tmp_product['imageUrl'] = 'https:' + imageUrl 
+#             tmp_product['category'] =  category
+#             tmp_product['subCategory'] = subCategory
+#             tmp_product['subSubCategory'] = subSubCategory
+#             tmp_product['piece'] = piece
+#             products.append(tmp_product)    
+
+#         except Exception as e:
+#             with open("errors/error_Almirah.json", "a") as f:
+#                 error_log = {
+#                     "datetime": datetime.datetime.now().isoformat(),
+#                     "product_name": str(name),
+#                     "exception_message": str(e),
+#                     "page number": pageURL
+#                     }
+#                 json.dump(error_log, f)
+       
+#     return products
 
 def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     products = []
@@ -34,7 +113,8 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
             url = link['href']
             title_img = link.find('img')
             name = title_img['alt'].strip()
-            productID = name.split('-')[-1].strip()
+            name.replace("\u00a02", ' ')
+            productID = name.split(' - ')[1] 
 
             # Price extraction: requires looking for price container
             price_el = li.select_one('.price-item--regular')
@@ -48,61 +128,54 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
             img_url = title_img['src'].replace('width=533', 'width=1000') if title_img else ''
 
             tmp_product={
-                'productID': productID,
+                'supplier': supplier,
+                'id': productID,
                 'name': functions.filterName(name, productID),
                 'oldPrice': int(oldPrice),
                 'newPrice': int(newPrice),
                 'discount': discount,
-                'url': 'https://www.almirah.com.pk' + url,
-                'imageUrl': img_url,
                 'category': category,
                 'subCategory': subCategory,
                 'subSubCategory': subSubCategory,
-                'pageUrl': pageURL,
+                'url': 'https://www.almirah.com.pk' + url,
+                'imageUrl': 'https:' + normalize_image_url(img_url) ,
+                'page':pageURL,
+                'views': 0, ''
+                'likes': 0,
+                'shares': 0,
+                'favourites': 0,
+                'status' : 1,
+                'list': 0,
+                'keywords': [],
                 'piece': piece,
-                'views': 0, 'likes': 0, 'shares': 0,
-                'favourites': 0, 'list': 0, 'keywords': []
+                'valid':1
             }
-            tmp_product=getAlmirahProductDetails(tmp_product)
+            # tmp_product=getAlmirahProductDetails(tmp_product)
             products.append(tmp_product) 
-            # products.append({
-            #     'productID': productID,
-            #     'name': functions.filterName(name, productID),
-            #     'oldPrice': int(oldPrice),
-            #     'newPrice': int(newPrice),
-            #     'discount': discount,
-            #     'url': 'https://www.almirah.com.pk' + url,
-            #     'imageUrl': img_url,
-            #     'category': category,
-            #     'subCategory': subCategory,
-            #     'subSubCategory': subSubCategory,
-            #     'pageUrl': pageURL,
-            #     'piece': piece,
-            #     'views': 0, 'likes': 0, 'shares': 0,
-            #     'favourites': 0, 'list': 0, 'keywords': []
-            # })
         except Exception as e:
             with open("errors/error_Almirah.json", "a") as f:
                 json.dump({
                     "datetime": datetime.datetime.now().isoformat(),
-                    "error": str(e),
-                    "item_html": str(li)[:200]
+                    "product_name": str(name),
+                    "exception_message": str(e),
+                    "pageURL number": pageURL
                 }, f)
                 f.write("\n")
     return products
+
+def normalize_image_url(url):
+    parsed = urlparse(url)
+    path = parsed.path
+    path = re.sub(r'(_\d+x)?(\.\w+)$', r'\2', path)  # remove _360x, _720x, etc.
+    return urlunparse(parsed._replace(path=path, query=""))
 
 def getAlmirahProductDetails(product):
     try:
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")
         
-        with open("output_generate.html", "w", encoding="utf-8") as f:
-             f.write(soup.prettify())
-        # html = functions.getRequest(product["url"], 'text')
-        # with open("debug_output.html", "w", encoding="utf-8") as f:
-        #     f.write(html)
-
-        # soup = BeautifulSoup(html, "html.parser")
+        # with open("output_generate.html", "w", encoding="utf-8") as f:
+        #      f.write(soup.prettify())
 
         availableSizes = []
         secondaryImages = []
@@ -112,10 +185,13 @@ def getAlmirahProductDetails(product):
         # -----------------------
         size_inputs = soup.select('fieldset.size input[type="radio"][value]')
         availableSizes = [input_tag['value'] for input_tag in size_inputs]
+        availableSizes = functions.sortSizes('AhmadRaza', availableSizes)
         # -----------------------
         # Get Secondary Images
         # -----------------------
         media_items = soup.select('div.product__media img, div.swiper-wrapper img, div.product-gallery img')
+        main_image = product.get("imageUrl")
+
         for img in media_items:
             img_url = img.get('data-master') or img.get('data-src') or img.get('src')
             if img_url:
@@ -123,11 +199,31 @@ def getAlmirahProductDetails(product):
                     img_url = 'https:' + img_url
                 elif img_url.startswith('/'):
                     img_url = 'https://www.almirah.com.pk' + img_url
-                if img_url not in secondaryImages:
-                    secondaryImages.append(img_url)
+                
+                parsed_url = urlparse(img_url)
+                cleaned_url = urlunparse(parsed_url._replace(query=""))
 
-        # Remove duplicates and limit to 4
-        secondaryImages = list(dict.fromkeys(secondaryImages))[:4]
+
+                # Skip if this is the same as the main image
+                if main_image:
+                    normalized_main = normalize_image_url(main_image)
+                    normalized_secondary = normalize_image_url(cleaned_url)
+
+                    if normalized_main == normalized_secondary:
+                        continue
+
+                # Verify and add
+                try:
+                    response = requests.head(cleaned_url, timeout=5)
+                    if response.status_code == 200:
+                        secondaryImages.append(cleaned_url)
+                    else:
+                        print(f"[image check] Invalid image (status {response.status_code}): {cleaned_url}")
+                except Exception as e:
+                    print(f"[image check] Failed to verify image: {cleaned_url} — {e}")
+
+        # Finalize
+        secondaryImages = list(set(secondaryImages))
         product['secondaryImages'] = secondaryImages
         product['sizes'] = availableSizes
 

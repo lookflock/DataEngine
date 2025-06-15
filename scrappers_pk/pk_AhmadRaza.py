@@ -7,12 +7,12 @@ import re
 import config
 import functions
 import random
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from bs4 import BeautifulSoup
 import time
+from urllib.parse import urlparse, urlunparse
+import requests
+        
 
-
+supplier='AhmadRaza'
 def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     
     products = []
@@ -21,7 +21,8 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     
     for product in productsDiv:
         tmp_product = {
-                'productID': '',
+                'supplier': supplier,
+                'id': '',
                 'name': '',
                 'oldPrice': '',
                 'newPrice': '',
@@ -36,9 +37,11 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                 'likes' : 0,
                 'shares' : 0,
                 'favourites' : 0,
+                'status' : 1,
                 'list' : 0,
                 'keywords': [],
-                'piece': ''
+                'piece': '',
+                'valid': 1
             }
         name = product.find('a',{'class','product-title'}).text.strip()
         try:
@@ -63,13 +66,13 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                 oldPrice = 0
                 discount = 0
 
-            tmp_product['productID'] = productID
+            tmp_product['id'] = productID
             tmp_product['name'] = name
             tmp_product['oldPrice'] = int(oldPrice)
             tmp_product['newPrice'] = int(newPrice)
             tmp_product['discount'] = int(discount)
             tmp_product['url'] = 'https://www.ahmadraza.com.pk'+  url
-            tmp_product['imageUrl'] = 'https:' + imageUrl 
+            tmp_product['imageUrl'] = 'https:' + normalize_image_url(imageUrl) 
             tmp_product['category'] =  category
             tmp_product['subCategory'] = subCategory
             tmp_product['subSubCategory'] = subSubCategory
@@ -91,30 +94,39 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                     }
                     json.dump(error_log, f)        
                 return
-
-         
-
     return products
 
+def normalize_image_url(url):
+    parsed = urlparse(url)
+    path = parsed.path
+    path = re.sub(r'(_\d+x)?(\.\w+)$', r'\2', path)  # remove _360x, _720x, etc.
+    return urlunparse(parsed._replace(path=path, query=""))
+
+
+
 def getAhmadRazaProductDetails(product):
+    print("Reached getAhmadRazaProductDetails")
     try:
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")
-        
+
         availableSizes = []
         secondaryImages = []
 
-        # Get sizes from input[type="radio"] inside swatch
+        # Get sizes
         swatch_div = soup.find('div', class_='swatch')
         if swatch_div:
             size_inputs = swatch_div.find_all('input', {'type': 'radio', 'name': 'option-0'})
             for input_tag in size_inputs:
                 size_value = input_tag.get('value', '').strip()
-                if size_value:  # Avoid empty values
+                if size_value:
                     availableSizes.append(size_value.upper())
+        availableSizes = functions.sortSizes('AhmadRaza', availableSizes)
 
         # Get secondary images
         image_wrappers = soup.select('div.product-photo-container.slider-for div.thumb img')
+        main_image = product.get("imageUrl")
+
         for img in image_wrappers:
             if 'src' in img.attrs:
                 img_url = img['src']
@@ -122,21 +134,40 @@ def getAhmadRazaProductDetails(product):
                     img_url = 'https:' + img_url
                 elif img_url.startswith('/'):
                     img_url = 'https://www.ahmadraza.com.pk' + img_url
-                secondaryImages.append(img_url)
 
-        # Remove duplicates and limit to 4
-        secondaryImages = list(set(secondaryImages))[:4]
+                parsed_url = urlparse(img_url)
+                cleaned_url = urlunparse(parsed_url._replace(query=""))
+
+                # Skip if this is the same as the main image
+                if main_image:
+                    normalized_main = normalize_image_url(main_image)
+                    normalized_secondary = normalize_image_url(cleaned_url)
+
+                    if normalized_main == normalized_secondary:
+                        continue
+
+                # Verify and add
+                try:
+                    response = requests.head(cleaned_url, timeout=5)
+                    if response.status_code == 200:
+                        secondaryImages.append(cleaned_url)
+                    else:
+                        print(f"[image check] Invalid image (status {response.status_code}): {cleaned_url}")
+                except Exception as e:
+                    print(f"[image check] Failed to verify image: {cleaned_url} — {e}")
+
+        # Finalize
+        secondaryImages = list(set(secondaryImages))
         product['secondaryImages'] = secondaryImages
         product['sizes'] = availableSizes
 
     except Exception as e:
         print("An Error Occurred While Getting The Product Details")
         print(str(e))
-
         with open("errors/error_AhmadRaza.json", "a") as f:
             error_log = {
                 "datetime": datetime.datetime.now().isoformat(),
-                "product_name": str(product['name']),
+                "product_name": str(product.get('name')),
                 "exception_message": str(e)
             }
             json.dump(error_log, f)

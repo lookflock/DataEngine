@@ -152,6 +152,7 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                 'likes': 0,
                 'shares': 0,
                 'favourites': 0,
+                'availability' : 1,
                 'list': 0,
                 'keywords': []
             }
