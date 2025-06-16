@@ -65,7 +65,7 @@ supplier='Almirah'
 #                 oldPrice = 0
 #                 discount = 0
             
-#             tmp_product['productID'] = productID
+#             tmp_product['id'] = productID
 #             # tmp_product['name'] = name
 #             tmp_product['name'] = functions.filterName(name,productID)
 #             tmp_product['oldPrice'] = int(oldPrice)
@@ -185,7 +185,7 @@ def getAlmirahProductDetails(product):
         # -----------------------
         size_inputs = soup.select('fieldset.size input[type="radio"][value]')
         availableSizes = [input_tag['value'] for input_tag in size_inputs]
-        availableSizes = functions.sortSizes('AhmadRaza', availableSizes)
+        availableSizes = functions.sortSizes('Almirah', availableSizes)
         # -----------------------
         # Get Secondary Images
         # -----------------------

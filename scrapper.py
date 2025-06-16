@@ -16,7 +16,7 @@ from datetime import datetime, timedelta
 from lib.logger import log_info, log_error
 
 import scrappers_pk.pk_AhmadRaza as AhmadRaza
-import scrappers_pk.pk_AlKaram as Alkaram
+import scrappers_pk.pk_Alkaram as Alkaram
 import scrappers_pk.pk_Almirah as Almirah
 import scrappers_pk.pk_AnamAkhlaq as AnamAkhlaq
 import scrappers_pk.pk_BeechTree as BeechTree

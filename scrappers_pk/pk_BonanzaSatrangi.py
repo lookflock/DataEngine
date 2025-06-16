@@ -1,13 +1,14 @@
 import json
 from bs4 import BeautifulSoup
 import math
-import os
 import datetime
 import re
-import config
 import functions
-import random
+from urllib.parse import urlparse, urlunparse
+import requests
+        
 
+supplier='BonanzaSatrangi'
 def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     
     products = []
@@ -19,7 +20,8 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
 
     for i in productsDiv:
         tmp_product = {
-                'productID': '',
+                'supplier': supplier,
+                'id': '',
                 'name': '',
                 'oldPrice': '',
                 'newPrice': '',
@@ -29,18 +31,19 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                 'subSubCategory': '',
                 'url': '',
                 'imageUrl': '',
-                'pageUrl': pageURL,
+                'page': pageURL,
                 'views' : 0,
                 'likes' : 0,
                 'shares' : 0,
                 'favourites' : 0,
-                'availability' : 1,
+                'status' : 1,
                 'list' : 0,
                 'keywords': [],
-                'piece': ''
+                'piece': '',
+                'valid': 1
             }
-        with open("output3.html", "w", encoding="utf-8") as f:
-            f.write(i.prettify())
+        # with open("output3.html", "w", encoding="utf-8") as f:
+        #     f.write(i.prettify())
 
         name = i.find('h3',{'class':'sr4-product-title'}).text.strip()
         try:
@@ -63,18 +66,18 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                 discount = 0
             
             
-            tmp_product['productID'] = Product_id
+            tmp_product['id'] = Product_id
             tmp_product['name'] = functions.filterName(name,Product_id)
             tmp_product['oldPrice'] = oldPrice
             tmp_product['newPrice'] = newPrice
             tmp_product['discount'] = discount
             tmp_product['url'] = 'https://bonanzasatrangi.com'+  url
-            tmp_product['imageUrl'] = 'https:' + imageUrl 
+            tmp_product['imageUrl'] = 'https://' + normalize_image_url(imageUrl) 
             tmp_product['category'] =  category
             tmp_product['subCategory'] = subCategory
             tmp_product['subSubCategory'] = subSubCategory
             tmp_product['piece'] = piece
-            tmp_product=getBonanzaSatrangiProductDetails(tmp_product)
+            # tmp_product=getBonanzaSatrangiProductDetails(tmp_product)
             products.append(tmp_product) 
 
         except Exception as e:
@@ -91,13 +94,24 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
 
     return products
 
+
+
+def normalize_image_url(url):
+    parsed = urlparse(url)
+    path = parsed.path
+    path = re.sub(r'(_\d+x)?(\.\w+)$', r'\2', path)  # remove _360x, _720x, etc.
+    return urlunparse(parsed._replace(path=path, query=""))
+
+
 def getBonanzaSatrangiProductDetails(product):
+    print(f"[Product Details] Extracting Details for Product id: {product['id']}")
+
     try:
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")
         
-        with open("output_generate.html", "w", encoding="utf-8") as f:
-             f.write(soup.prettify())
+        # with open("output_generate.html", "w", encoding="utf-8") as f:
+        #      f.write(soup.prettify())
         
         availableSizes = []
         secondaryImages = []
@@ -109,20 +123,46 @@ def getBonanzaSatrangiProductDetails(product):
             el.get('data-value') 
             for el in soup.select('div[data-swatch-option][data-id="0"] div.sr4-swatch__item')
         ]
+        availableSizes = functions.sortSizes('BonanzaSatrangi', availableSizes)
+
         # -----------------------
         # Get Secondary Images
         # -----------------------
         media_items = soup.select(".sr4-product__media-item img[data-master]")
+        main_image = product.get("imageUrl")
 
         for img_tag in media_items:
             img_url = img_tag.get("data-master")
             if img_url:
-                full_url = "https:" + img_url if img_url.startswith("//") else img_url
-                secondaryImages.append(full_url)
+                if img_url.startswith('//'):
+                    img_url = 'https:' + img_url
+                elif img_url.startswith('/'):
+                    img_url = 'https://www.bonanzasatrangi.com' + img_url
 
+                parsed_url = urlparse(img_url)
+                cleaned_url = urlunparse(parsed_url._replace(query=""))
 
-        # Remove duplicates and limit to 4
-        secondaryImages = list(dict.fromkeys(secondaryImages))[:4]
+                # Skip if this is the same as the main image
+                if main_image:
+                    normalized_main = normalize_image_url(main_image)
+                    normalized_secondary = normalize_image_url(cleaned_url)
+
+                    if normalized_main == normalized_secondary:
+                        continue
+
+                # Verify and add
+                try:
+                    print(f"[Product Details] Verifying Secondary Images for Product id: {product['id']}")
+                    response = requests.head(cleaned_url, timeout=5)
+                    if response.status_code == 200:
+                        secondaryImages.append(cleaned_url)
+                    else:
+                        print(f"[image check] Invalid image (status {response.status_code}): {cleaned_url}")
+                except Exception as e:
+                    print(f"[image check] Failed to verify image: {cleaned_url} — {e}")
+
+        # Finalize
+        secondaryImages = list(set(secondaryImages))
         product['secondaryImages'] = secondaryImages
         product['sizes'] = availableSizes
 

@@ -1,13 +1,9 @@
 import json
 from bs4 import BeautifulSoup
 import math
-import os
 import datetime
 import re
-import config
 import functions
-import random
-import time
 from urllib.parse import urlparse, urlunparse
 import requests
         
@@ -97,11 +93,20 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     return products
 
 def normalize_image_url(url):
-    parsed = urlparse(url)
-    path = parsed.path
-    path = re.sub(r'(_\d+x)?(\.\w+)$', r'\2', path)  # remove _360x, _720x, etc.
-    return urlunparse(parsed._replace(path=path, query=""))
+    """Fix protocol and clean image URL by removing size suffixes and query params."""
+    if url.startswith("https:") and not url.startswith("https://"):
+        url = url.replace("https:", "https://")
+    elif url.startswith("http:") and not url.startswith("http://"):
+        url = url.replace("http:", "http://")
+    elif url.startswith("//"):
+        url = "https:" + url
+    elif url.startswith("/"):
+        url = "https://www.alkaramstudio.com" + url
 
+    parsed = urlparse(url)
+    # Remove things like _360x, etc.
+    path = re.sub(r'(_\d+x)?(\.\w+)$', r'\2', parsed.path)
+    return urlunparse(parsed._replace(path=path, query=""))
 
 
 def getAhmadRazaProductDetails(product):

@@ -1,14 +1,14 @@
 import json
 from bs4 import BeautifulSoup
 import math
-import statistics
-import os
 import datetime
 import re
-import config
 import functions
+from urllib.parse import urlparse, urlunparse
+import requests
+        
 
-
+supplier='Cambridge'
 def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     
     products = []
@@ -16,7 +16,8 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     productsDiv = mainContainer.find_all('div', {'class': 't4s-product'})
     for product in productsDiv:            
             tmp_product = {
-                'productID': '',
+                'supplier': supplier,
+                'id': '',
                 'name': '',
                 'oldPrice': '',
                 'newPrice': '',
@@ -26,15 +27,16 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                 'subSubCategory': '',
                 'url': '',
                 'imageUrl': '',
-                'pageUrl': pageURL,
+                'page': pageURL,
                 'views' : 0,
                 'likes' : 0,
                 'shares' : 0,
                 'favourites' : 0,
-                'availability' : 1,
+                'status' : 1,
                 'list' : 0,
                 'keywords': [],
-                'piece': ''
+                'piece': '',
+                'valid': 1
             }
             # with open("output3.html", "w", encoding="utf-8") as f:
             #     f.write(product.prettify())
@@ -61,18 +63,18 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                     oldPrice = 0
                     discount = 0
             
-                tmp_product['productID'] = productID
+                tmp_product['id'] = productID
                 tmp_product['name'] = functions.filterName(name,productID)
                 tmp_product['oldPrice'] = oldPrice
                 tmp_product['newPrice'] = newPrice
                 tmp_product['discount'] = discount
                 tmp_product['url'] = 'https://thecambridgeshop.com'+  url
-                tmp_product['imageUrl'] = 'https:' + imageUrl
+                tmp_product['imageUrl'] = 'https:' + normalize_image_url(imageUrl) 
                 tmp_product['category'] =  category
                 tmp_product['subCategory'] = subCategory
                 tmp_product['subSubCategory'] = subSubCategory
                 tmp_product['piece'] = piece
-                tmp_product=getCambridgeProductDetails(tmp_product)
+                # tmp_product=getCambridgeProductDetails(tmp_product)
                 products.append(tmp_product) 
                 #print(tmp_product)
             except Exception as e:
@@ -88,13 +90,22 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     return products
 
 
+
+def normalize_image_url(url):
+    parsed = urlparse(url)
+    path = parsed.path
+    path = re.sub(r'(_\d+x)?(\.\w+)$', r'\2', path)  # remove _360x, _720x, etc.
+    return urlunparse(parsed._replace(path=path, query=""))
+
+
 def getCambridgeProductDetails(product):
+    print(f"[Product Details] Extracting Details for Product id: {product['id']}")
     try:
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")
         
-        with open("output_generate.html", "w", encoding="utf-8") as f:
-             f.write(soup.prettify())
+        # with open("output_generate.html", "w", encoding="utf-8") as f:
+        #      f.write(soup.prettify())
         
         availableSizes = []
         secondaryImages = []
@@ -115,6 +126,7 @@ def getCambridgeProductDetails(product):
             ) 
             if size in standard_sizes
         ]
+        availableSizes = functions.sortSizes('Cambridge', availableSizes)
         # Get Secondary Images
         # -----------------------
         # mainContainer = soup.find('div',{'class':'t4s-row t4s-g-0'})
@@ -126,18 +138,39 @@ def getCambridgeProductDetails(product):
         #         if 'srcset' in img.attrs:
         #             img_url = img["srcset"].split(',')[0][:-5].replace('&width=288','&width=1000')
         #             secondaryImages.append('https:' + img_url)
+        main_image = product.get("imageUrl")
         for img in soup.select('img[data-master]'):
             img_url = img.get('data-master')
             if img_url:
                 if img_url.startswith('//'):
                     img_url = 'https:' + img_url
-                secondaryImages.append(img_url.split('?')[0])  # Remove query params
-        
-        secondaryImages= list(set(secondaryImages))
-        
+                elif img_url.startswith('/'):
+                    img_url = 'https://www.thecambridgeshop.com' + img_url
 
-        # Remove duplicates and limit to 4
-        secondaryImages = list(dict.fromkeys(secondaryImages))[:4]
+                parsed_url = urlparse(img_url)
+                cleaned_url = urlunparse(parsed_url._replace(query=""))
+
+                # Skip if this is the same as the main image
+                if main_image:
+                    normalized_main = normalize_image_url(main_image)
+                    normalized_secondary = normalize_image_url(cleaned_url)
+
+                    if normalized_main == normalized_secondary:
+                        continue
+
+                # Verify and add
+                try:
+                    print(f"[Product Details] Verifying Secondary Images for Product id: {product['id']}")
+                    response = requests.head(cleaned_url, timeout=5)
+                    if response.status_code == 200:
+                        secondaryImages.append(cleaned_url)
+                    else:
+                        print(f"[image check] Invalid image (status {response.status_code}): {cleaned_url}")
+                except Exception as e:
+                    print(f"[image check] Failed to verify image: {cleaned_url} — {e}")
+
+        # Finalize
+        secondaryImages = list(set(secondaryImages))
         product['secondaryImages'] = secondaryImages
         product['sizes'] = availableSizes
 
