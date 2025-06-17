@@ -87,9 +87,89 @@ def get_latest_data_file(brand):
 
 #     return None
 
-def upload_products_to_firebase(brandName):
+# def upload_products_to_firebase(data_file,brandName):
+#     summary_file = get_latest_summary_file(brandName)
+#     # data_file = get_latest_data_file(brandName)
+#     print("data_file:", data_file)
+#     print("summary_file:", summary_file)
+
+#     if not summary_file or not data_file:
+#         print("[Error] Summary or data file not found.")
+#         return
+
+#     with open(summary_file, 'r', encoding='utf-8') as f:
+#         summary = json.load(f)
+
+#     with open(data_file, 'r', encoding='utf-8') as f:
+#         products = json.load(f)
+#         if isinstance(products, dict):
+#             products = [products]
+
+#     product_map = {p['id']: p for p in products}
+#     firebase_timestamp = firestore.SERVER_TIMESTAMP
+
+#     new_ids = summary.get("New Products", {}).get("ids", [])
+#     inc_ids = summary.get("Price Increased", {}).get("ids", [])
+#     dec_ids = summary.get("Price Decreased", {}).get("ids", [])
+#     del_ids = summary.get("Deleted Products", {}).get("ids", [])
+
+#     print('new_ids:', new_ids)
+#     print('inc_ids:', inc_ids)
+#     print('dec_ids:', dec_ids)
+#     print('del_ids:', del_ids)
+
+#     for pid in new_ids:
+#         product = product_map.get(pid)
+
+#         if product and product.get('valid', 1) != 0:  # Skip if valid == 0
+#                     product['id'] = str(pid)
+#                     product['dateCreated'] = firebase_timestamp
+#                     product['dateLastUpdate'] = firebase_timestamp
+#                     product.pop('valid', None)
+#                     db.collection("products").document(str(pid)).set(product)
+#                     print(f"[New] Added product {pid}")
+#         else:
+#             print(f"[Skip] Product {pid} is not valid and was skipped")
+#     failedToUpdate=[]
+#     for pid in inc_ids + dec_ids:
+#         product = product_map.get(pid)
+#         if product:
+#             try:
+#                 db.collection("products").document(str(pid)).update({
+#                     "newPrice": product.get("newPrice"),
+#                     "oldPrice": product.get("oldPrice"),
+#                     "discount": product.get("discount"),
+#                     "dateLastUpdate": firebase_timestamp
+#                 })
+#                 print(f"[Update] Price change for product {pid}")
+#             except Exception as e:
+#                 print(f"[Error] Product {product.get('id')} failed to update: {e}")
+#                 failedToUpdate.append(product.get('id'))
+
+#     for pid in del_ids:
+#         db.collection("products").document(str(pid)).update({
+#             "status": 0,
+#             "dateLastUpdate": firebase_timestamp
+#         })
+#         print(f"[Availability] Marked product {pid} as Unavailable.")
+
+#     print("Upload to Firebase complete.")
+
+#     # Append failed updates to summary
+#     if failedToUpdate:
+#         summary["Failed to Update"] = {
+#             "count": len(failedToUpdate),
+#             "ids": failedToUpdate
+#         }
+#         with open(summary_file, 'w', encoding='utf-8') as f:
+#             json.dump(summary, f, ensure_ascii=False, indent=2)
+#         print(f"[Summary] Saved {len(failedToUpdate)} failed updates to summary.")
+
+
+
+def upload_products_to_firebase(data_file, brandName):
     summary_file = get_latest_summary_file(brandName)
-    data_file = get_latest_data_file(brandName)
+
     print("data_file:", data_file)
     print("summary_file:", summary_file)
 
@@ -118,46 +198,65 @@ def upload_products_to_firebase(brandName):
     print('dec_ids:', dec_ids)
     print('del_ids:', del_ids)
 
+    # Handle New Products
     for pid in new_ids:
         product = product_map.get(pid)
-        
-        # if product:
-        #     product['id'] = str(pid)
-        #     product['dateCreated'] = firebase_timestamp
-        #     product['dateLastUpdate'] = firebase_timestamp
-        #     product.pop('valid', None) 
-        #     db.collection("products").document(str(pid)).set(product)
-        #     print(f"[New] Added product {pid}")
-
-        if product and product.get('valid', 1) != 0:  # Skip if valid == 0
-                    product['id'] = str(pid)
-                    product['dateCreated'] = firebase_timestamp
-                    product['dateLastUpdate'] = firebase_timestamp
-                    product.pop('valid', None)
-                    db.collection("products").document(str(pid)).set(product)
-                    print(f"[New] Added product {pid}")
+        if product and product.get('valid', 1) != 0:
+            product['id'] = str(pid)
+            product['dateCreated'] = firebase_timestamp
+            product['dateLastUpdate'] = firebase_timestamp
+            product.pop('valid', None)
+            db.collection("products").document(str(pid)).set(product)
+            print(f"[New] Added product {pid}")
         else:
             print(f"[Skip] Product {pid} is not valid and was skipped")
 
+    # Handle Price Changes
+    failedToUpdate = []
     for pid in inc_ids + dec_ids:
         product = product_map.get(pid)
         if product:
-            db.collection("products").document(str(pid)).update({
-                "newPrice": product.get("newPrice"),
-                "oldPrice": product.get("oldPrice"),
-                "discount": product.get("discount"),
+            doc_ref = db.collection("products").document(str(pid))
+            if doc_ref.get().exists:
+                try:
+                    doc_ref.update({
+                        "newPrice": product.get("newPrice"),
+                        "oldPrice": product.get("oldPrice"),
+                        "discount": product.get("discount"),
+                        "dateLastUpdate": firebase_timestamp
+                    })
+                    print(f"[Update] Price change for product {pid}")
+                except Exception as e:
+                    print(f"[Error] Product {pid} failed to update: {e}")
+                    failedToUpdate.append(pid)
+            else:
+                print(f"[Skip] Product {pid} does not exist in Firebase, skipping update.")
+                failedToUpdate.append(pid)
+
+    # Handle Deleted Products
+    for pid in del_ids:
+        doc_ref = db.collection("products").document(str(pid))
+        if doc_ref.get().exists:
+            doc_ref.update({
+                "status": 0,
                 "dateLastUpdate": firebase_timestamp
             })
-            print(f"[Update] Price change for product {pid}")
-
-    for pid in del_ids:
-        db.collection("products").document(str(pid)).update({
-            "status": 0,
-            "dateLastUpdate": firebase_timestamp
-        })
-        print(f"[Availability] Marked product {pid} as Unavailable.")
+            print(f"[Availability] Marked product {pid} as Unavailable.")
+        else:
+            print(f"[Skip] Product {pid} not found for deletion.")
+            failedToUpdate.append(pid)
 
     print("Upload to Firebase complete.")
+
+    # Update summary with failed updates
+    if failedToUpdate:
+        summary["Failed to Update"] = {
+            "count": len(failedToUpdate),
+            "ids": failedToUpdate
+        }
+        with open(summary_file, 'w', encoding='utf-8') as f:
+            json.dump(summary, f, ensure_ascii=False, indent=2)
+        print(f"[Summary] Saved {len(failedToUpdate)} failed updates to summary.")
 
 def upload():
     with open('data/data_AhmadRaza_2025-06-14_1.json', 'r', encoding='utf-8') as f:

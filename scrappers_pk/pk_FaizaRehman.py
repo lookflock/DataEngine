@@ -70,7 +70,7 @@ def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
                 oldPrice = 0
                 discount = 0
             
-            tmp_product['productID'] = productID
+            tmp_product['id'] = productID
             tmp_product['name'] = name
             # tmp_product['name'] = functions.filterName(name,productID)
             tmp_product['oldPrice'] = int(oldPrice)

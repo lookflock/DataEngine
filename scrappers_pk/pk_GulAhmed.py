@@ -64,7 +64,7 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
             imageUrl = image_tag['src'] if image_tag else ""
 
             # Populate the product dictionary
-            tmp_product['productID'] = productID
+            tmp_product['id'] = productID
             tmp_product['name'] = name
             tmp_product['oldPrice'] = oldPrice
             tmp_product['newPrice'] = newPrice

@@ -1,16 +1,15 @@
 import json
 from bs4 import BeautifulSoup
 import math
-import os
 import datetime
 import re
-import config
 import functions
+from urllib.parse import urlparse, urlunparse
+import requests
 
+supplier='Ego'
 
-
-
-def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
+def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     
     products = []
     mainContainer = soup.find('div', {'class':'productList'})
@@ -20,7 +19,8 @@ def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
         productsDiv = mainContainer.find_all('div', {'class':'changestyle gitem'})
     for i in productsDiv:
             tmp_product = {
-                'productID': '',
+                'supplier': supplier,
+                'id': '',
                 'name': '',
                 'oldPrice': '',
                 'newPrice': '',
@@ -30,13 +30,16 @@ def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
                 'subSubCategory': '',
                 'url': '',
                 'imageUrl': '',
+                'page': pageURL,
                 'views' : 0,
                 'likes' : 0,
                 'shares' : 0,
                 'favourites' : 0,
+                'status' : 1,
                 'list' : 0,
                 'keywords': [],
-                'piece': ''
+                'piece': '',
+                'valid': 1
             }
 
             nameDiv  = i.find('a', class_='grid-view-item__title')
@@ -61,13 +64,13 @@ def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
                     discount = 0
             
             
-                tmp_product['productID'] = productID.upper()
+                tmp_product['id'] = productID.upper()
                 tmp_product['name'] = functions.filterName(name,tmp_product['productID'])
                 tmp_product['oldPrice'] = oldPrice
                 tmp_product['newPrice'] = newPrice
                 tmp_product['discount'] = discount
                 tmp_product['url'] = 'https://wearego.com'+  url
-                tmp_product['imageUrl'] = 'https:' + imageUrl 
+                tmp_product['imageUrl'] = 'https:' + normalize_image_url(imageUrl) 
                 tmp_product['category'] =  category
                 tmp_product['subCategory'] = subCategory
                 tmp_product['subSubCategory'] = subSubCategory
@@ -87,7 +90,15 @@ def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
 
     return products
 
+
+def normalize_image_url(url):
+    parsed = urlparse(url)
+    path = parsed.path
+    path = re.sub(r'(_\d+x)?(\.\w+)$', r'\2', path)  # remove _360x, _720x, etc.
+    return urlunparse(parsed._replace(path=path, query=""))
+
 def getEgoProductDetails(product): 
+    print(f"[Product Details] Extracting Details for Product id: {product['id']}")
     try:
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")

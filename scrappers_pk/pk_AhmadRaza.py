@@ -1,4 +1,5 @@
 import json
+import os
 from bs4 import BeautifulSoup
 import math
 import datetime
@@ -77,39 +78,34 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
             products.append(tmp_product) 
 
         except Exception as e:
-                # with open(f"./AhmadRaza/{product['productID']}.html", "w", encoding="utf-8") as file:
-                #     file.write(product.prettify())
-                # print(product.prettify())
-                print("ERRORRR", json.dumps(tmp_product, indent=4 ,ensure_ascii=False))
-                with open("errors/error_AhmadRaza.json", "a") as f:
-                    error_log = {
-                    "datetime": datetime.datetime.now().isoformat(),
-                    "product_name": str(name),
-                    "exception_message": str(e),
-                    "pageURL number": pageURL
-                    }
-                    json.dump(error_log, f)        
-                return
+            print("ERRORRR", json.dumps(tmp_product, indent=4, ensure_ascii=False))      
+            error_log = {
+                "datetime": datetime.now().isoformat(),
+                "product_id": productID,
+                "product_name": str(name),
+                "exception_message": str(e),
+                "pageURL number": pageURL
+            }        
+            error_filename = functions.get_latest_error_file("AhmadRaza")
+            if not error_filename:
+                timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
+                error_filename = f"errors/error_AhmadRaza_{timestamp}.json"
+
+                # Save updated logs
+            with open(error_filename, "w", encoding="utf-8") as f:
+                json.dump(error_log, f, indent=2, ensure_ascii=False)
     return products
 
-def normalize_image_url(url):
-    """Fix protocol and clean image URL by removing size suffixes and query params."""
-    if url.startswith("https:") and not url.startswith("https://"):
-        url = url.replace("https:", "https://")
-    elif url.startswith("http:") and not url.startswith("http://"):
-        url = url.replace("http:", "http://")
-    elif url.startswith("//"):
-        url = "https:" + url
-    elif url.startswith("/"):
-        url = "https://www.alkaramstudio.com" + url
 
+def normalize_image_url(url):
     parsed = urlparse(url)
-    # Remove things like _360x, etc.
-    path = re.sub(r'(_\d+x)?(\.\w+)$', r'\2', parsed.path)
+    path = parsed.path
+    path = re.sub(r'(_\d+x)?(\.\w+)$', r'\2', path)  # remove _360x, _720x, etc.
     return urlunparse(parsed._replace(path=path, query=""))
 
 
 def getAhmadRazaProductDetails(product):
+    print(f"[Product Details] Extracting Details for Product id: {product['id']}")
     print("Reached getAhmadRazaProductDetails")
     try:
         html = functions.getRequest(product["url"], 'text')
@@ -153,6 +149,7 @@ def getAhmadRazaProductDetails(product):
 
                 # Verify and add
                 try:
+                    print(f"[Product Details] Verifying Secondary Images for Product id: {product['id']}")
                     response = requests.head(cleaned_url, timeout=5)
                     if response.status_code == 200:
                         secondaryImages.append(cleaned_url)

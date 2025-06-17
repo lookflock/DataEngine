@@ -1,3 +1,4 @@
+from glob import glob
 import shutil
 import requests
 import config
@@ -75,66 +76,70 @@ def getRequest(url, requestType):
         return r.text
     elif requestType == 'json':
         return json.loads(r.text)
-# def getRequest(url, requestType):
-#     # print(requestType)
-#     user_agent = config.user_agent
-#     r = requests.get(url, headers=user_agent)
-#     statusCode = r.status_code
-#     # print(statusCode)
+    
+def getDataFile(brandName):
+    today_str = datetime.datetime.now(pytz.utc).strftime("%Y-%m-%d")
+    base_dir = "data"
 
-#     if (statusCode != 200):
-#         errorFilePath = 'errors//connection_' + str(datetime.datetime.now()) + '.txt'
-#         # Check if the file exists, create it if not
-#         if not os.path.exists(errorFilePath):
-#             with open(errorFilePath, 'w') as file:
-#                 file.write('')
+    navDetails = getNavigationDetails(brandName)
+    navFilePath = os.path.join("navigation", navDetails["navigationFile"])
 
-#         with open(errorFilePath, 'a') as exc:
-#             exc.write('\n\nWrong Status Code \nStatus Code: ' +str(statusCode) + '\nURL: ' + url)
-
-#     if requestType == 'text':
-#         # print(r.text)
-#         return r.text
-#     elif requestType == 'json':
-#         return json.loads(r.text)
-
-# def renameDataFile(brandName):
-#     # Get today's date in UTC
-#     today = datetime.datetime.now(pytz.utc)
-#     yesterday = today - datetime.timedelta(days=1)
-
-#     existingFile = 'data/data_' + brandName + '_' + today.strftime("%Y-%m-%d") + '.json'
-#     renamedFile = 'data/data_' + brandName + '_' + yesterday.strftime("%Y-%m-%d") + '.json'
-
-#     if os.path.isfile(existingFile):
-#         os.rename(existingFile, renamedFile)
-#         return renamedFile
-
-#     else:
-#         return None
-
-
-def renameDataFile(brandName):
-    today = datetime.datetime.now(pytz.utc).strftime("%Y-%m-%d")
-    base_name = f"data/data_{brandName}_{today}"
-    ext = ".json"
-
-    version = 1
-    while True:
-        candidate_name = f"{base_name}_{version}{ext}"
-        if not os.path.isfile(candidate_name):
-            break
-        version += 1
-
-    original_file = f"{base_name}{ext}"
-
-    if os.path.isfile(original_file):
-        os.rename(original_file, candidate_name)
-        print(f"Renamed old file to: {candidate_name}")
-        return candidate_name
-    else:
-        print(f"No original file found to rename: {original_file}")
+    try:
+        with open(navFilePath, 'r', encoding='utf-8') as f:
+            navData = json.load(f)
+    except Exception as e:
+        print(f"Failed to read navigation file: {e}")
         return None
+
+    lastFileName = os.path.basename(navData.get("dataFile", ""))
+    serial = 0
+
+    if today_str in lastFileName:
+        match = re.match(rf"data_{brandName}_{today_str}(?:_(\d+))?\.json", lastFileName)
+        if match:
+            serial_str = match.group(1)
+            if serial_str:
+                serial = int(serial_str) + 1
+            else:
+                serial = 1
+
+    if serial == 0:
+        newFileName = f"data_{brandName}_{today_str}.json"
+    else:
+        newFileName = f"data_{brandName}_{today_str}_{serial}.json"
+
+    return os.path.join(base_dir, newFileName).replace("\\", "/")
+
+
+def updateFileNameInNavigationFile(dataFile):
+    try:
+        filename = os.path.basename(dataFile)
+        parts = filename.split('_')
+        if len(parts) < 3:
+            print("Invalid file name format.")
+            return
+
+        brandName = parts[1]
+        navigationFilePath = f"navigation/pk_{brandName}.json"
+
+        if not os.path.exists(navigationFilePath):
+            print(f"Navigation file not found for brand: {brandName}")
+            return
+
+        with open(navigationFilePath, 'r', encoding='utf-8') as f:
+            navigation = json.load(f)
+
+        navigation['dataFile'] = os.path.normpath(dataFile).replace('\\', '/')
+        navigation['LastUpdate'] = datetime.datetime.now().strftime('%Y-%m-%d')
+
+        with open(navigationFilePath, 'w', encoding='utf-8') as f:
+            json.dump(navigation, f, ensure_ascii=False, indent=2)
+
+        print(f"Navigation file updated for brand '{dataFile}'")
+
+    except Exception as e:
+        print("Failed to update navigation file:", e)
+
 
 
 def extractInt(string):
@@ -196,11 +201,11 @@ def filterName(name, id):
 
 def saveDataToJsonFile(data, filename):
     dataJson = json.dumps(data)
-    file = 'data/' + filename + '_'+ today.strftime("%Y-%m-%d") + '.json'
-    f = open(file, "w")
+    # file = 'data/' + filename + '_'+ today.strftime("%Y-%m-%d") + '.json'
+    f = open(filename, "w")
     f.write(dataJson)
     f.close()
-    return file
+    return filename
 
 def fetchbrandName(brandName):
     filename = config.navigationFile
@@ -353,6 +358,21 @@ def UploadProducts(brandName):
         except Exception as e:
             print(f"ERROR: Failed to add product {productID}: {str(e)}")
 
+def get_latest_error_file(brandName):
+    folder = "errors"
+    now = datetime.now()
+    files = glob.glob(f"{folder}/error_{brandName}_*.json")
+    files.sort(reverse=True)
+
+    for file in files:
+        try:
+            time_part = file.split(f"error_{brandName}_")[1].split(".json")[0]
+            file_time = datetime.strptime(time_part, "%Y-%m-%d_%H-%M")
+            if now - file_time < timedelta(minutes=5):
+                return file
+        except:
+            continue
+    return None
 # from datetime import datetime, timedelta
 def GetSummary(brandName, details=False):
     summary_file = None
@@ -402,8 +422,8 @@ def default_converter(obj):
         return obj.isoformat()
     return str(obj)
 
-def fetch_and_save_products_by_brand(brandName):
-    products_ref = db.collection('products').where(filter=('supplier', '==', brandName))
+def fetch_and_save_products_by_brand():
+    products_ref = db.collection('products').where('supplier','==','EdenRobe')
     docs = products_ref.stream()
 
     # Group products by brand name
@@ -495,39 +515,47 @@ def make_json_serializable(data):
     else:
         return data
 
-    
-def fetch_brands_available_in(brandName):
-    """
-    Fetches 'availableIn' subcollections for all brand's products.
-    Returns: dict { product_id: [availableIn_documents] }
-    """
-    query = db.collection('products').where(filter('supplier', '==', brandName))
-    products = query.stream()
+def fetch_brands_available_in(brandName, batch_size=300):
+    query = db.collection('products').where('supplier', '==', brandName).order_by('__name__')
 
     result = {}
-    product_count = 0
+    last_doc = None
+    total_fetched = 0
     available_count = 0
 
-    for doc in products:
-        product_id = doc.id
-        available_ref = db.collection('products').document(product_id).collection('availableIn')
-        available_docs = available_ref.stream()
+    while True:
+        paginated_query = query.limit(batch_size)
+        if last_doc:
+            paginated_query = paginated_query.start_after(last_doc)
 
-        available_list = []
-        for sub_doc in available_docs:
-            sub_data = sub_doc.to_dict()
-            sub_data['id'] = sub_doc.id
-            available_list.append(make_json_serializable(sub_data))
+        docs = list(paginated_query.stream())
+        if not docs:
+            break
 
+        for doc in docs:
+            product_id = doc.id
+            available_ref = db.collection('products').document(product_id).collection('availableIn')
+            try:
+                available_docs = available_ref.stream()
+                available_list = []
+                for sub_doc in available_docs:
+                    sub_data = sub_doc.to_dict()
+                    sub_data['id'] = sub_doc.id
+                    available_list.append(make_json_serializable(sub_data))
 
-        if available_list:
-            result[product_id] = available_list
-            available_count += len(available_list)
+                if available_list:
+                    result[product_id] = available_list
+                    available_count += len(available_list)
+            except Exception as e:
+                print(f"[!] Failed to fetch availableIn for {product_id}: {e}")
 
-        product_count += 1
+        total_fetched += len(docs)
+        print(f"[→] Processed {total_fetched} products so far...")
+        last_doc = docs[-1]
 
-    print(f"[✔] {brandName} Products: {product_count}, 'availableIn' docs: {available_count}")
+    print(f"[Done] {brandName} Products: {total_fetched}, 'availableIn' docs: {available_count}")
     return result
+
 
 def fetch_available_in_for_all_products(brandName):
     data = fetch_brands_available_in(brandName)
@@ -538,7 +566,7 @@ def fetch_available_in_for_all_products(brandName):
 
 def delete_all_except(brandName):
     """
-    Deletes all documents in the 'products' collection where supplier == 'AhmadRaza',
+    Deletes all documents in the 'products' collection where supplier == 'brandName',
     except the ones whose document IDs are in doc_ids_to_keep.
     """
     filename = f"AvailableIn/{brandName}_available_in_data.json"
@@ -553,7 +581,7 @@ def delete_all_except(brandName):
             if 'productId' in entry:
                 product_ids.append(entry['productId'])
 
-    collection_ref = db.collection('products').where(filter=('supplier', '==', brandName))
+    collection_ref = db.collection('products').where('supplier', '==', brandName)
     docs = collection_ref.stream()
 
     deleted_count = 0
@@ -563,7 +591,46 @@ def delete_all_except(brandName):
             deleted_count += 1
 
     print(f"Deleted {deleted_count} documents from 'products', keeping only: {product_ids}")
+import json
 
+def delete_all_except_in_file_list_format(brandName, target_file_path):
+    """
+    Keeps only the products in the target file whose 'id' exists in 
+    AvailableIn/{brandName}_available_in_data.json. Deletes others.
+    Works for target files with a list of product dictionaries. 
+    """
+    # Step 1: Load productIds to keep
+    available_file = f"AvailableIn/{brandName}_available_in_data.json"
+    with open(available_file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    product_ids_to_keep = set()
+    for key, entries in data.items():
+        for entry in entries:
+            if 'productId' in entry:
+                product_ids_to_keep.add(entry['productId'])
+
+    # Step 2: Load target product list
+    with open(target_file_path, 'r', encoding='utf-8') as f:
+        products = json.load(f)
+
+    # Step 3: Filter products
+    filtered_products = []
+    deleted_count = 0
+    kept_count = 0
+
+    for product in products:
+        if str(product.get('id')) in product_ids_to_keep:
+            filtered_products.append(product)
+            kept_count += 1
+        else:
+            deleted_count += 1
+
+    # Step 4: Overwrite file with filtered products
+    with open(target_file_path, 'w', encoding='utf-8') as f:
+        json.dump(filtered_products, f, indent=2, ensure_ascii=False)
+
+    print(f"[{brandName}] Deleted {deleted_count} products. Kept {kept_count} in '{target_file_path}'.")
 
 def find_common_products(file1, file2):
     # Load products from both files
@@ -573,19 +640,35 @@ def find_common_products(file1, file2):
     with open(file2, 'r', encoding='utf-8') as f2:
         data2 = json.load(f2)
 
-    # Convert product lists to dicts keyed by 'id'
-    products1 = {product['name']: product for product in data1 if 'id' in product}
+    # # Convert product lists to dicts keyed by 'id'
+    products1 = {product['id']: product for product in data1 if 'id' in product}
     products2 = {product['id']: product for product in data2 if 'id' in product}
 
-    # Find common product IDs
-    common_ids = set(products1.keys()) & set(products2.keys())
+    common = input("Do you want to find common (1) or different (0) products?: ").strip().lower()
 
-    # Collect matching products
-    common_products = [products1[pid] for pid in common_ids]
+    if common in ['1']:
+        # Find common product IDs
+        common_ids = set(products1.keys()) & set(products2.keys())
 
-    print(f"Found {len(common_products)} common products.")
-    return common_products
+        # Collect matching products
+        common_products = [products1[pid] for pid in common_ids]
 
+        print(f"Found {len(common_products)} common products.")
+        return common_products
+    else:    
+        ids1 = set(products1.keys())
+        ids2 = set(products2.keys())
+
+        # Find non-common IDs
+        unique_ids = ids1.symmetric_difference(ids2)  # IDs in either but not both
+
+        # Collect the non-common products from both datasets
+        non_common_products = [products1.get(pid) or products2.get(pid) for pid in unique_ids]
+
+        print(f"Found {len(non_common_products)} non-common products.")
+        return non_common_products
+
+    
 
 
 def save_invalid_urls_file(brandName, invalids):
@@ -668,13 +751,13 @@ def save_invalid_urls(brandName,productsFile):
 import json
 import requests
 
-def verifyProducts(brandName):
+def verifyProducts(brandName,productsFile):
     from scrapper import find_latest_files
     print(f"[verification] Verifying new products for: {brandName}")
 
     # Get latest product and summary file
     try:
-        productsFile, summaryFile = find_latest_files(brandName)
+        productsFile, summaryFile = find_latest_files(productsFile,brandName)
         print(f"[verification] Using products file: {productsFile}")
         print(f"[verification] Using summary file: {summaryFile}")
     except Exception as e:
@@ -714,6 +797,7 @@ def verifyProducts(brandName):
             continue
 
         # Validate newPrice
+        print(f"[verification] Verifying Product: {product.get('id')}")
         new_price = product.get("newPrice")
         if new_price is None:
             product["valid"] = 0

@@ -1,18 +1,13 @@
-import requests
+import os
 import config
 import json
 from bs4 import BeautifulSoup
 import functions
-import os
 from urllib.parse import urljoin
-import pytz
-import re
 import importlib
-
+from glob import glob
 import shutil
 from datetime import datetime, timedelta
-
-
 from lib.logger import log_info, log_error
 
 import scrappers_pk.pk_AhmadRaza as AhmadRaza
@@ -178,20 +173,20 @@ def categoriseAllProducts(brandName, fileName):
     print('Total Products: ', str(len(products)))
     print('Unsorted Products: ', str(unsortedData))
 
-def find_latest_files(brandName):
+def find_latest_files(products_file,brandName):
     base_path = "data"
     max_days_back = 10
     for i in range(max_days_back):
         date_str = (datetime.now() - timedelta(days=i)).strftime("%Y-%m-%d")
-        products_file = os.path.join(base_path, f"data_{brandName}_{date_str}.json")
+        # products_file = os.path.join(base_path, f"data_{brandName}_{date_str}.json")
         summary_file = os.path.join(base_path, f"data_{brandName}_{date_str}_summary.json")
         if os.path.exists(products_file) and os.path.exists(summary_file):
             return products_file, summary_file
     return None, None
 
 
-def categoriseProducts(brandName):
-    products_file, summary_file = find_latest_files(brandName)
+def categoriseProducts(productsFile,brandName):
+    products_file, summary_file = find_latest_files(productsFile,brandName)
 
     if not products_file or not summary_file:
         print(f"No recent product/summary file found for brand: {brandName}")
@@ -344,11 +339,10 @@ def scrapProducts(brandID, soup, category, subCategory, subSubCategory,piece, pa
     # print('Product count: ' + str(len(products)) + ' products \n\n')    
     return products
 
+
 def scrapBrand(brandID):
     print('Brand Name: ' + brandID)
-    renamedFile = functions.renameDataFile(brandID)
-    print(renamedFile)
-    products = []
+    
     navDetails = functions.getNavigationDetails(brandID)
 
     try:
@@ -359,10 +353,14 @@ def scrapBrand(brandID):
 
     if navFile == '':
         print('Navigation file does not exist for: ' + brandID)
-        return products
+        return []
 
     productsFile = None
 
+    renamedFile = functions.getDataFile(brandID)
+    print(renamedFile)
+    products = []
+    emptyUrls=[]
     with open(navFile, 'r') as f:
         navigation = json.load(f)
 
@@ -400,13 +398,18 @@ def scrapBrand(brandID):
 
                         tempProducts = scrapProducts(brandID, soup, category, subCategory, subSubCategory, piece, pageUrl)
 
+                        if not tempProducts:
+                            print(f"No products on {pageUrl}")
+                            emptyUrls.append(pageUrl)
+                            break
+
                         if not tempProducts or tempProducts == previousProducts:
                             print("No new products or repeated results. Stopping pagination.")
                             break
 
                         previousProducts = tempProducts
                         products += tempProducts
-                        productsFile = functions.saveDataToJsonFile(products, 'data_' + brandID)
+                        productsFile = functions.saveDataToJsonFile(products,renamedFile)
 
                         # Auto-detect pagination type after first page
                         if paginationType is None:
@@ -432,85 +435,7 @@ def scrapBrand(brandID):
                                 print("Reached max number of pages.")
                                 break
 
-    return productsFile
-
-
-# import os
-# import json
-# import datetime
-# import re
-
-# def extract_timestamp(filename):
-#     match = re.match(r"data_(.+)_(\d{4}-\d{2}-\d{2})(?:_(\d+))?\.json$", os.path.basename(filename))
-#     if match:
-#         _, date_str, suffix = match.groups()
-#         dt = datetime.datetime.strptime(date_str, "%Y-%m-%d")
-#         return dt, int(suffix) if suffix else 0
-#     return None, None
-
-# def compareWithPrevious(brandName, current_file_path):
-#     current_filename = os.path.basename(current_file_path)
-
-#     # Get all files for the same brand
-#     all_files = os.listdir("data")
-#     brand_files = [
-#         f"data/{f}" for f in all_files
-#         if f.startswith(f"data_{brandName}_") and f.endswith(".json") and f != current_filename
-#     ]
-
-#     # Sort files by timestamp and suffix
-#     brand_files = sorted(
-#         brand_files,
-#         key=lambda f: extract_timestamp(f),
-#         reverse=True
-#     )
-
-#     # Find most recent valid previous file
-#     previous_file = None
-#     for f in brand_files:
-#         if os.path.basename(f) != os.path.basename(current_file_path):
-#             previous_file = f
-#             break
-
-#     if not previous_file:
-#         print(f"[Info] No previous file found for brand {brandName}.")
-#         return None
-
-#     print(f"[Info] Comparing against: {previous_file}")
-
-#     # Load product lists
-#     try:
-#         with open(current_file_path, 'r', encoding='utf-8') as f:
-#             current_products = json.load(f)
-
-#         with open(previous_file, 'r', encoding='utf-8') as f:
-#             previous_products = json.load(f)
-#     except Exception as e:
-#         print(f"[Error] Failed to load JSON: {e}")
-#         return None
-
-#     previous_ids = {p.get("productID") for p in previous_products}
-#     new_products = [p for p in current_products if p.get("productID") not in previous_ids]
-
-#     if not new_products:
-#         print(f"No new products found for brand {brandName}.")
-#         return None
-
-#     # Auto-increment output file name
-#     base_name = f"data/new_products_{brandName}_{datetime.datetime.now().strftime('%Y-%m-%d')}"
-#     suffix = 0
-#     output_file = f"{base_name}.json"
-#     while os.path.exists(output_file):
-#         suffix += 1
-#         output_file = f"{base_name}_{suffix}.json"
-
-#     # Save new products
-#     with open(output_file, 'w', encoding='utf-8') as f:
-#         json.dump(new_products, f, ensure_ascii=False, indent=2)
-
-#     print(f"Found {len(new_products)} new product(s).")
-#     print(f"New products file: {output_file}")
-#     return output_file
+    return productsFile,emptyUrls
 
 def save_summary_file(brandName, summary):
     date_str = datetime.now().strftime('%Y-%m-%d')
@@ -537,53 +462,61 @@ def save_summary_file(brandName, summary):
 
     print(f"[Summary] Saved to: {latest_file}")
 
-def extract_timestamp(filename):
-    name = os.path.basename(filename)
-    match = re.match(r".*_(\d{4}-\d{2}-\d{2})(?:_(\d+))?\.json$", name)
-    if match:
-        date_str = match.group(1)
-        suffix = int(match.group(2)) if match.group(2) else 0
-        try:
-            date_obj = datetime.strptime(date_str, "%Y-%m-%d")
-            return (date_obj, suffix)
-        except ValueError:
-            return (datetime.min, 0)
-    return (datetime.min, 0)
 
-def compareWithPrevious(brandName, current_file_path):
-    current_filename = os.path.basename(current_file_path)
 
-    all_files = os.listdir("data")
-    brand_files = [
-        f"data/{f}" for f in all_files
-        if f.startswith(f"data_{brandName}_") and f.endswith(".json") and f != current_filename and "_summary" not in f and "_new_products" not in f
-    ]
+def get_latest_error_file(brand_name, error_dir="errors"):
+    pattern = os.path.join(error_dir, f"error_{brand_name}_*.json")
+    files = glob(pattern)
 
-    brand_files = sorted(
-        brand_files,
-        key=lambda f: extract_timestamp(f),
-        reverse=True
-    )
-
-    previous_file = None
-    for f in brand_files:
-        if os.path.basename(f) != current_filename:
-            previous_file = f
-            break
-
-    if not previous_file:
-        print(f"[Info] No previous file found for brand {brandName}.")
+    if not files:
         return None
 
-    print(f"[Info] Comparing against: {previous_file}")
+    def extract_timestamp(file_path):
+        try:
+            base = os.path.basename(file_path)
+            timestamp_str = base.split(f"error_{brand_name}_")[1].replace(".json", "")
+            return datetime.datetime.strptime(timestamp_str, "%Y-%m-%dT%H-%M-%S")
+        except:
+            return datetime.datetime.min
 
-    # Load JSON data
+    files.sort(key=extract_timestamp, reverse=True)
+    return files[0]
+
+def extract_product_ids_from_error_file(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            if isinstance(data, dict):
+                return [data.get("product_id")] if "product_id" in data else []
+            elif isinstance(data, list):
+                return [entry["product_id"] for entry in data if "product_id" in entry]
+    except Exception as e:
+        print(f"[Error reading error file] {file_path}: {e}")
+    return []
+
+def compareWithPrevious(brandName, current_file_path,invalidUrls):
+    # current_filename = os.path.basename(current_file_path)
+    navDetails = functions.getNavigationDetails(brandName)
+    navFilePath = os.path.join("navigation", navDetails["navigationFile"])
+    try:
+        with open(navFilePath, 'r', encoding='utf-8') as f:
+            navData = json.load(f)
+    except Exception as e:
+        print(f"Failed to read navigation file: {e}")
+        return None
+
+    lastFileName = navData.get("dataFile", "")
+    print(f"summary -> {lastFileName}")
+    try:
+        with open(f"{lastFileName}", 'r', encoding='utf-8') as f:
+            previous_products = json.load(f)
+    except Exception as e:
+        print(f"No data to compare.")
+        return None
     try:
         with open(current_file_path, 'r', encoding='utf-8') as f:
             current_products = json.load(f)
-
-        with open(previous_file, 'r', encoding='utf-8') as f:
-            previous_products = json.load(f)
+            
     except Exception as e:
         print(f"[Error] Failed to load JSON: {e}")
         return None
@@ -620,6 +553,9 @@ def compareWithPrevious(brandName, current_file_path):
     with open(current_file_path, 'w', encoding='utf-8') as f:
         json.dump(current_products, f, ensure_ascii=False, indent=2)
 
+    latest_error_file = get_latest_error_file(brandName)
+    error_product_ids = extract_product_ids_from_error_file(latest_error_file) if latest_error_file else []
+
     # Prepare summary with additional "Total Products"
     summary = {
         "Total Products": len(current_products),
@@ -639,17 +575,22 @@ def compareWithPrevious(brandName, current_file_path):
             "count": len(deleted_products),
             "ids": deleted_products
         },
+        "Invalid Urls":invalidUrls,
+        "Error Products": {
+            "count": len(error_product_ids),
+            "ids": error_product_ids
+        }
     }
 
     save_summary_file(brandName, summary)
 
 
-def scrapDetails(brandName):
+def scrapDetails(productsFile,brandName):
     print(f"Enriching new product details for: {brandName}")
 
     # Get latest product and summary file
     try:
-        productsFile, summaryFile = find_latest_files(brandName)
+        productsFile, summaryFile = find_latest_files(productsFile,brandName)
         print(f"Using products file: {productsFile}")
         print(f"Using summary file: {summaryFile}")
     except Exception as e:

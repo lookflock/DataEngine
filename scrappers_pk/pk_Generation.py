@@ -61,7 +61,7 @@ def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
                 discount = 0
 
             # Populate the product dictionary
-            tmp_product['productID'] = productID
+            tmp_product['id'] = productID
             tmp_product['name'] = functions.filterName(name, productID)
             tmp_product['oldPrice'] = functions.extractInt(oldPrice)
             tmp_product['newPrice'] = functions.extractInt(newPrice)

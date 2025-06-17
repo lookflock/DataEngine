@@ -118,12 +118,13 @@ def normalize_image_url(url):
 
 
 def getChicophicialProductDetails(product):
+    print(f"[Product Details] Extracting Details for Product id: {product['id']}")
     try:
         html = functions.getRequest(product["url"], 'text')
         soup = BeautifulSoup(html, "html.parser")
         
-        with open("output_generate.html", "w", encoding="utf-8") as f:
-             f.write(soup.prettify())
+        # with open("output_generate.html", "w", encoding="utf-8") as f:
+        #      f.write(soup.prettify())
         
         availableSizes = []
         secondaryImages = []
@@ -151,7 +152,7 @@ def getChicophicialProductDetails(product):
                         if img_url.startswith('//'):
                             img_url = 'https:' + img_url
                         elif img_url.startswith('/'):
-                            img_url = 'https://www.thecambridgeshop.com' + img_url
+                            img_url = 'https://www.chicophicial.com' + img_url
                         parsed_url = urlparse(img_url)
                         cleaned_url = urlunparse(parsed_url._replace(query=""))
 

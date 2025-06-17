@@ -87,19 +87,22 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
                 
 
             except Exception as e:
-                # exc_type, exc_obj, exc_tb = sys.exc_info()
-                # fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-                # print(exc_type, fname, exc_tb.tb_lineno)
-                
-                print("ERRORRR", json.dumps(tmp_product, indent=4 ,ensure_ascii=False))
-                with open("errors/error_Alkaram.json", "a") as f:
-                    error_log = {
-                    "datetime": datetime.datetime.now().isoformat(),
+                print("ERRORRR", json.dumps(tmp_product, indent=4, ensure_ascii=False))      
+                error_log = {
+                    "datetime": datetime.now().isoformat(),
+                    "product_id": productID,
                     "product_name": str(name),
                     "exception_message": str(e),
                     "pageURL number": pageURL
-                    }
-                    json.dump(error_log, f)   
+                }        
+                error_filename = functions.get_latest_error_file("Alkaram")
+                if not error_filename:
+                    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
+                    error_filename = f"errors/error_AhmadRaza_{timestamp}.json"
+
+                    # Save updated logs
+                with open(error_filename, "w", encoding="utf-8") as f:
+                    json.dump(error_log, f, indent=2, ensure_ascii=False)
  
     return products
 

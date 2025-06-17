@@ -13,84 +13,6 @@ import requests
 
 supplier='Almirah'
 
-# def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
-#     print("In Almirah")
-#     products = []
-#     mainContainer = soup.find('div', {'class': 'product-grid-container'})
-#     productsDiv = mainContainer.find_all('div',{'class': 'product-grid'})
-
-#     for i in productsDiv:
-#         tmp_product = {
-#                 'supplier': supplier,
-#                 'id': '',
-#                 'name': '',
-#                 'oldPrice': '',
-#                 'newPrice': '',
-#                 'discount': '',
-#                 'category': '',
-#                 'subCategory': '',
-#                 'subSubCategory': '',
-#                 'url': '',
-#                 'imageUrl': '',
-#                 'page': pageURL,
-#                 'views' : 0,
-#                 'likes' : 0,
-#                 'shares' : 0,
-#                 'favourites' : 0,
-#                 'status' : 1,
-#                 'list' : 0,
-#                 'keywords': [],
-#                 'piece': '',
-#                 'valid': 1
-#             }
-#         # product__title grid-product__title--body
-        
-        
-        
-#         name = i.find('div', {'class': 'grid-'}).text.strip()
-#         name.replace("\u00a02", ' ')
-#         try:    
-#             productID = name.split(' - ')[1]            
-#             url = i.find('a', {'class': 'grid-product__link'})['href']
-#             imageUrl = i.find('img', {'class': 'grid-product__image lazyloaded'})['src']
-#             imageUrl = imageUrl.replace('400x', '1000x')
-#             price_elements = i.find_all('span', class_='money')
-#             oldPrice = price_elements[0].text.strip().split('.')[1].replace(',', '')
-#             try:
-#                 newPrice = price_elements[1].text.strip().split('.')[1].replace(',', '')
-#                 temp_discount = i.find('div', {'class': 'grid-product__tag grid-product__tag--sale'}).text.strip()
-#                 discount = temp_discount.split('%')[0]
-#             except:
-#                 newPrice = oldPrice
-#                 oldPrice = 0
-#                 discount = 0
-            
-#             tmp_product['id'] = productID
-#             # tmp_product['name'] = name
-#             tmp_product['name'] = functions.filterName(name,productID)
-#             tmp_product['oldPrice'] = int(oldPrice)
-#             tmp_product['newPrice'] = int(newPrice)
-#             tmp_product['discount'] = int(discount)
-#             tmp_product['url'] =  'https://www.almirah.com.pk' + url
-#             tmp_product['imageUrl'] = 'https:' + imageUrl 
-#             tmp_product['category'] =  category
-#             tmp_product['subCategory'] = subCategory
-#             tmp_product['subSubCategory'] = subSubCategory
-#             tmp_product['piece'] = piece
-#             products.append(tmp_product)    
-
-#         except Exception as e:
-#             with open("errors/error_Almirah.json", "a") as f:
-#                 error_log = {
-#                     "datetime": datetime.datetime.now().isoformat(),
-#                     "product_name": str(name),
-#                     "exception_message": str(e),
-#                     "page number": pageURL
-#                     }
-#                 json.dump(error_log, f)
-       
-#     return products
-
 def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
     products = []
     container = soup.find('ul', id='product-grid')
@@ -153,14 +75,22 @@ def getProducts(soup, category, subCategory, subSubCategory, piece, pageURL):
             # tmp_product=getAlmirahProductDetails(tmp_product)
             products.append(tmp_product) 
         except Exception as e:
-            with open("errors/error_Almirah.json", "a") as f:
-                json.dump({
-                    "datetime": datetime.datetime.now().isoformat(),
-                    "product_name": str(name),
-                    "exception_message": str(e),
-                    "pageURL number": pageURL
-                }, f)
-                f.write("\n")
+            print("ERRORRR", json.dumps(tmp_product, indent=4, ensure_ascii=False))      
+            error_log = {
+                "datetime": datetime.now().isoformat(),
+                "product_id": productID,
+                "product_name": str(name),
+                "exception_message": str(e),
+                "pageURL number": pageURL
+            }        
+            error_filename = functions.get_latest_error_file("Almirah")
+            if not error_filename:
+                timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
+                error_filename = f"errors/error_AhmadRaza_{timestamp}.json"
+
+                # Save updated logs
+            with open(error_filename, "w", encoding="utf-8") as f:
+                json.dump(error_log, f, indent=2, ensure_ascii=False)
     return products
 
 def normalize_image_url(url):

@@ -38,7 +38,7 @@ def getProducts(soup, category, subCategory, subSubCategory,piece, pageURL):
             product_link = i.find('a', {'class': 'full-unstyled-link'})
             if product_link:
                 productID = product_link['href'].split('/')[-1]
-                tmp_product['productID'] = productID
+                tmp_product['id'] = productID
                 
                 # Get product URL
                 url = 'https://www.limelight.pk' + product_link['href']
