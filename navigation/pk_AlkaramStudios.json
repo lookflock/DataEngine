@@ -27,6 +27,15 @@
                             "url": "https://www.alkaramstudio.com/collections/pret"
                         }
                     ]
+                },
+                {
+                    "name": "Western Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "Unsorted",
+                            "url": "https://www.alkaramstudio.com/collections/woman-outerwear"
+                        }
+                    ]
                 }
             ]
         },
@@ -48,6 +57,15 @@
                         {
                             "name": "None",
                             "url": "https://www.alkaramstudio.com/collections/men-ready-to-wear"
+                        }
+                    ]
+                },
+                {
+                    "name": "Western Wear",
+                    "subSubCategories": [
+                        {
+                            "name": "None",
+                            "url": "https://www.alkaramstudio.com/collections/man-outerwear"
                         }
                     ]
                 }
